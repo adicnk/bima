@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Login PAIT</title>
+    <title>Login BP3MI</title>
 
     <!-- Custom fonts for this template-->
     <link href="admin_assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -58,7 +58,7 @@
                                     </form>
                                     <hr>
                                     <div class="small text-center">
-                                        Physical Assement based on Interactive Technology
+                                        Input Data and Upload File
                                     </div>
                                 </div>
                             </div>

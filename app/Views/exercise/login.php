@@ -41,7 +41,7 @@
                                     </div>
                                     <hr>
                                     <div class="small text-center mb-3">
-                                    Usulan Penelitian dan Pengabdian di STIKEP PPNI Jawa Barat
+                                    Usulan Penelitian dan Pengabdian <br/> di STIKEP PPNI Jawa Barat
                                     </div>
                                     <hr>
                                     <form method="post" action="exercise/login" class="user">
