@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Belajar Yuk | User Login</title>
+    <title>BP3MI | User Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="admin_assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -41,7 +41,7 @@
                                     </div>
                                     <hr>
                                     <div class="small text-center mb-3">
-                                    Soal-soal Latihan UTBK/SBT dan SBMPTN serta Pembahasannya
+                                    Usulan Penelitian dan Pengabdian di STIKEP PPNI Jawa Barat
                                     </div>
                                     <hr>
                                     <form method="post" action="exercise/login" class="user">
@@ -58,11 +58,11 @@
                                     </form>
                                     <hr>
                                     <div class="small text-center">
-                                        Pendalaman Materi dari Soal Tahun Sebelumnya
+                                        Input Data dan Upload File
                                     </div>
                                     <hr>
                                     <p><strong><div class="small text-center text-red">
-                                        Belajar Yuk © 2023
+                                        Stikep PPNI Jawa Barat © 2024
                                     </div></strong></p>
                                 </div>
                             </div>
