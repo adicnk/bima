@@ -107,6 +107,46 @@
                                 </div>
                             </div>
                         </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-8">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Tempat Lahir</strong></div>
+                                    <input type="text" name="tempatLahir" id="tempatLahir" class="form-control" placeholder="Masukkan Tempat Lahir ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-8">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Tanggal Lahir</strong></div>
+                                    <input type="text" name="tanggalLahir" id="tanggalLahir" class="form-control" placeholder="Masukkan Tanggal Lahir ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-8">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Nomor KTP</strong></div>
+                                    <input type="text" name="noKTP" id="noKTP" class="form-control" placeholder="Masukkan Nomor KTP ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-8">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Nomor Telepon</strong></div>
+                                    <input type="text" name="noTelp" id="noTelp" class="form-control" placeholder="Masukkan Nomor Telepon ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-8">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Nomor Telepon</strong></div>
+                                    <input type="text" name="noTelp" id="noTelp" class="form-control" placeholder="Masukkan Nomor Telepon ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-row align-items-right mt-3">
                             <div class="col-12">
                                 <div class="input-group-prepend">
