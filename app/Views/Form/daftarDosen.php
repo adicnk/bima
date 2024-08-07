@@ -33,7 +33,7 @@
                             <div class="col-12">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Nama</strong></div>
-                                    <input type="text" name="namaUser" id="namaUser" class="form-control <?= ($validation->hasError('namaUser')) ? ' is-invalid': ''?>" placeholder="Masukkan Nama ......" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('namaUser')?>">
+                                    <input type="text" name="namaUser" id="namaUser" class="form-control <?= ($validation->hasError('namaUser')) ? ' is-invalid': ''?>" placeholder="Masukkan Nama ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('namaUser')?>">
                                     <div class="invalid-feedback"><?= $validation->getError('namaUser')?></div>                                    
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                             <div class="col-12">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>NIDN / NIDK</strong></div>
-                                    <input type="text" name="nidn" id="nidn" class="form-control" placeholder="Masukkan NIDN/NIDK" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
+                                    <input type="text" name="nidn" id="nidn" class="form-control" placeholder="Masukkan NIDN/NIDK ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
                                 </div>
                             </div>
                         </div>
@@ -96,6 +96,14 @@
                                         <option value=1></option>
                                         <option value=2>Asisten Ahli</option>
                                     </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-8">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Alamat</strong></div>
+                                    <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
                                 </div>
                             </div>
                         </div>
