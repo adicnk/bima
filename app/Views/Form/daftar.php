@@ -49,10 +49,9 @@
                         <div class="form-row align-items-right mt-3">
                             <div class="col-12">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><strong>Jurusan</strong></div>
-                                    <select class="form-control" name="jurusanUser" id="jurusanUser" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                                        <option value=1>D3 Keperawatan</option>
-                                        <option value=2>S1 Profesi Ners</option>
+                                    <div class="input-group-text"><strong>Klaster</strong></div>
+                                    <select class="form-control" name="klaster" id="klaster" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                        <option value=1>Kelompok Perguruan Tinggi Binaan</option>
                                     </select>
                                 </div>
                             </div>
