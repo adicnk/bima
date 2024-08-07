@@ -57,8 +57,7 @@ $routes->get('delete/admin/(:num)', 'Delete::user/$1');
 
 // For Exercise Route
 $routes->get('/', 'Exercise::index');
-$routes->get('/gmail', 'Admin::gmail');
-$routes->get('/daftar', 'Admin::daftar');
+$routes->get('/daftar', 'Exercise::daftar');
 $routes->get('/dashboard', 'Exercise::dashboard');
 
 //Form Pembelajaran Links

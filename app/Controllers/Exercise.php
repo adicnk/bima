@@ -92,6 +92,15 @@ class Exercise extends BaseController
         }
     }
 
+    public function daftar(){       
+        $data = [
+            'title' => "Daftar Pengguna Baru Penelitian dan Pengabdian<br/>Stikep PPNI Jawa Barat",
+            'validation'=> \Config\Services::validation()
+        ];
+        //dd($data);
+        return view('form/daftar', $data);        
+    }
+      
     public function profile()
     {
         $userID = session()->get('userID');

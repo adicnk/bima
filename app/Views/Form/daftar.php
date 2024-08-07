@@ -26,8 +26,7 @@
                     <?= csrf_field() ?>
                     
                     <div class="form-group">                    
-                    <div class=" form-row align-items-right mt-3">
-                    <? //$validation->listErrors(); ?>
+                    <div class=" form-row align-items-right mt-3">                    
                     </div>
 
                         <div class=" form-row align-items-right mt-3">
@@ -42,8 +41,8 @@
                         <div class=" form-row align-items-right mt-3">
                             <div class="col-12">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><strong>Sekolah</strong></div>
-                                    <input type="text" name="asalUser" id="asalUser" class="form-control" placeholder="Masukkan Sekolah..." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('asalUser')?>">
+                                    <div class="input-group-text"><strong>NIDN / NIDK</strong></div>
+                                    <input type="text" name="nidn" id="nidn" class="form-control" placeholder="Masukkan NIDN/NIDK" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
                                 </div>
                             </div>
                         </div>
