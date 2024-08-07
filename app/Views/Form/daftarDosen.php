@@ -59,6 +59,49 @@
                         <div class="form-row align-items-right mt-3">
                             <div class="col-12">
                                 <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Institusi</strong></div>
+                                    <select class="form-control" name="institusi" id="institusi" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                        <option value=1>Sekolah Tinggi Ilmu Keperawtan PPNI Jawa Barat</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row align-items-right mt-3">
+                            <div class="col-12">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Program Studi</strong></div>
+                                    <select class="form-control" name="programStudi" id="programStudi" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                        <option value=1>Ilmu Keperawatan</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row align-items-right mt-3">
+                            <div class="col-4">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Jenjang Pendidikan</strong></div>
+                                    <select class="form-control" name="jenjangPendidikan" id="jenjangPendidikan" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                        <option value=1>S1</option>
+                                        <option value=2>S2</option>
+                                        <option value=3>S3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row align-items-right mt-3">
+                            <div class="col-8">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Jabatan Akademik</strong></div>
+                                    <select class="form-control" name="jabatanAkademik" id="jabatanAkademik" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                        <option value=1></option>
+                                        <option value=2>Asisten Ahli</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row align-items-right mt-3">
+                            <div class="col-12">
+                                <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Email</strong></div>
                                     <input type="email" name="emailUser" id="emailUser" class="form-control <?= ($validation->hasError('emailUser')) ? ' is-invalid': ''?>" placeholder="Masukkan Email ......" onfocusin="yellowin(this);" onfocusout="whiteout(this)" value="<?= old('emailUser')?>">
                                     <div class="invalid-feedback"><?= $validation->getError('emailUser')?></div>
