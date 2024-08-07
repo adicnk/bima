@@ -60,9 +60,6 @@ $routes->get('/', 'Exercise::index');
 $routes->get('/gmail', 'Admin::gmail');
 $routes->get('/daftar', 'Admin::daftar');
 $routes->get('/dashboard', 'Exercise::dashboard');
-$routes->get('/latihan', 'Exercise::soal');
-$routes->get('/latihanfp', 'Exercise::latihanFP');
-//$routes->get('/latihan/(:segment)', 'Exercise::selesai/$1');
 
 //Form Pembelajaran Links
 $routes->get('/belajar', 'Exercise::belajar');

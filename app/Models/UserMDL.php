@@ -12,7 +12,7 @@ class UserMDL extends Model
     // Field yang boleh diisi waktu saving data ** harus didefinisikan dulu **
     protected $allowedFields = ['dosen_id', 'status_id', 'username', 'password'];
 
-    public function searchUser($keyword = false)
+    public function searchAdmin($keyword = false)
     {
         $this->table('user');
         $this->join('dosen', 'dosen.id = user.dosen_id');

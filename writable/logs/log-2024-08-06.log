@@ -1,0 +1,114 @@
+ERROR - 2024-08-06 14:35:32 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2024-08-06 14:35:32 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\bima\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\bima\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\bima\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\bima\app\Models\LoginMDL.php(68): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\bima\app\Controllers\Exercise.php(49): App\Models\LoginMDL->index()
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Exercise->login()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Exercise))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-08-06 14:35:38 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2024-08-06 14:35:38 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\bima\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\bima\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\bima\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\bima\app\Models\LoginMDL.php(68): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\bima\app\Controllers\Exercise.php(49): App\Models\LoginMDL->index()
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Exercise->login()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Exercise))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-08-06 14:36:10 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2024-08-06 14:36:10 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\bima\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\bima\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\bima\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#4 C:\xampp\htdocs\bima\app\Models\LoginMDL.php(68): CodeIgniter\BaseModel->findAll()
+#5 C:\xampp\htdocs\bima\app\Controllers\Admin.php(175): App\Models\LoginMDL->index()
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Admin->login()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-08-06 03:11:54 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+ERROR - 2024-08-06 15:27:59 --> Table 'bp3mi.login' doesn't exist
+CRITICAL - 2024-08-06 15:27:59 --> Table 'bp3mi.login' doesn't exist
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\bima\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\bima\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\bima\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\bima\app\Models\LoginMDL.php(68): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\bima\app\Controllers\Admin.php(175): App\Models\LoginMDL->index()
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Admin->login()
+#9 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#10 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-08-06 04:03:36 --> Class name must be a valid object or a string
+#0 C:\xampp\htdocs\bima\system\Config\BaseService.php(248): Myth\Auth\Config\Services::activator(Object(Myth\Auth\Config\Auth), false)
+#1 C:\xampp\htdocs\bima\system\Config\BaseService.php(189): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#2 C:\xampp\htdocs\bima\vendor\myth\auth\src\Config\Services.php(74): CodeIgniter\Config\BaseService::getSharedInstance('activator', NULL)
+#3 C:\xampp\htdocs\bima\system\Config\BaseService.php(248): Myth\Auth\Config\Services::activator()
+#4 C:\xampp\htdocs\bima\system\Common.php(929): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#5 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(184): service('activator')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->attemptRegister()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2024-08-06 04:10:24 --> Class name must be a valid object or a string
+#0 C:\xampp\htdocs\bima\system\Config\BaseService.php(248): Myth\Auth\Config\Services::activator(Object(Myth\Auth\Config\Auth), false)
+#1 C:\xampp\htdocs\bima\system\Config\BaseService.php(189): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#2 C:\xampp\htdocs\bima\vendor\myth\auth\src\Config\Services.php(74): CodeIgniter\Config\BaseService::getSharedInstance('activator', NULL)
+#3 C:\xampp\htdocs\bima\system\Config\BaseService.php(248): Myth\Auth\Config\Services::activator()
+#4 C:\xampp\htdocs\bima\system\Common.php(929): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#5 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(399): service('activator')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->resendActivateAccount()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-08-06 04:11:58 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2024-08-06 04:13:10 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2024-08-06 04:15:58 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2024-08-06 04:16:55 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+CRITICAL - 2024-08-06 04:29:41 --> Class name must be a valid object or a string
+#0 C:\xampp\htdocs\bima\system\Config\BaseService.php(248): Myth\Auth\Config\Services::activator(Object(Myth\Auth\Config\Auth), false)
+#1 C:\xampp\htdocs\bima\system\Config\BaseService.php(189): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#2 C:\xampp\htdocs\bima\vendor\myth\auth\src\Config\Services.php(74): CodeIgniter\Config\BaseService::getSharedInstance('activator', NULL)
+#3 C:\xampp\htdocs\bima\system\Config\BaseService.php(248): Myth\Auth\Config\Services::activator()
+#4 C:\xampp\htdocs\bima\system\Common.php(929): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#5 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(184): service('activator')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->attemptRegister()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-08-06 04:32:41 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2024-08-06 04:36:01 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2024-08-06 04:51:32 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2024-08-06 04:57:20 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2024-08-06 04:59:45 --> Email: sendWithSmtp throwed stream_socket_enable_crypto(): SSL/TLS already set-up for this stream
+ERROR - 2024-08-06 05:08:17 --> Email: sendWithSmtp throwed stream_socket_enable_crypto(): SSL/TLS already set-up for this stream
+ERROR - 2024-08-06 05:10:31 --> Email: sendWithSmtp throwed fsockopen(): Unable to connect to tls://mail.gmail.com:465 (A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond)
+ERROR - 2024-08-06 15:20:50 --> Email: sendWithSmtp throwed stream_socket_enable_crypto(): SSL/TLS already set-up for this stream
+ERROR - 2024-08-06 15:22:19 --> Email: sendWithSmtp throwed stream_socket_enable_crypto(): SSL/TLS already set-up for this stream

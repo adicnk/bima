@@ -18,12 +18,8 @@ class Admin extends BaseController
     public function __construct()
     {
         $this->userModel = new UserMDL();
-        $this->soalModel = new SoalMDL();
-        $this->chartPieModel = new ChartPieMDL();
         $this->configModel = new ConfigMDL();
         $this->loginModel = new LoginMDL();
-        $this->kategoriModel = new KategoriMDL();
-        $this->userSubcribeModel = new UserSubcribeMDL();
     }
 
     public function index($links = false)

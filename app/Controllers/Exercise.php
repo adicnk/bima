@@ -37,54 +37,7 @@ class Exercise extends BaseController
 
         return view('exercise/login', $data);
     }
-
-    public function soal()
-    {
-        session()->set('isFinish', false);
-        //$user = $this->userModel->searhAdminID(session()->get('userID'));
-        // Soal tp (tanpa pembahasan) dan dp (dengan pembahasan)        
-        //$soal = $this->soalModel->isChoosen();
-        //$soal = $this->soalModel->isChoosen();
-        
-        //foreach ($user as $u) :
-        //    switch ($u['paket']) {
-        //        case 'demo':                    
-        //            $totalSoal=$this->userSubcribeModel->totalSoal(1);
-        //            break;                
-        //    }
-        //endforeach;
-        $user = session()->get('userID');
-        $soalClass = $this->request->getVar('soalClass');
-        $totalSoal = $this->userSubcribeModel->totalSoal($user,$soalClass);
-        $soal = $this->soalModel->soalBuilder($soalClass,$totalSoal);
-//        $soal = $this->soalModel->soalBuilder($soalClass);
-
-        //dd($soalClass);
-
-        //$totalSoal = $this->configModel->totalSoal($user);
-        $no = $this->request->getVar('id');
-        $soalArr = array_fill(0, $totalSoal, null);
-        $jawabanArr = array_fill(0, $totalSoal, null);
-
-        for ($x = 0; $x < $totalSoal; $x++) {
-            $soalArr[$x]=$x+1;
-        }
-        
-        session()->set('noId', 1);
-        session()->set('soalArr', $soalArr);
-        session()->set('jawabanArr', $jawabanArr);
-        session()->set('soal', $soal);
-        
-        $data = [
-            'title' => "Latihan Soal",
-            'soalIdx' => $soalArr,
-            'soal' => $soal,
-            'total' => $totalSoal
-        ];
-        
-        return view('exercise/latihan', $data);
-    }
-    
+ 
     public function login()
     {
         $usr = $this->request->getVar('username');
@@ -137,87 +90,6 @@ class Exercise extends BaseController
         if (!isset($userID)) {
             return view('exercise/login', $data);            
         }
-
-        session()->set('isFinish', false);
-        $totalLatihan = $this->latihanModel->countLatihan($userID);
-        $benar = $this->latihanModel->lastBenar($userID);
-        $salah = $this->latihanModel->lastSalah($userID);
-        $score = $this->latihanModel->lastScore($userID);
-        
-        if ($totalLatihan==0 AND session()->start):
-            session()->set('start', false);
-            $start=1;
-        endif;
-        
-        if ($totalLatihan > 1) {
-            $benarBefore = $this->latihanModel->benarBefore($userID);
-            $persenBenar = ($benar - $benarBefore);
-            $salahBefore = $this->latihanModel->salahBefore($userID);
-            $persenSalah = ($salah - $salahBefore);
-            $scoreBefore = $this->latihanModel->scoreBefore($userID);
-            $persenScore = ($score - $scoreBefore);
-        } else {
-            $persenBenar = null;
-            $persenSalah = null;
-            $persenScore = null;
-        }
-
-        $cRec = $this->latihanModel->findAllID($userID);
-        $cid = 1;
-        $labelChart = null;
-        $dataChart = null;
-        foreach ($cRec as $c) {
-            // $dataChart = $dataChart . "-" . $c['score'];
-            if ($cid == 1) {
-                $labelChart = '"' . substr($c['date'], 0, 10) . '",';
-                $dataChart = $c['score'] . ',';
-            }
-            if ($cid > 1) {
-                if ($cid == $totalLatihan) {
-                    $labelChart = $labelChart . '"' . substr($c['date'], 0, 10) . '"';
-                    $dataChart = $dataChart . $c['score'];
-                } else {
-                    $labelChart = $labelChart . '"' . substr($c['date'], 0, 10) . '",';
-                    $dataChart = $dataChart . $c['score'] . ",";
-                }
-            } else {
-            }
-            $cid++;
-        }
-
-        $data = [
-            'title' => "PAIT @ PPNI",
-            'totalLatihan' => $totalLatihan,
-            'lastLatihan' => $this->latihanModel->lastLatihan($userID),
-            'benar' => $benar,
-            'persenBenar' => $persenBenar,
-            'salah' => $this->latihanModel->lastSalah($userID),
-            'persenSalah' => $persenSalah,
-            'lastScore' => $score,
-            'persenScore' => $persenScore,
-            'labelChart' => $labelChart,
-            'dataChart' => $dataChart
-        ];
-        return view('exercise/dashboard', $data);
-    }
-
-    public function belajar()
-    {
-        $userID = session()->get('userID');
-
-        $data = [
-            'title'   => "User Login"
-        ];                                 
-        if (!isset($userID)) {
-            return view('exercise/login', $data);            
-        }
-
-        $data = [
-            'title' => "PAIT @ PPNI",
-            'user' => $this->userModel->searhAdminID(session()->get('userID')),
-
-        ];
-        return view('exercise/belajar', $data);
     }
 
     public function profile()
@@ -239,83 +111,6 @@ class Exercise extends BaseController
         return view('exercise/profile', $data);
     }
 
-    public function beli(){
-        $userID = session()->get('userID');
-
-        $data = [
-            'title'   => "User Login"
-        ];                                 
-        if (!isset($userID)) {
-            return view('exercise/login', $data);            
-        }
-
-    $data = [
-        'paket' => $this->userModel->searchPaket(session()->get('userID')),
-        'userID' => $userID     
-    ];
-
-        return view('exercise/beli',$data);
-    }
-    
-    public function belipaket($idKategoriSoal){
-        $userID = session()->get('userID');
-        
-        $data = [
-            'title'   => "User Login",
-        ];                                 
-        if (!isset($userID)) {
-            return view('exercise/login', $data);            
-        }
-        
-        $idUserSubcribe = $this->userSubcribeModel->getID($idKategoriSoal,$userID);
-        $total = $this->kategoriModel->getTotalSoal($idKategoriSoal);
-
-        $this->userSubcribeModel->save([
-            'id' => $idUserSubcribe,
-            'user_id' => $userID,
-            'subcribe_id' => 2,
-            'kategori_soal_id' => $idKategoriSoal,
-            'total' => $total,
-            'is_request' => 1     
-        ]);
-
-        $data = [
-            'title' => 'Beli Paket'
-        ];
-
-        return view('exercise/deal',$data);
-        
-    }
-
-    public function bayar($idKategoriSoal){
-        $userID = session()->get('userID');
-
-        $data = [
-            'title'   => "User Login",
-        ];                                 
-        if (!isset($userID)) {
-            return view('exercise/login', $data);            
-        }
-
-        $idUserSubcribe = $this->userSubcribeModel->getID($idKategoriSoal,$userID);
-        $total = $this->kategoriModel->getTotalSoal($idKategoriSoal);
-
-        $this->userSubcribeModel->save([
-            'id' => $idUserSubcribe,
-            'user_id' => $userID,
-            'subcribe_id' => 2,
-            'kategori_soal_id' => $idKategoriSoal,
-            'total' => $total,
-            'is_request' => 1     
-        ]);
-
-        $data = [
-            'title' => 'Beli Paket'
-        ];
-            return view('exercise/deal',$data);
-        
-    }
-
     public function info()
     {
         $userID = session()->get('userID');
@@ -333,53 +128,9 @@ class Exercise extends BaseController
         return view('exercise/info', $data);
     }
 
-    public function confirm()
-    {
-        $userID = session()->get('userID');
-
-        $data = [
-            'title'   => "User Login"
-        ];                                 
-        if (!isset($userID)) {
-            return view('exercise/login', $data);            
-        }
-
-        $data = [
-            'title' => "Konfirmasi Pembayaran",
-            'validation'=> \Config\Services::validation()
-        ];
-        return view('exercise/confirm', $data);
-    }
-
     public function about()
     {
         return view('exercise/about');
-    }
-
-    public function latihanFP()
-    {
-        $userID = session()->get('userID');
-
-        $data = [
-            'title'   => "User Login"
-        ];                                 
-        if (!isset($userID)) {
-            return view('exercise/login', $data);            
-        }
-
-    $data = [
-        'paket' => $this->userModel->searchPaket(session()->get('userID'))    
-    ];        
-        return view('exercise/latihan-fp',$data);
-    }
-
-    public function review()
-    {        
-        $data = [
-            'boxNumber' => 0
-        ];
-
-        return view('exercise/selesai-review',$data);
     }
 
 }
