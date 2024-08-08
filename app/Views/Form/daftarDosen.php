@@ -22,7 +22,7 @@
         <div class="col">            
             <div class="card-text text-center">
             
-                <form method="post" action="../submit/daftar">
+                <form method="post" action="../submit/daftarDosen">
                     <?= csrf_field() ?>
                     
                     <div class="form-group">                    
@@ -103,7 +103,7 @@
                             <div class="col-8">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Alamat</strong></div>
-                                    <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
+                                    <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('alamat')?>">
                                 </div>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                             <div class="col-8">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Tempat Lahir</strong></div>
-                                    <input type="text" name="tempatLahir" id="tempatLahir" class="form-control" placeholder="Masukkan Tempat Lahir ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
+                                    <input type="text" name="tempatLahir" id="tempatLahir" class="form-control" placeholder="Masukkan Tempat Lahir ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('tempatLahir')?>">
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                             <div class="col-8">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Tanggal Lahir</strong></div>
-                                    <input type="text" name="tanggalLahir" id="tanggalLahir" class="form-control" placeholder="Masukkan Tanggal Lahir ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
+                                    <input type="text" name="tanggalLahir" id="tanggalLahir" class="form-control" placeholder="Masukkan Tanggal Lahir ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('tanggalLahir')?>">
                                 </div>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                             <div class="col-8">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Nomor KTP</strong></div>
-                                    <input type="text" name="noKTP" id="noKTP" class="form-control" placeholder="Masukkan Nomor KTP ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
+                                    <input type="text" name="noKTP" id="noKTP" class="form-control" placeholder="Masukkan Nomor KTP ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('noKTP')?>">
                                 </div>
                             </div>
                         </div>
@@ -135,56 +135,28 @@
                             <div class="col-8">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Nomor Telepon</strong></div>
-                                    <input type="text" name="noTelp" id="noTelp" class="form-control" placeholder="Masukkan Nomor Telepon ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
+                                    <input type="text" name="noTelp" id="noTelp" class="form-control" placeholder="Masukkan Nomor Telepon ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('noTelp')?>">
                                 </div>
                             </div>
                         </div>
                         <div class=" form-row align-items-right mt-3">
                             <div class="col-8">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><strong>Nomor Telepon</strong></div>
-                                    <input type="text" name="noTelp" id="noTelp" class="form-control" placeholder="Masukkan Nomor Telepon ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
+                                    <div class="input-group-text"><strong>Nomor Handphone</strong></div>
+                                    <input type="text" name="noHP" id="noHP" class="form-control" placeholder="Masukkan Nomor Handphone ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('noHP')?>">
                                 </div>
                             </div>
                         </div>
                         <div class="form-row align-items-right mt-3">
                             <div class="col-12">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><strong>Email</strong></div>
-                                    <input type="email" name="emailUser" id="emailUser" class="form-control <?= ($validation->hasError('emailUser')) ? ' is-invalid': ''?>" placeholder="Masukkan Email ......" onfocusin="yellowin(this);" onfocusout="whiteout(this)" value="<?= old('emailUser')?>">
-                                    <div class="invalid-feedback"><?= $validation->getError('emailUser')?></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row align-items-right mt-3">
-                            <div class="col-12">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"><strong>Handphone</strong></div>
-                                    <input type="hpUser" name="hpUser" id="hpUser" class="form-control <?= ($validation->hasError('hpUser')) ? ' is-invalid': ''?>" placeholder="Masukkan nomor handphone ......" onfocusin="yellowin(this);" onfocusout="whiteout(this)" value="<?= old('hpUser')?>">
-                                    <div class="invalid-feedback"><?= $validation->getError('hpUser')?></div>
+                                    <div class="input-group-text"><strong>Website Personal</strong></div>
+                                    <input type="text" name="website" id="website" class="form-control <?= ($validation->hasError('website')) ? ' is-invalid': ''?>" placeholder="Masukkan nama website ......" onfocusin="yellowin(this);" onfocusout="whiteout(this)" value="<?= old('website')?>">
+                                    <div class="invalid-feedback"><?= $validation->getError('website')?></div>
                                 </div>
                             </div>
                         </div>
                         
-                        <hr/>
-                        <div class="form-row align-items-right mt-3">
-                            <div class="col-12">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"><strong>Username</strong></div>
-                                    <input type="text" name="usernameUser" id="usernameUser" class="form-control <?= ($validation->hasError('usernameUser')) ? ' is-invalid': ''?>" placeholder="Buat Username untuk Login ......" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('usernameUser')?>">
-                                    <div class="invalid-feedback"><?= $validation->getError('usernameUser')?></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row align-items-right mt-3">
-                            <div class="col-12">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"><strong>Password</strong></div>
-                                    <input type="password" name="passwordUser" id="passwordUser" class="form-control <?= ($validation->hasError('passwordUser')) ? ' is-invalid': ''?>" placeholder="Buat Password untuk Login ......" onfocusin="yellowin(this);" onfocusout="whiteout(this)" value="<?= old('passwordUser')?>">
-                                    <div class="invalid-feedback"><?= $validation->getError('passwordUser')?></div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="form-row align-items-right mt-3"><hr/>
                         </div>
 
