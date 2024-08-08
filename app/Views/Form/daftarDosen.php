@@ -151,7 +151,7 @@
                             <div class="col-12">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Website Personal</strong></div>
-                                    <input type="text" name="website" id="website" class="form-control <?= ($validation->hasError('website')) ? ' is-invalid': ''?>" placeholder="Masukkan Nama website ......" onfocusin="yellowin(this);" onfocusout="whiteout(this)" value="<?= old('website')?>">
+                                    <input type="text" name="website" id="website" class="form-control <?= ($validation->hasError('website')) ? ' is-invalid': ''?>" placeholder="Masukkan Nama Website ......" onfocusin="yellowin(this);" onfocusout="whiteout(this)" value="<?= old('website')?>">
                                     <div class="invalid-feedback"><?= $validation->getError('website')?></div>
                                 </div>
                             </div>
