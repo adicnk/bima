@@ -29,7 +29,9 @@
                     <div class=" form-row align-items-right mt-3">                    
                     </div>
 
-                        <div class=" form-row align-items-right mt-3">
+                        <div class=" form-row align-items-right mt-2">
+                            <div class="h5 mb-3 text-gray-800"><center><strong>Data Dosen</strong></center></div>
+
                             <div class="col-12">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Nama</strong></div>
@@ -157,8 +159,30 @@
                             </div>
                         </div>
                         
-                        <div class="form-row align-items-right mt-3"><hr/>
+                        <div class="form-row align-items-right mt-3"></div>
+                        <hr/>
+                        <div class="form-row align-items-right mt-3"></div>
+
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-4">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Jumlah Penelitian</strong></div>
+                                    <input type="text" name="penelitian" id="penelitian" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('penelitian')?>">
+                                </div>
+                            </div>
                         </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-4">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Jumlah Pengabdian</strong></div>
+                                    <input type="text" name="pengabdian" id="pengabdian" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('pengabdian')?>">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row align-items-right mt-3"></div>
+                        <hr/>
+                        <div class="form-row align-items-right mt-3"></div>
 
                     </div>                
                     <button class="btn btn-lg btn-primary btn-block mt-3 mb-4" type="submit">SIMPAN</button>
