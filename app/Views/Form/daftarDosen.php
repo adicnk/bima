@@ -196,6 +196,38 @@
                                 </div>
                             </div>
                         </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>HKI</strong></div>
+                                    <input type="text" name="HKI" id="HKI" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('HKI')?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-4">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Jumlah Buku</strong></div>
+                                    <input type="text" name="buku" id="buku" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('buku')?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-6">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Jumlah Sinta Score 3 Year</strong></div>
+                                    <input type="text" name="sinta3yr" id="sinta3yr" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('sinta3yr')?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-6">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Jumlah Scopus H-Index</strong></div>
+                                    <input type="text" name="scopusHIndex" id="scopusHIndex" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('scopusHIndex')?>">
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="form-row align-items-right mt-3"></div>
                         <hr/>
