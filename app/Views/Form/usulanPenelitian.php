@@ -35,8 +35,7 @@
                             <div class="col-12">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Judul Penelitian</strong></div>
-                                    <input type="text" name="judulPenelitian" id="judulPenelitian" class="form-control <?= ($validation->hasError('namaUser')) ? ' is-invalid': ''?>" placeholder="Masukkan Judul Penelitian ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('judulPenelitian')?>">
-                                    <div class="invalid-feedback"><?= $validation->getError('namaUser')?></div>                                    
+                                    <input type="text" name="judulPenelitian" id="judulPenelitian" class="form-control" placeholder="Masukkan Judul Penelitian ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('judulPenelitian')?>">                                    
                                 </div>
                             </div>
                         </div>
