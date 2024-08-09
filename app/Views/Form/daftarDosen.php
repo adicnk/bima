@@ -30,7 +30,7 @@
                     </div>
 
                         <div class=" form-row align-items-right mt-2">
-                            <div class="h5 mb-3 text-gray-800"><center><strong>Data Dosen</strong></center></div>
+                            <div class="col-12 h5 mb-3 text-gray-800"><center><strong>Data Dosen</strong></center></div>
 
                             <div class="col-12">
                                 <div class="input-group-prepend">
@@ -162,6 +162,7 @@
                         <div class="form-row align-items-right mt-3"></div>
                         <hr/>
                         <div class="form-row align-items-right mt-3"></div>
+                        <div class="col-12 h5 mb-3 text-gray-800"><center><strong>Profile Dosen</strong></center></div>
 
                         <div class=" form-row align-items-right mt-3">
                             <div class="col-4">
@@ -176,6 +177,22 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Jumlah Pengabdian</strong></div>
                                     <input type="text" name="pengabdian" id="pengabdian" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('pengabdian')?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-8">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Jumlah Artikel pada Jurnal Internasional Bereputasi</strong></div>
+                                    <input type="text" name="artikel" id="artikel" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('artikel')?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-6">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Jumlah Sinta Score Overall</strong></div>
+                                    <input type="text" name="sintaOverall" id="sintaOverall" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('sintaOverall')?>">
                                 </div>
                             </div>
                         </div>
