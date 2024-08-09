@@ -39,14 +39,29 @@
                                 </div>
                             </div>
                         </div>
-                        <div class=" form-row align-items-right mt-3">
-                            <div class="col-12">
+                        <div class="form-row align-items-right mt-3">
+                            <div class="col-6">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><strong>NIDN / NIDK</strong></div>
-                                    <input type="text" name="nidn" id="nidn" class="form-control" placeholder="Masukkan NIDN/NIDK ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('nidn')?>">
+                                    <div class="input-group-text"><strong>Kelompok Skema</strong></div>
+                                    <select class="form-control" name="skema" id="skema" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                    <option value=1></option>
+                                        <option value=2>Riset Dasar</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
+                        <div class="form-row align-items-right mt-3">
+                            <div class="col-6">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Ruang Lingkup</strong></div>
+                                    <select class="form-control" name="ruangLingkup" id="ruangLingkup" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                    <option value=1></option>
+                                        <option value=2>Penelitian Dosen Pemula</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-row align-items-right mt-3">
                             <div class="col-12">
                                 <div class="input-group-prepend">
