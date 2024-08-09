@@ -22,7 +22,7 @@
         <div class="col">            
             <div class="card-text text-center">
             
-                <form method="post" action="../submit/daftarDosen">
+                <form method="post" action="../submit/usulanPenelitian">
                     <?= csrf_field() ?>
                     
                     <div class="form-group">                    
@@ -30,12 +30,12 @@
                     </div>
 
                         <div class=" form-row align-items-right mt-2">
-                            <div class="col-12 h5 mb-3 text-gray-800"><center><strong>Data Dosen</strong></center></div>
+                            <div class="col-12 h5 mb-3 text-gray-800"><center><strong>Data Usulan</strong></center></div>
 
                             <div class="col-12">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><strong>Nama</strong></div>
-                                    <input type="text" name="namaUser" id="namaUser" class="form-control <?= ($validation->hasError('namaUser')) ? ' is-invalid': ''?>" placeholder="Masukkan Nama ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('namaUser')?>">
+                                    <div class="input-group-text"><strong>Judul Penelitian</strong></div>
+                                    <input type="text" name="judulPenelitian" id="judulPenelitian" class="form-control <?= ($validation->hasError('namaUser')) ? ' is-invalid': ''?>" placeholder="Masukkan Judul Penelitian ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('judulPenelitian')?>">
                                     <div class="invalid-feedback"><?= $validation->getError('namaUser')?></div>                                    
                                 </div>
                             </div>

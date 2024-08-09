@@ -109,6 +109,15 @@ class Exercise extends BaseController
         //dd($data);
         return view('form/daftarDosen', $data);        
     }
+
+    public function usulanPenelitian(){       
+        $data = [
+            'title' => "Form Isian Usulan Penlitian<br/>Stikep PPNI Jawa Barat",
+            'validation'=> \Config\Services::validation()
+        ];
+        //dd($data);
+        return view('form/usulanPenelitian', $data);        
+    }
     
     public function profile()
     {
