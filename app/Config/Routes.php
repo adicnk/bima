@@ -55,8 +55,11 @@ $routes->get('delete/soal/(:num)/(:num)', 'Delete::soal/$1/$2');
 
 $routes->get('delete/admin/(:num)', 'Delete::user/$1');
 
-// For Exercise Route
+//for Front Page Route
 $routes->get('/', 'Exercise::index');
+
+// For Exercise Route
+$routes->get('/fpIndex', 'Exercise::fpIndex');
 $routes->get('/registrasi', 'Exercise::registrasi');
 $routes->get('/daftarDosen', 'Exercise::daftarDosen');
 $routes->get('/usulanPenelitian', 'Exercise::usulanPenelitian');
