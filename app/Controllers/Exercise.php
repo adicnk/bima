@@ -32,15 +32,6 @@ class Exercise extends BaseController
     public function index()
     {
         $data = [
-            'title' => "BP3MI"
-        ];
-
-        return view('frontpage/index.php', $data);
-    }
-
-    public function fpIindex()
-    {
-        $data = [
             'title' => "USER LOGIN"
         ];
 
