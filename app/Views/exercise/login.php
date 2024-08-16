@@ -37,20 +37,32 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h2 text-gray-900 mb-4"> <?= $title; ?></h1>
+                                        <h1 class="h2 text-gray-900 mb-4"> <?=lang('Auth.loginTitle')?></h1>
                                     </div>
                                     <hr>
                                     <div class="small text-center mb-3">
                                     Usulan Penelitian dan Pengabdian <br/> di STIKEP PPNI Jawa Barat
                                     </div>
+                                    <?= view('Myth\Auth\Views\_message_block') ?>
                                     <hr>
-                                    <form method="post" action="exercise/login" class="user">
+                                    <div class="small text-center mb-3">
+                                    Tidak punya account? <a href="<?= url_to('register') ?>">Register</a>
+                                    </div>                                    
+                                    <form method="post" action="<?= url_to('login') ?>" class="user">
+                                        <?= csrf_field() ?>
+                                        
                                         <div class="form-group">
-                                            <!-- <input type="email" class="form-control form-control-user" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter Email Address..."> -->
-                                            <input type="text" class="form-control form-control-user" name="username" id="email" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input type="text" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>"
+                                                name="login" placeholder="<?=lang('Auth.emailOrUsername')?>">
+                                            <div class="invalid-feedback">
+                                                <?= session('errors.login') ?>
+                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password">
+                                            <input type="password" name="password" class="form-control  <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="<?=lang('Auth.password')?>">
+                                            <div class="invalid-feedback">
+                                                <?= session('errors.password') ?>
+                                            </div>
                                         </div>
                                         <button class="btn btn-primary btn-user btn-block" type="submit">
                                             Login

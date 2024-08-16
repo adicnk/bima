@@ -57,10 +57,10 @@ $routes->get('delete/admin/(:num)', 'Delete::user/$1');
 
 //for Front Page Route
 $routes->get('/', 'Exercise::index');
+//$routes->get('/login', 'Exercise::index');
+//$routes->get('/register', 'Exercise::register');
 
 // For Exercise Route
-$routes->get('/fpIndex', 'Exercise::fpIndex');
-$routes->get('/registrasi', 'Exercise::registrasi');
 $routes->get('/daftarDosen', 'Exercise::daftarDosen');
 $routes->get('/usulanPenelitian', 'Exercise::usulanPenelitian');
 $routes->get('/dashboard', 'Exercise::dashboard');

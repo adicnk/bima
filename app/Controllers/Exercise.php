@@ -37,7 +37,16 @@ class Exercise extends BaseController
 
         return view('exercise/login', $data);
     }
- 
+
+    public function register()
+    {
+        $data = [
+            'title' => "REGISTER NEW USER"
+        ];
+
+        return view('exercise/register', $data);
+    }
+    
     public function login()
     {
         $usr = $this->request->getVar('username');
