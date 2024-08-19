@@ -1,0 +1,83 @@
+ERROR - 2024-08-19 16:46:08 --> Table 'bp3mi.kategori_soal' doesn't exist
+CRITICAL - 2024-08-19 16:46:08 --> Table 'bp3mi.kategori_soal' doesn't exist
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\bima\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\bima\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\bima\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\bima\app\Controllers\Form.php(42): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Form->addPenelitian()
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Form))
+#9 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-08-19 16:49:57 --> Undefined variable $kategori_soal
+#0 C:\xampp\htdocs\bima\app\Views\form\soal.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 36)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('form/soal', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\Form.php(44): view('form/soal', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Form->addPenelitian()
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Form))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-08-19 16:51:12 --> Undefined variable $kategori_soal
+#0 C:\xampp\htdocs\bima\app\Views\form\addPenelitian.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 36)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('form/addPenelit...', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\Form.php(44): view('form/addPenelit...', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Form->addPenelitian()
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Form))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-08-19 15:22:18 --> Invalid file: \App\Views\exercise\login.php
+#0 C:\xampp\htdocs\bima\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('\\App\\Views\\exer...')
+#1 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('\\App\\Views\\exer...', Array, true)
+#2 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(412): view('\\App\\Views\\exer...', Array)
+#3 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(58): Myth\Auth\Controllers\AuthController->_render('\\App\\Views\\exer...', Array)
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->login()
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#9 {main}
+CRITICAL - 2024-08-19 15:22:31 --> Invalid file: \App\Views\exercise\login.php
+#0 C:\xampp\htdocs\bima\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('\\App\\Views\\exer...')
+#1 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('\\App\\Views\\exer...', Array, true)
+#2 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(412): view('\\App\\Views\\exer...', Array)
+#3 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(58): Myth\Auth\Controllers\AuthController->_render('\\App\\Views\\exer...', Array)
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->login()
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#9 {main}
+CRITICAL - 2024-08-19 15:25:22 --> Invalid file: \App\Views\exercise\login.php
+#0 C:\xampp\htdocs\bima\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('\\App\\Views\\exer...')
+#1 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('\\App\\Views\\exer...', Array, true)
+#2 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(412): view('\\App\\Views\\exer...', Array)
+#3 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(58): Myth\Auth\Controllers\AuthController->_render('\\App\\Views\\exer...', Array)
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->login()
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#9 {main}
+CRITICAL - 2024-08-19 15:25:33 --> Invalid file: \App\Views\exercise\login.php
+#0 C:\xampp\htdocs\bima\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('\\App\\Views\\exer...')
+#1 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('\\App\\Views\\exer...', Array, true)
+#2 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(412): view('\\App\\Views\\exer...', Array)
+#3 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(58): Myth\Auth\Controllers\AuthController->_render('\\App\\Views\\exer...', Array)
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->login()
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#9 {main}

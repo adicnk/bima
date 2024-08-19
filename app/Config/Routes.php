@@ -58,21 +58,11 @@ $routes->get('delete/admin/(:num)', 'Delete::user/$1');
 //for Front Page Route
 $routes->get('/', 'User::index');
 
-// For Exercise Route
-$routes->get('/daftarDosen', 'User::daftarDosen');
-$routes->get('/usulanPenelitian', 'Exercise::usulanPenelitian');
-$routes->get('/dashboard', 'Exercise::dashboard');
+// For User Route
 
-//Form Pembelajaran Links
-$routes->get('/belajar', 'Exercise::belajar');
-$routes->get('/profile', 'Exercise::profile');
-$routes->get('/about', 'Exercise::about');
-$routes->get('/info', 'Exercise::info');
-$routes->get('/review', 'Exercise::review');
-$routes->get('/request', 'Exercise::beli');
-$routes->get('/belipaket/(:segment)', 'Exercise::belipaket/$1');
-$routes->get('/confirm', 'Exercise::confirm');
-$routes->get('/bayar(:segment)', 'Bayar::index/$1');
+//Form 
+$routes->get('/addDosen', 'Form::addDosen');
+$routes->get('/addPenelitian', 'Form::addPenelitian');
 
 /*
  * --------------------------------------------------------------------

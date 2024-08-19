@@ -25,13 +25,22 @@ class Form extends BaseController
         return view('form/user', $data);
     }
 
-    public function soal()
+    public function addDosen(){       
+        $data = [
+            'title' => "Form Isian Dosen Penelitian dan Pengabdian<br/>Stikep PPNI Jawa Barat",
+            'validation'=> \Config\Services::validation()
+        ];
+        //dd($data);
+        return view('form/addDosen', $data);        
+    }
+
+    public function addPenelitian()
     {
         // d($this->request->getVar('url'));
         $data = [
-            'title'   => "Form Soal",
-            'kategori_soal' => $this->kategoriModel->findAll()
+            'title'   => "Form Isian Penelitian<br/>Stikep PPNI Jawa Barat",
+            //'kategori_soal' => $this->kategoriModel->findAll()
         ];
-        return view('form/soal', $data);
+        return view('form/addPenelitian', $data);
     }
 }

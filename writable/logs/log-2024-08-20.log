@@ -1,0 +1,24 @@
+CRITICAL - 2024-08-20 03:05:24 --> Undefined variable $base_url
+#0 C:\xampp\htdocs\bima\app\Views\template\dashboard-user.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 63)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\View\View.php(226): CodeIgniter\View\View->render('template/dashbo...', Array, true)
+#4 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('form/addPenelit...', Array, true)
+#5 C:\xampp\htdocs\bima\app\Controllers\Form.php(44): view('form/addPenelit...', Array)
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Form->addPenelitian()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Form))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2024-08-20 03:34:13 --> Invalid file: template/dashboard-user.php
+#0 C:\xampp\htdocs\bima\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('template/dashbo...')
+#1 C:\xampp\htdocs\bima\system\View\View.php(226): CodeIgniter\View\View->render('template/dashbo...', Array, true)
+#2 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('user/dashboard', Array, true)
+#3 C:\xampp\htdocs\bima\app\Controllers\User.php(24): view('user/dashboard', Array)
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->index()
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#9 {main}
