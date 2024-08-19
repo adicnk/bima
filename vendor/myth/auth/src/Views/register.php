@@ -44,7 +44,9 @@
 
                     <hr>
 
-                    <p><?=lang('Auth.alreadyRegistered')?> <a href="<?= url_to('login') ?>"><?=lang('Auth.signIn')?></a></p>
+                    <div class="small text-center mb-3">
+                        Tidak punya account? <a href="<?= url_to('login') ?>">Login</a>
+                    </div>  
                 </div>
             </div>
 

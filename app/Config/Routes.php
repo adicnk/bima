@@ -56,12 +56,10 @@ $routes->get('delete/soal/(:num)/(:num)', 'Delete::soal/$1/$2');
 $routes->get('delete/admin/(:num)', 'Delete::user/$1');
 
 //for Front Page Route
-$routes->get('/', 'Exercise::index');
-//$routes->get('/login', 'Exercise::index');
-//$routes->get('/register', 'Exercise::register');
+$routes->get('/', 'User::index');
 
 // For Exercise Route
-$routes->get('/daftarDosen', 'Exercise::daftarDosen');
+$routes->get('/daftarDosen', 'User::daftarDosen');
 $routes->get('/usulanPenelitian', 'Exercise::usulanPenelitian');
 $routes->get('/dashboard', 'Exercise::dashboard');
 

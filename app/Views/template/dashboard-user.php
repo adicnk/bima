@@ -31,7 +31,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../admin">
                 <div class="sidebar-brand-text mx-3">
-                    <img src="../favicon.ico" alt="main_logo" style="width:20%">
+                    <img src="../favicon.ico" alt="main_logo" style="width:40%">
                     BP3MI
                 </div>
             </a>
@@ -41,7 +41,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="../admin/dashboard">
+                <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span> Dashboard</span></a>
             </li>
@@ -56,38 +56,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIndex" aria-expanded="true" aria-controls="collapseIndex">
                     <i class="fas fa-fw fa-lock"></i>
-                    <span>Admin</span>
+                    <span>Input</span>
                 </a>
                 <div id="collapseIndex" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../admin/user">List</a>
-                        <a class="collapse-item" href="../form/admin?url=admin">Input</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMahasiswa" aria-expanded="true" aria-controls="collapseMahasiswa">
-                    <i class="fas fa-fw fa-graduation-cap"></i>
-                    <span>Mahasiswa</span>
-                </a>
-                <div id="collapseMahasiswa" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../admin/mahasiswa">List</a>
-                        <a class="collapse-item" href="../form/admin?url=mahasiswa">Input</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSoal" aria-expanded="true" aria-controls="collapseSoal">
-                    <i class="fas fa-fw fa-list"></i>
-                    <span>Soal</span>
-                </a>
-                <div id="collapseSoal" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../admin/soal">List</a>
-                        <a class="collapse-item" href="../form/soal">Input</a>
+                        <a class="collapse-item" href="">Profile</a>
+                        <a class="collapse-item" href="">Penelitian</a>
+                        <a class="collapse-item" href="">Pengabdian</a>
                     </div>
                 </div>
             </li>
@@ -97,26 +72,30 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Tools
+                List
             </div>
 
-            <!-- Nav Item - Sign Out -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBeli" aria-expanded="true" aria-controls="collapseBeli">
-                    <i class="fas fa-fw fa-list"></i>
-                    <span>Pembelian</span>
-                </a>
-                <div id="collapseBeli" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../admin/belipaket">Request</a>
-                        <a class="collapse-item" href="../admin/bayarpaket">Konfirmasi Bayar</a>
-                    </div>
-                </div>
+                <a class="nav-link" href="logout">
+                    <i class="fas fa-fw fa-flask"></i>
+                    <span>Penelitian</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logout">
+                    <i class="fas fa-fw fa-graduation-cap"></i>
+                    <span>Pengabdian</span></a>
             </li>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Menu
+            </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="../admin">
+                <a class="nav-link" href="logout">
                     <i class="fas fa-fw fa-stop-circle"></i>
                     <span>Logout</span></a>
             </li>
@@ -145,7 +124,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>PPNI JABAR &copy; 2022</span>
+                        <span>PPNI JABAR &copy; 2024</span>
                     </div>
                 </div>
             </footer>

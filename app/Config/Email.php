@@ -47,28 +47,28 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost='mail.devinc.website';
+    public $SMTPHost='mail.stikep-ppnijabar.ac.id';
 
     /**
      * SMTP Username
      *
      * @var string
      */
-    public $SMTPUser='contact@devinc.website';
+    public $SMTPUser='	bp3mi@stikep-ppnijabar.ac.id';
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass='devincadmin';
+    public $SMTPPass='bp3midmin';
 
     /**
      * SMTP Port
      *
      * @var int
      */
-    public $SMTPPort = 587;
+    public $SMTPPort = 26;
 
     /**
      * SMTP Timeout (in seconds)

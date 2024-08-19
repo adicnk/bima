@@ -8,3 +8,91 @@ CRITICAL - 2024-08-16 03:58:07 --> syntax error, unexpected end of file, expecti
 #6 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #7 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
 #8 {main}
+ERROR - 2024-08-16 07:08:50 --> Email: sendWithSmtp throwed fsockopen(): php_network_getaddresses: getaddrinfo for mail.devinc.website failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. 
+ERROR - 2024-08-16 07:12:04 --> Email: sendWithSmtp throwed fsockopen(): php_network_getaddresses: getaddrinfo for mail.devinc.website failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. 
+ERROR - 2024-08-16 07:17:00 --> Email: sendWithSmtp throwed fsockopen(): php_network_getaddresses: getaddrinfo for mail.devinc.website failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. 
+ERROR - 2024-08-16 07:28:47 --> Email: sendWithSmtp throwed fsockopen(): php_network_getaddresses: getaddrinfo for mail.devinc.website failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. 
+ERROR - 2024-08-16 07:29:35 --> Email: sendWithSmtp throwed fsockopen(): php_network_getaddresses: getaddrinfo for mail.devinc.website failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. 
+ERROR - 2024-08-16 07:36:38 --> Email: sendWithSmtp throwed fsockopen(): php_network_getaddresses: getaddrinfo for mail.devinc.website failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. 
+ERROR - 2024-08-16 07:37:50 --> Email: sendWithSmtp throwed fsockopen(): php_network_getaddresses: getaddrinfo for mail.devinc.website failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. 
+ERROR - 2024-08-16 07:43:34 --> Email: sendWithSmtp throwed fsockopen(): php_network_getaddresses: getaddrinfo for mail.devinc.website failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. 
+ERROR - 2024-08-16 07:49:35 --> Email: sendWithSmtp throwed fsockopen(): php_network_getaddresses: getaddrinfo for mail.devinc.website failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. 
+ERROR - 2024-08-16 08:00:37 --> Email: sendWithSmtp throwed fsockopen(): php_network_getaddresses: getaddrinfo for mail.devinc.website failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. 
+ERROR - 2024-08-16 10:19:27 --> Email: sendWithSmtp throwed fsockopen(): Unable to connect to mail.devinc.online:587 (A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond)
+ERROR - 2024-08-16 10:20:50 --> Email: sendWithSmtp throwed fsockopen(): Unable to connect to mail.devinc.online:587 (A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond)
+ERROR - 2024-08-16 10:53:50 --> Email: sendWithSmtp throwed fsockopen(): Unable to connect to mail.devinc.online:587 (A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond)
+ERROR - 2024-08-16 11:00:05 --> Email: sendWithSmtp throwed fsockopen(): Unable to connect to mail.stikep-ppnijabar.ac.id:26 (A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond)
+ERROR - 2024-08-16 11:02:49 --> Email: sendWithSmtp throwed fsockopen(): Unable to connect to mail.stikep-ppnijabar.ac.id:26 (A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond)
+CRITICAL - 2024-08-16 23:49:00 --> Invalid file: exercise/user.php
+#0 C:\xampp\htdocs\bima\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('exercise/user.p...')
+#1 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('exercise/user', Array, true)
+#2 C:\xampp\htdocs\bima\app\Controllers\Exercise.php(38): view('exercise/user', Array)
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Exercise->index()
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Exercise))
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2024-08-16 23:51:19 --> Undefined variable $totalLatihan
+#0 C:\xampp\htdocs\bima\app\Views\exercise\dashboard.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 14)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('exercise/dashbo...', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\Exercise.php(38): view('exercise/dashbo...', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Exercise->index()
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Exercise))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-08-16 23:53:20 --> Undefined variable $benar
+#0 C:\xampp\htdocs\bima\app\Views\exercise\dashboard.php(23): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 23)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('exercise/dashbo...', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\Exercise.php(38): view('exercise/dashbo...', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Exercise->index()
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Exercise))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-08-16 23:55:23 --> Undefined variable $labelChart
+#0 C:\xampp\htdocs\bima\app\Views\template\dashboard-exercise.php(232): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 232)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\View\View.php(226): CodeIgniter\View\View->render('template/dashbo...', Array, true)
+#4 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('exercise/dashbo...', Array, true)
+#5 C:\xampp\htdocs\bima\app\Controllers\Exercise.php(38): view('exercise/dashbo...', Array)
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Exercise->index()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Exercise))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2024-08-16 23:58:37 --> Undefined variable $labelChart
+#0 C:\xampp\htdocs\bima\app\Views\template\dashboard-exercise.php(232): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 232)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\View\View.php(226): CodeIgniter\View\View->render('template/dashbo...', Array, true)
+#4 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('exercise/dashbo...', Array, true)
+#5 C:\xampp\htdocs\bima\app\Controllers\Exercise.php(38): view('exercise/dashbo...', Array)
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Exercise->index()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Exercise))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2024-08-16 23:58:43 --> Undefined variable $labelChart
+#0 C:\xampp\htdocs\bima\app\Views\template\dashboard-exercise.php(232): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 232)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\View\View.php(226): CodeIgniter\View\View->render('template/dashbo...', Array, true)
+#4 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('exercise/dashbo...', Array, true)
+#5 C:\xampp\htdocs\bima\app\Controllers\Exercise.php(38): view('exercise/dashbo...', Array)
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Exercise->index()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Exercise))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}

@@ -68,14 +68,26 @@
 
                     <br>
 
-                    <button type="submit" class="btn btn-primary btn-block"><?=lang('Auth.register')?></button>
+                    <button type="submit" class="btn btn-primary btn-user btn-block"><?=lang('Auth.register')?></button>
                 </form>
                 <hr>
-                <p><?=lang('Auth.alreadyRegistered')?> <a href="<?= url_to('login') ?>"><?=lang('Auth.signIn')?></a></p>
-
+                <div class="small text-center mb-3">
+                    Sudah terdaftar ? <a href="<?= url_to('login') ?>">Login</a>
+                </div>
+                <p><strong><div class="small text-center text-red">
+                    Stikep PPNI Jawa Barat © 2024
+                </div></strong></p>
             </div>
         </div>
     </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="<?= base_url(); ?>/admin_assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url(); ?>/admin_assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="<?= base_url(); ?>/admin_assets/js/sb-admin-2.min.js"></script>
+
 </body>
 </html>
 
