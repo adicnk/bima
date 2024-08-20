@@ -1,12 +1,7 @@
 <?php
-
-
-
 namespace App\Controllers;
 
-
-
-use App\Models\UserMDL;
+Use App\Models\UserMDL;
 use App\Models\DosenMDL;
 use App\Models\PenelitianMDL;
 
@@ -43,10 +38,7 @@ class dosenSubmit extends BaseController
         //$lastID = $db->insertID();
     }
 
-
-
     public function penelitian()
-
     {
         //The attribute of File
         //$isFileUpload = $this->request->getVar('isFileUpload');
