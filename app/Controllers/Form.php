@@ -15,16 +15,6 @@ class Form extends BaseController
         $this->kategoriModel = new KategoriMDL();
     }
 
-    public function admin()
-    {
-        // d($this->request->getVar('url'));
-        $data = [
-            'title'   => "Form User Administrator / Mahasiswa",
-            'url' => $this->request->getVar('url')
-        ];
-        return view('form/user', $data);
-    }
-
     public function addDosen(){       
         $data = [
             'title' => "Form Isian Dosen Penelitian dan Pengabdian<br/>Stikep PPNI Jawa Barat",

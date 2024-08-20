@@ -9,6 +9,8 @@
     <meta name="description" content="Developing Your Future">
     <meta name="author" content="Dev Inc">
 
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
     <title>BP3MI | User Login</title>
 
     <!-- Custom fonts for this template-->
