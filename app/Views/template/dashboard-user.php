@@ -29,7 +29,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../admin">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-text mx-3">
                     <img src="../favicon.ico" alt="main_logo" style="width:40%">
                     BP3MI
@@ -60,7 +60,7 @@
                 </a>
                 <div id="collapseIndex" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href=" <?= base_url(); ?>/addDosen">Profile</a>
+                        <?= user()->dosen_id ? '' : '<a class="collapse-item" href=" <?= base_url(); ?>/addDosen" >Profile</a>'; ?>
                         <a class="collapse-item" href=" <?= base_url(); ?>/addPenelitian">Penelitian</a>
                         <a class="collapse-item" href="">Pengabdian</a>
                     </div>

@@ -29,32 +29,6 @@ $routes->setAutoRoute(true);
  * --------------------------------------------------------------------
  */
 
-// For Admin Route
-
-$routes->get('/admin', 'Login::admin');
-$routes->get('/admin/(:segment)', 'Admin::index/$1');
-
-
-$routes->get('edit/admin/(:num)', 'Edit::admin/$1');
-
-$routes->get('form/admin', 'Form::admin');
-$routes->get('form/soal', 'Form::soal');
-
-$routes->get('edit/user/(:num)', 'Edit::user/$1');
-$routes->get('edit/soal/(:num)/(:num)', 'Edit::soal/$1/$2');
-
-$routes->get('submit/admin', 'Submit::admin');
-$routes->get('submitedit/admin/(:num)', 'Submit::admin/$1');
-$routes->get('submit/soal', 'Submit::soal');
-$routes->get('submitEdit/soal/(:num)/(:num)', 'Submit::soal/$1/$2');
-$routes->get('/submit/review', 'Review::index');
-$routes->get('submit/pesan/(:num)', 'Submit::pesan/$1');
-$routes->get('submit/confirm/(:num)', 'Submit::confirm/$1');
-
-$routes->get('delete/soal/(:num)/(:num)', 'Delete::soal/$1/$2');
-
-$routes->get('delete/admin/(:num)', 'Delete::user/$1');
-
 //for Front Page Route
 $routes->get('/', 'User::index');
 
