@@ -4,15 +4,14 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class DosenMDL extends Model
+class DosenProfileMDL extends Model
 {
-    protected $table = 'dosen';
+    protected $table = 'dosen_profile';
     protected $useTimestamps = true;
 
     // Field yang boleh diisi waktu saving data ** harus didefinisikan dulu **
-    protected $allowedFields = ['id','nama','nidn_nidk','klaster','institusi','program_studi',
-                                'pendidikan','jabatan','alamat','tempat_lahir','tanggal_lahir',
-                                'ktp','telp','hp','email','website','status'];
+    protected $allowedFields = ['dosen_id','penelitian','pengabdian','artikel_internasional',
+                                'hki','buku'];
 
     public function searchDosen($keyword = false)
     {

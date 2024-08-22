@@ -25,7 +25,7 @@
         <div class="col">            
             <div class="card-text text-center">
             
-                <form method="post" action="../submit/daftarDosen">
+                <form method="post" action="../Submit/dosen">
                     <?= csrf_field() ?>
                     
                     <div class="form-group">                    
@@ -192,14 +192,6 @@
                             </div>
                         </div>
                         <div class=" form-row align-items-right mt-3">
-                            <div class="col-6">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"><strong>Jumlah Sinta Score Overall</strong></div>
-                                    <input type="text" name="sintaOverall" id="sintaOverall" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('sintaOverall')?>">
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" form-row align-items-right mt-3">
                             <div class="col-2">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>HKI</strong></div>
@@ -215,6 +207,38 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-row align-items-right mt-3">
+                            <div class="col-8">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Status Dosen</strong></div>
+                                    <select class="form-control" name="statusDosen" id="statusDosen" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                        <option value=1>Peneliti</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row align-items-right mt-3"></div>
+                        <hr/>
+                        <div class="form-row align-items-right mt-3"></div>
+                        <div class="col-12 h5 mb-3 text-gray-800"><center><strong>Indeks Sains dan Teknologi</strong></center></div>
+                        
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-4">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Sinta Index</strong></div>
+                                    <input type="text" name="sintaIndex" id="sintaIndex" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('penelitian')?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-6">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Jumlah Sinta Score Overall</strong></div>
+                                    <input type="text" name="sintaOverall" id="sintaOverall" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('sintaOverall')?>">
+                                </div>
+                            </div>
+                        </div>
                         <div class=" form-row align-items-right mt-3">
                             <div class="col-6">
                                 <div class="input-group-prepend">
@@ -223,26 +247,45 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="form-row align-items-right mt-3"></div>
+                        <hr/>
+                        <div class="form-row align-items-right mt-3"></div>
+                        <div class="col-12 h5 mb-3 text-gray-800"><center><strong>Abstract & Citation</strong></center></div>
+
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-4">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Scopus Index</strong></div>
+                                    <input type="text" name="scopusIndex" id="scopusIndex" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('penelitian')?>">
+                                </div>
+                            </div>
+                        </div>
                         <div class=" form-row align-items-right mt-3">
                             <div class="col-6">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><strong>Jumlah Scopus H-Index</strong></div>
+                                    <div class="input-group-text"><strong>Scopus H-Index</strong></div>
                                     <input type="text" name="scopusHIndex" id="scopusHIndex" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('scopusHIndex')?>">
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row align-items-right mt-3">
-                            <div class="col-8">
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-6">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><strong>Status Dosen</strong></div>
-                                    <select class="form-control" name="sttusDosen" id="statusDosen" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                                        <option value=1>Peneliti</option>
-                                        <option value=2>Penilai</option>
-                                        <option value=3>Ketua Sinta</option>
-                                    </select>
+                                    <div class="input-group-text"><strong>Jumlah Artikel</strong></div>
+                                    <input type="text" name="jumlahArtikel" id="jumlahArtikel" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('scopusHIndex')?>">
                                 </div>
                             </div>
                         </div>
+                        <div class=" form-row align-items-right mt-3">
+                            <div class="col-6">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Citation</strong></div>
+                                    <input type="text" name="citation" id="citation" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('scopusHIndex')?>">
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="form-row align-items-right mt-3"></div>
                         <hr/>

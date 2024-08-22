@@ -157,23 +157,8 @@
     <!-- Page level custom scripts -->
     <!-- <script src="admin_assets/js/demo/chart-area-demo.js"></script> -->
     <script src="../admin_assets/js/chart-pie-demo.js"></script>
+    <script src="../admin_assets/js/keystroke.js"></script>
 
-    <script type="text/javascript">
-        var currentSessionValue = 1;
-        // pseudo code
-        setTimeout(checkSession, 5000);
-
-        function checkSession() {
-            $.ajax({
-                url: "CheckSession/check_session", //Change this URL as per your settings
-                success: function(newVal) {
-                    if (newVal != currentSessionValue);
-                    currentSessionValue = newVal;
-                    window.location = '../admin';
-                }
-            });
-        }
-    </script>
 </body>
 
 </html>

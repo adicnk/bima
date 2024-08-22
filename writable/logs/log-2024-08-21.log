@@ -1,0 +1,1 @@
+ERROR - 2024-08-21 15:10:57 --> Email: sendWithSmtp throwed fsockopen(): Unable to connect to mail.stikep-ppnijabar.ac.id:26 (A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond)

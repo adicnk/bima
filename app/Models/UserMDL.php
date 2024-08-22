@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class UserMDL extends Model
 {
-    protected $table = 'user';
+    protected $table = 'users';
     protected $useTimestamps = true;
 
     // Field yang boleh diisi waktu saving data ** harus didefinisikan dulu **

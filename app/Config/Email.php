@@ -9,7 +9,7 @@ class Email extends BaseConfig
     /**
      * @var string
      */
-    public $fromEmail='contact@devinc.website';
+    public $fromEmail='adicoolnkeren@gmail.com';
 
     /**
      * @var string
@@ -47,28 +47,28 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost='mail.stikep-ppnijabar.ac.id';
+    public $SMTPHost='smtp.gmail.com';
 
     /**
      * SMTP Username
      *
      * @var string
      */
-    public $SMTPUser='	bp3mi@stikep-ppnijabar.ac.id';
+    public $SMTPUser='adicoolnkeren@gmail.com';
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass='bp3midmin';
+    public $SMTPPass='Acnk2010!';
 
     /**
      * SMTP Port
      *
      * @var int
      */
-    public $SMTPPort = 26;
+    public $SMTPPort = 587;
 
     /**
      * SMTP Timeout (in seconds)
