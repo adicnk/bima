@@ -9,12 +9,12 @@ class Email extends BaseConfig
     /**
      * @var string
      */
-    public $fromEmail='adicoolnkeren@gmail.com';
+    public $fromEmail='bp3mi@stikep-ppnijabar.ac.id';
 
     /**
      * @var string
      */
-    public $fromName='DevInc';
+    public $fromName='BP3MI';
 
     /**
      * @var string
@@ -47,28 +47,28 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost='smtp.gmail.com';
+    public $SMTPHost='mail.stikep-ppnijabar.ac.id';
 
     /**
      * SMTP Username
      *
      * @var string
      */
-    public $SMTPUser='adicoolnkeren@gmail.com';
+    public $SMTPUser='bp3mi@stikep-ppnijabar.ac.id';
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass='Acnk2010!';
+    public $SMTPPass='bp3miadmin';
 
     /**
      * SMTP Port
      *
      * @var int
      */
-    public $SMTPPort = 587;
+    public $SMTPPort = 26;
 
     /**
      * SMTP Timeout (in seconds)
