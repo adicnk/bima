@@ -1,7 +1,9 @@
 <?= $this->extend('template/dashboard-user') ?>
 <?= $this->section('content') ?>
-
 <?php $db = \Config\Database::connect(); ?>
+
+<?php foreach ($dosen as $dsn) { ?>
+    <?php //dd($dosen) ?>;
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -29,7 +31,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Penelitian</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <?= user_id(); ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $dsn['penelitian']==""?0:$dsn['penelitian'] ?></b></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-flask fa-2x text-gray-300"></i>
@@ -47,7 +49,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                 Pengabdian</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $dsn['pengabdian']==""?0:$dsn['pengabdian'] ?></b></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-graduation-cap fa-2x text-gray-300"></i>
@@ -65,7 +67,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Artikel Jurnal Internasional</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $dsn['artikel_internasional']==""?0:$dsn['artikel_internasional'] ?></b></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-bookmark fa-2x text-gray-300"></i>
@@ -83,7 +85,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Buku yang sudah dipublikasikan</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $dsn['buku'] ==""?0:$dsn['buku'] ?></b></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-book fa-2x text-gray-300"></i>
@@ -104,20 +106,20 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-6">
-                    <p>Nama :</p>
-                    <p>NIDN / NIDK :</p>
-                    <p>Klaster : </p>
-                    <p>Program Studi :</p>
-                    <p>Jenjang Pendidikan :</p>
-                    <p>Jabatan Akademik :</p>
+                    <p>Nama : <b><?= $dsn['nama'] ?></b></p>
+                    <p>NIDN / NIDK :<b><?= $dsn['nidn_nidk'] ?></b></p>
+                    <p>Klaster : <b><?= $dsn['klaster'] ?></b></p>
+                    <p>Program Studi : <b><?= $dsn['program_studi'] ?></b></p>
+                    <p>Jenjang Pendidikan : <b><?= $dsn['pendidikan'] ?></b></p>
+                    <p>Jabatan Akademik : <b><?= $dsn['jabatan'] ?></b></p>
                 </div>
                 <div class="col-6">
-                    <p>Alamat :</p>
-                    <p>Tempat Tanggal Lahir :</p>
-                    <p>No. KTP :</p>
-                    <p>No. Telepon :</p>
-                    <p>No. Handphone :</p>
-                    <p>Alamat Surel :</p>
+                    <p>Alamat : <b><?= $dsn['alamat'] ?></b></p>
+                    <p>Tempat Tanggal Lahir : <b><?= $dsn['tempat_lahir'].", ". $dsn['tanggal_lahir'] ?></b></p>
+                    <p>No. KTP : <b><?= $dsn['ktp'] ?></b></p>
+                    <p>No. Telepon : <b><?= $dsn['telp']==""?"-":$dsn['telp']?></b></p>
+                    <p>No. Handphone : <b><?= $dsn['hp']==""?"-":$dsn['hp']?></b></p>
+                    <p>Alamat Surel :  <b><?= user()->email ?></b></p>
                 </div>
             </div>
         </div>
@@ -133,17 +135,17 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-6">
-                    <p>Sinta Score Overall :</p>
-                    <P>Sinta Score 3 Year :</P>
+                    <p>Sinta Score Overall : <b><?= $dsn['overall']==""?"-":$dsn['overall']?></b></p>
+                    <P>Sinta Score 3 Year : <b><?= $dsn['3_year']==""?"-":$dsn['3_year']?></b></P>
                 </div>
                 <div class="col-6">
-                    <p>HKI :</p>
-                    <p>Scopus H-Index :</p>                    
+                    <p>HKI : <b><?= $dsn['hki']==""?"-":$dsn['hki']?></b></p>
+                    <p>Scopus H-Index : <b><?= $dsn['h_index']==""?"-":$dsn['h_index'] ?></b></p>                    
                 </div>
             </div>
         </div>
     </div>
-
+    <?php } ?>
 </div>
 <!-- /.container-fluid -->
 

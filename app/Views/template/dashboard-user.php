@@ -61,8 +61,8 @@
                 <div id="collapseIndex" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <?= user()->dosen_id ? '' : '<a class="collapse-item" href="'.base_url().'/addDosen" >Profile</a>'; ?>
-                        <a class="collapse-item" href=" <?= base_url(); ?>/addPenelitian">Penelitian</a>
-                        <a class="collapse-item" href="">Pengabdian</a>
+                        <?= user()->dosen_id ? '<a class="collapse-item" href="'.base_url().'/addPenelitian">Penelitian</a>' : ''; ?>
+                        <?= user()->dosen_id ? '<a class="collapse-item" href="">Pengabdian</a>' : ''; ?>
                     </div>
                 </div>
             </li>
@@ -70,6 +70,8 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+
+       <?= user()->dosen_id ? '
             <!-- Heading -->
             <div class="sidebar-heading">
                 List
@@ -85,10 +87,11 @@
                     <i class="fas fa-fw fa-graduation-cap"></i>
                     <span>Pengabdian</span></a>
             </li>
-
+            
             <!-- Divider -->
             <hr class="sidebar-divider">
-
+            ' : '' ?>
+            
             <!-- Heading -->
             <div class="sidebar-heading">
                 Menu

@@ -24,4 +24,16 @@ class UserMDL extends Model
             }
         }
     }
+
+    public function addDosenID($id,$val=null){
+        $val=$id;
+        $this->where(['id' => $id]);
+        $query = $this->findAll();
+        foreach ($query as $q) {
+            $q['dosen_id']=$val;
+            $this->set('dosen_id', $val);
+            $this->update();            
+        }
+    }
+
 }

@@ -56,7 +56,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Klaster</strong></div>
                                     <select class="form-control" name="klaster" id="klaster" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                                        <option value=1>Kelompok Perguruan Tinggi Binaan</option>
+                                        <option value="Kelompok Perguruan Tinggi Binaan">Kelompok Perguruan Tinggi Binaan</option>
                                     </select>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Institusi</strong></div>
                                     <select class="form-control" name="institusi" id="institusi" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                                        <option value=1>Sekolah Tinggi Ilmu Keperawtan PPNI Jawa Barat</option>
+                                        <option value="Sekolah Tinggi Ilmu Keperawtan PPNI Jawa Barat">Sekolah Tinggi Ilmu Keperawtan PPNI Jawa Barat</option>
                                     </select>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Program Studi</strong></div>
                                     <select class="form-control" name="programStudi" id="programStudi" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                                        <option value=1>Ilmu Keperawatan</option>
+                                        <option value="Ilmu Keperawatan">Ilmu Keperawatan</option>
                                     </select>
                                 </div>
                             </div>
@@ -86,9 +86,9 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Jenjang Pendidikan</strong></div>
                                     <select class="form-control" name="jenjangPendidikan" id="jenjangPendidikan" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                                        <option value=1>S1</option>
-                                        <option value=2>S2</option>
-                                        <option value=3>S3</option>
+                                        <option value="S1">S1</option>
+                                        <option value="S2">S2</option>
+                                        <option value="S3">S3</option>
                                     </select>
                                 </div>
                             </div>
@@ -98,8 +98,8 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Jabatan Akademik</strong></div>
                                     <select class="form-control" name="jabatanAkademik" id="jabatanAkademik" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                                        <option value=1></option>
-                                        <option value=2>Asisten Ahli</option>
+                                        <option value=""></option>
+                                        <option value="Asisten Ahli">Asisten Ahli</option>
                                     </select>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                             <div class="col-8">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Tanggal Lahir</strong></div>
-                                    <input type="text" name="tanggalLahir" id="tanggalLahir" class="form-control" placeholder="Masukkan Tanggal Lahir ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('tanggalLahir')?>">
+                                    <input type="text" name="tanggalLahir" id="tanggalLahir" class="form-control" placeholder="Masukkan Tanggal Lahir ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return placeDateOnly(event);" value="<?= old('tanggalLahir')?>">
                                 </div>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                             <div class="col-8">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Nomor KTP</strong></div>
-                                    <input type="text" name="noKTP" id="noKTP" class="form-control" placeholder="Masukkan Nomor KTP ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('noKTP')?>">
+                                    <input type="text" name="noKTP" id="noKTP" class="form-control" placeholder="Masukkan Nomor KTP ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" value="<?= old('noKTP')?>">
                                 </div>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                             <div class="col-8">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Nomor Telepon</strong></div>
-                                    <input type="text" name="noTelp" id="noTelp" class="form-control" placeholder="Masukkan Nomor Telepon ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('noTelp')?>">
+                                    <input type="text" name="noTelp" id="noTelp" class="form-control" placeholder="Masukkan Nomor Telepon ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" value="<?= old('noTelp')?>">
                                 </div>
                             </div>
                         </div>
@@ -148,7 +148,7 @@
                             <div class="col-8">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Nomor Handphone</strong></div>
-                                    <input type="text" name="noHP" id="noHP" class="form-control" placeholder="Masukkan Nomor Handphone ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('noHP')?>">
+                                    <input type="text" name="noHP" id="noHP" class="form-control" placeholder="Masukkan Nomor Handphone ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" value="<?= old('noHP')?>">
                                 </div>
                             </div>
                         </div>
@@ -179,7 +179,7 @@
                             <div class="col-4">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Jumlah Pengabdian</strong></div>
-                                    <input type="text" name="pengabdian" id="pengabdian" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('pengabdian')?>">
+                                    <input type="text" name="pengabdian" id="pengabdian" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" value="<?= old('pengabdian')?>">
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,7 @@
                             <div class="col-8">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Jumlah Artikel pada Jurnal Internasional Bereputasi</strong></div>
-                                    <input type="text" name="artikel" id="artikel" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('artikel')?>">
+                                    <input type="text" name="artikel" id="artikel" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" value="<?= old('artikel')?>">
                                 </div>
                             </div>
                         </div>
@@ -195,7 +195,7 @@
                             <div class="col-2">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>HKI</strong></div>
-                                    <input type="text" name="HKI" id="HKI" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('HKI')?>">
+                                    <input type="text" name="HKI" id="HKI" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" value="<?= old('HKI')?>">
                                 </div>
                             </div>
                         </div>
@@ -203,7 +203,7 @@
                             <div class="col-4">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Jumlah Buku</strong></div>
-                                    <input type="text" name="buku" id="buku" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('buku')?>">
+                                    <input type="text" name="buku" id="buku" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" value="<?= old('buku')?>">
                                 </div>
                             </div>
                         </div>
@@ -212,7 +212,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Status Dosen</strong></div>
                                     <select class="form-control" name="statusDosen" id="statusDosen" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                                        <option value=1>Peneliti</option>
+                                        <option value="Peneliti">Peneliti</option>
                                     </select>
                                 </div>
                             </div>
@@ -227,7 +227,7 @@
                             <div class="col-4">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Sinta Index</strong></div>
-                                    <input type="text" name="sintaIndex" id="sintaIndex" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('penelitian')?>">
+                                    <input type="text" name="sintaIndex" id="sintaIndex" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" value="<?= old('penelitian')?>">
                                 </div>
                             </div>
                         </div>
@@ -235,7 +235,7 @@
                             <div class="col-6">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Jumlah Sinta Score Overall</strong></div>
-                                    <input type="text" name="sintaOverall" id="sintaOverall" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('sintaOverall')?>">
+                                    <input type="text" name="sintaOverall" id="sintaOverall" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" value="<?= old('sintaOverall')?>">
                                 </div>
                             </div>
                         </div>
@@ -243,7 +243,7 @@
                             <div class="col-6">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Jumlah Sinta Score 3 Year</strong></div>
-                                    <input type="text" name="sinta3yr" id="sinta3yr" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('sinta3yr')?>">
+                                    <input type="text" name="sinta3yr" id="sinta3yr" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return placeDateOnly(event);" value="<?= old('sinta3yr')?>">
                                 </div>
                             </div>
                         </div>
@@ -257,7 +257,7 @@
                             <div class="col-4">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Scopus Index</strong></div>
-                                    <input type="text" name="scopusIndex" id="scopusIndex" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('penelitian')?>">
+                                    <input type="text" name="scopusIndex" id="scopusIndex" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" value="<?= old('penelitian')?>">
                                 </div>
                             </div>
                         </div>
@@ -265,7 +265,7 @@
                             <div class="col-6">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Scopus H-Index</strong></div>
-                                    <input type="text" name="scopusHIndex" id="scopusHIndex" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('scopusHIndex')?>">
+                                    <input type="text" name="scopusHIndex" id="scopusHIndex" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" value="<?= old('scopusHIndex')?>">
                                 </div>
                             </div>
                         </div>
@@ -273,7 +273,7 @@
                             <div class="col-6">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Jumlah Artikel</strong></div>
-                                    <input type="text" name="jumlahArtikel" id="jumlahArtikel" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('scopusHIndex')?>">
+                                    <input type="text" name="jumlahArtikel" id="jumlahArtikel" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" value="<?= old('scopusHIndex')?>">
                                 </div>
                             </div>
                         </div>
@@ -281,7 +281,7 @@
                             <div class="col-6">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Citation</strong></div>
-                                    <input type="text" name="citation" id="citation" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return alphaOnly(event);" value="<?= old('scopusHIndex')?>">
+                                    <input type="text" name="citation" id="citation" class="form-control" placeholder="" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" value="<?= old('scopusHIndex')?>">
                                 </div>
                             </div>
                         </div>
@@ -294,7 +294,7 @@
                     </div>                
                     <button class="btn btn-lg btn-primary btn-block mt-3 mb-4" type="submit">SIMPAN</button>
                 </form>
-                <a href="../login/fp" class="btn btn-lg btn-danger btn-block mt-3 mb-4">CANCEL</a>
+                <a href="../" class="btn btn-lg btn-danger btn-block mt-3 mb-4">CANCEL</a>
             </div>
 
         </div>

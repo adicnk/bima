@@ -12,7 +12,7 @@ class Form extends BaseController
     public function __construct()
     {
         $this->userModel = new UserMDL();
-        $this->kategoriModel = new KategoriMDL();
+        //$this->kategoriModel = new KategoriMDL();
     }
 
     public function addDosen(){       

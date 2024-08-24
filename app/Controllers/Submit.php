@@ -27,16 +27,17 @@ class Submit extends BaseController
 
     public function dosen()
     {
-        // dd($this->request->getVar());
-        $dosen_id = user_id();
+        $user_id = user_id();
+        
+        //dd($this->dosenModel->addDosenID($user_id))
 
         $this->dosenModel->save([
-            'id' => $dosen_id,
+            'user_id' => $user_id,
             'nama' => $this->request->getVar('namaUser'),
             'nidn_nidk' => $this->request->getVar('nidn'),
             'klaster' => $this->request->getVar('klaster'),
             'institusi' => $this->request->getVar('institusi'),
-            'program_studi' => $this->request->getVar('progranStudi'),
+            'program_studi' => $this->request->getVar('programStudi'),
             'pendidikan' => $this->request->getVar('jenjangPendidikan'),
             'jabatan' => $this->request->getVar('jabatanAkademik'),
             'alamat' => $this->request->getVar('alamat'),
@@ -49,7 +50,7 @@ class Submit extends BaseController
         ]);
 
         $this->dosenProfileModel->save([
-            'dosen_id' => $dosen_id,
+            'dosen_id' => $user_id,
             'penelitian' =>  $this->request->getVar('penelitian'),
             'pengabdian' =>  $this->request->getVar('pengabdian'),
             'artikel_internasional' =>  $this->request->getVar('artikel'),
@@ -58,27 +59,32 @@ class Submit extends BaseController
         ]);
 
         $this->sintaModel->save([
-            'dosen_id' => $dosen_id,
+            'dosen_id' => $user_id,
             'sinta_id' =>  $this->request->getVar('sintaIndex'),
             'overall' =>  $this->request->getVar('sintaOverall'),
             '3_year' =>  $this->request->getVar('sinta3yr'),
         ]);
 
         $this->scopusModel->save([
-            'dosen_id' => $dosen_id,
+            'dosen_id' => $user_id,
             'scopus_id' =>  $this->request->getVar('scopusIndex'),
             'h_index' =>  $this->request->getVar('scopusHIndex'),
             'articles' =>  $this->request->getVar('jumlahArtikel'),
             'citation' =>  $this->request->getVar('citation'),
         ]);
 
-        $this->userModel->save([
-            'dosen_id' => $dosen_id,
-        ]);
+        //Add dosen_id in user table
+        $this->userModel->addDosenID($user_id);
         
         //ID terakhir yg di buat di tabel user
         //$db      = \Config\Database::connect();
         //$lastID = $db->insertID();
+        $data = [
+            'title' => "Dashboard",
+            'dosen' => $this->dosenModel->searchDosen(user_id())
+        ];
+
+        return view('user/dashboard', $data);
     }
 
     public function penelitian()

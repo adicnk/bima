@@ -2,25 +2,34 @@
 
 namespace App\Controllers;
 
+use App\Models\DosenMDL;
 use App\Models\SoalMDL;
 
 
 class User extends BaseController
 {
 
-    protected $soalModel;
+    protected $dosenModel;
 
     public function __construct()
     {
-        $this->soalModel = new SoalMDL();
+        $this->dosenModel = new DosenMDL();
     }
 
     public function index()
     {
+        $dosenID = user()->dosen_id;
+        if ($dosenID == null) {
+            $data = [
+                'title' => "Silahkan Isi Profile Data Anda Dulu"
+            ];
+            return view('user/baru', $data);            
+        }
+        
         $data = [
-            'title' => "Dashboard"
+            'title' => "Dashboard",
+            'dosen' => $this->dosenModel->searchDosen(user_id())
         ];
-
         return view('user/dashboard', $data);
     }
 

@@ -10,18 +10,20 @@ class DosenMDL extends Model
     protected $useTimestamps = true;
 
     // Field yang boleh diisi waktu saving data ** harus didefinisikan dulu **
-    protected $allowedFields = ['id','nama','nidn_nidk','klaster','institusi','program_studi',
+    protected $allowedFields = ['user_id','nama','nidn_nidk','klaster','institusi','program_studi',
                                 'pendidikan','jabatan','alamat','tempat_lahir','tanggal_lahir',
                                 'ktp','telp','hp','email','website','status'];
 
     public function searchDosen($keyword = false)
     {
-        $this->join('dosen_profile', 'dosen.id = id');
-        if ($keyword == false) {
-            return $this->findall();            
-        } else {
-            return  $this->like('name', $keyword);
-        }        
+        $this->join('dosen_profile', 'dosen.id = dosen_profile.dosen_id');
+        $this->join('sinta','dosen.id = sinta.dosen_id');
+        $this->join('scopus','dosen.id = scopus.dosen_id');
+        if ($keyword == true) {
+            $this->where(['dosen.user_id'=> $keyword]);
+        } 
+        //dd($this->findall());
+        return $this->findall();            
     }
 
     public function statusDosen($id)
@@ -36,6 +38,17 @@ class DosenMDL extends Model
             }
         }
     }
+
+    public function addDosenID($id,$val=null){
+        $this->where(['id' => $id]);
+        $query = $this->findAll();
+        foreach ($query as $q) {
+            $val = $q['dosen_id'];
+            $this->set('dosen_id', $val);
+            $this->update();            
+        }
+    }
+
 
     public function delDosen($id)
     {
