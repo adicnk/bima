@@ -16,7 +16,7 @@ function numOnly(event) {
 function placeDateOnly(event) {
 	var key = event.keyCode;
 	//console.log(key);
-	return ((key>=65 && key<=90) || (key==47 || (key==46 || (key>=48 && key<=57)) || key>=97 || key==44 || key==32);
+	return ((key>=65 && key<=90) || (key==47 || (key==46 || (key>=48 && key<=57)) || key>=97 || key==44 || key==32));
 }
 
 // Warna kuning ketika mengedit

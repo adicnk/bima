@@ -161,6 +161,8 @@
     <!-- <script src="admin_assets/js/demo/chart-area-demo.js"></script> -->
     <script src="../admin_assets/js/chart-pie-demo.js"></script>
     <script src="../admin_assets/js/keystroke.js"></script>
+    <script src="../admin_assets/js/file.js"></script>
+    <script src="../../admin_assets/js/bs-custom-file-input.js"></script>
 
 </body>
 

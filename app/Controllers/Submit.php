@@ -93,8 +93,10 @@ class Submit extends BaseController
         //$isFileUpload = $this->request->getVar('isFileUpload');
 
         //The File
-        $isFileUpload = $this->request->getFile('isFileUpload');
+        $isFileUpload = $this->request->getFile('fileUpload');
         $namaFile = null;
+
+        dd($isFileUpload->getName());
 
         if ($isFileUpload) :
             // Pindahkan file ke folder file

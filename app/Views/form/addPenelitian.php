@@ -23,7 +23,7 @@
         <div class="card-block">
             <div class="card-text text-center">
             
-                <form method="post" action="../submit/soal" enctype="multipart/form-data">
+                <form method="post" action="<?= base_url() ?>/submit/penelitian" enctype="multipart/form-data">
                     <?= csrf_field() ?>
 
                     <div class="form-group">                        
@@ -31,17 +31,30 @@
                             <div class="card-body">
                                 <div class="form-row align-items-right mt-3">
                                     <div class="col-12">
-                                        <div class="input-group-prepend">
+                                        <div class="input-group-prepend">            
                                             <div class="input-group-text"><strong>Judul<br>Penelitian</strong></div>
                                             <textarea class="form-control" name="judulPenelitian" id="judulPenelitian" rows="4"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                
+
+                                <div class="form-row align-items-right mt-3">
+                                    <div class="col-2">
+                                        <div class="input-group-prepend">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="isFile" id="isFile" onclick="myFile()">
+                                                <label class="form-check-label" for="isFile">
+                                                    File Upload
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
                                 <div class="form-row align-items-right mt-3">
                                     <div class="col-7">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="fileUpload" id="fileUpload">
+                                            <input type="file" class="custom-file-input" name="fileUpload" id="fileUpload" disabled>
                                             <label class="custom-file-label" for="fileUpload">Upload File</label>
                                         </div>
                                     </div>
