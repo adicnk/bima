@@ -101,8 +101,8 @@ class Submit extends BaseController
         if ($isFileUpload) :
             // Pindahkan file ke folder file
             //$isFileUpload->move('file');            
-            $renFile = date("Ymd")."_".$this->penelitianModel->searchUploadPenelitian(date("Ymd"));
-            $isFileUpload->move('file', $renFile.$isFileUpload->getExtension());
+            $renFile = date("Ymd")."_".$this->penelitianModel->searchUploadPenelitian(date("Ymd")).'_'.user_id();
+            $isFileUpload->move('file', 'PL'.$renFile.'.'.$isFileUpload->getExtension());
 
             // Ambil nama file
             //$namaFile = $isFileUpload->getName();
