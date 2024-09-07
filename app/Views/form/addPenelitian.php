@@ -67,8 +67,8 @@
                     <hr/>
                     <div class="form-row align-items-right mt-3"></div>
 
-                    <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">SIMPAN</button>\
-                    <a href="" class="btn btn-lg btn-danger btn-block mt-3">CANCEL</a>
+                    <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">SIMPAN</button>
+                    <a href="<?= base_url() ?>/" class="btn btn-lg btn-danger btn-block mt-3">CANCEL</a>
 
                 </form>
 

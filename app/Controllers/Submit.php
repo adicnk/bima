@@ -96,21 +96,31 @@ class Submit extends BaseController
         $isFileUpload = $this->request->getFile('fileUpload');
         $namaFile = null;
 
-        dd($isFileUpload->getName());
-
+        //dd($this->request->getVar('judulPenelitian'));
+        
         if ($isFileUpload) :
             // Pindahkan file ke folder file
-            $isFileUpload->move('file');
+            //$isFileUpload->move('file');            
+            $renFile = date("Ymd")."_".$this->penelitianModel->searchUploadPenelitian(date("Ymd"));
+            $isFileUpload->move('file', $renFile.$isFileUpload->getExtension());
 
             // Ambil nama file
-            $namaFile = $isFileUpload->getName();
+            //$namaFile = $isFileUpload->getName();
         endif;
+
 
         $this->penelitianModel->save([
             'judul' => $this->request->getVar('judulPenelitian'),
-            'file' => $this->$namaFile
+            'file' => $renFile
         ]);
 
+        $data = [
+            'title' => "Dashboard",
+            'dosen' => $this->dosenModel->searchDosen(user_id())
+        ];
+
+        return view('user/dashboard', $data);
     }
+    
 }
 

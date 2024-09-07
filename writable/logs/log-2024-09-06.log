@@ -1,0 +1,16 @@
+CRITICAL - 2024-09-06 21:30:28 --> syntax error, unexpected token ";", expecting "]"
+#0 C:\xampp\htdocs\bima\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('submit/peneliti...')
+#1 C:\xampp\htdocs\bima\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('submit/peneliti...')
+#2 C:\xampp\htdocs\bima\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2024-09-06 21:50:37 --> Unmatched '}'
+#0 C:\xampp\htdocs\bima\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('submit/peneliti...')
+#1 C:\xampp\htdocs\bima\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('submit/peneliti...')
+#2 C:\xampp\htdocs\bima\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}

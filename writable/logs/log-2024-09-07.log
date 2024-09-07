@@ -1,0 +1,51 @@
+CRITICAL - 2024-09-07 09:31:42 --> Call to undefined method App\Models\PenelitianMDL::select_sum
+#0 C:\xampp\htdocs\bima\app\Models\PenelitianMDL.php(28): CodeIgniter\Model->__call('select_sum', Array)
+#1 C:\xampp\htdocs\bima\app\Controllers\Submit.php(109): App\Models\PenelitianMDL->searchUploadPenelitian('20240907')
+#2 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Submit->penelitian()
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Submit))
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2024-09-07 09:32:59 --> Call to undefined method App\Models\PenelitianMDL::select_sum
+#0 C:\xampp\htdocs\bima\app\Models\PenelitianMDL.php(28): CodeIgniter\Model->__call('select_sum', Array)
+#1 C:\xampp\htdocs\bima\app\Controllers\Submit.php(109): App\Models\PenelitianMDL->searchUploadPenelitian('20240907')
+#2 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Submit->penelitian()
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Submit))
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2024-09-07 09:38:31 --> Call to undefined method App\Models\PenelitianMDL::select_sum
+#0 C:\xampp\htdocs\bima\app\Models\PenelitianMDL.php(28): CodeIgniter\Model->__call('select_sum', Array)
+#1 C:\xampp\htdocs\bima\app\Controllers\Submit.php(109): App\Models\PenelitianMDL->searchUploadPenelitian('20240907')
+#2 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Submit->penelitian()
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Submit))
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2024-09-07 10:25:14 --> mkdir(): No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): No suc...', 'C:\\xampp\\htdocs...', 176)
+#1 C:\xampp\htdocs\bima\system\HTTP\Files\UploadedFile.php(176): mkdir('C:\\xampp\\htdocs...', 511, true)
+#2 C:\xampp\htdocs\bima\system\HTTP\Files\UploadedFile.php(130): CodeIgniter\HTTP\Files\UploadedFile->setPath('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\bima\system\HTTP\Files\UploadedFile.php(341): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\xampp\\htdocs...', '20240907_7')
+#4 C:\xampp\htdocs\bima\app\Controllers\Submit.php(105): CodeIgniter\HTTP\Files\UploadedFile->store('http://localhos...', '20240907_7')
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Submit->penelitian()
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Submit))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-09-07 10:27:07 --> mkdir(): No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): No suc...', 'C:\\xampp\\htdocs...', 176)
+#1 C:\xampp\htdocs\bima\system\HTTP\Files\UploadedFile.php(176): mkdir('C:\\xampp\\htdocs...', 511, true)
+#2 C:\xampp\htdocs\bima\system\HTTP\Files\UploadedFile.php(130): CodeIgniter\HTTP\Files\UploadedFile->setPath('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\bima\system\HTTP\Files\UploadedFile.php(341): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\xampp\\htdocs...', '20240907_7')
+#4 C:\xampp\htdocs\bima\app\Controllers\Submit.php(105): CodeIgniter\HTTP\Files\UploadedFile->store('http://localhos...', '20240907_7')
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Submit->penelitian()
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Submit))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}

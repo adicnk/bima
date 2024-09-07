@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class PenelitianMDL extends Model
 {
-    protected $table = 'usulan';
+    protected $table = 'usulan_penelitian';
     protected $useTimestamps = true;
 
     // Field yang boleh diisi waktu saving data ** harus didefinisikan dulu **
@@ -19,8 +19,18 @@ class PenelitianMDL extends Model
         if ($keyword == false) {
             return $this->findall();            
         } else {
-            return  $this->like('name', $keyword);
+            return  $this->like('dosen_id', $keyword);
         }        
+    }
+
+    public function searchUploadPenelitian($name){
+        $this->like('file', $name);
+        $sumRows = $this->countAllResults();
+        if ($sumRows==0) {
+            return 1;
+        } else {
+            return $sumRows+1;
+        };
     }
 
     public function statusPenelitian($id)
