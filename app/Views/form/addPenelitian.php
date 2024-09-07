@@ -44,38 +44,85 @@
                                 </div>
 
                                 <div class="form-row align-items-right mt-3">
-                                    <div class="col-8">
+                                    <div class="col-4">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><strong>Bidang Fokus</strong></div>
-                                            <select class="form-control" name="statusDosen" id="statusDosen" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                            <select class="form-control" name="bidangFokus" id="bidangFokus" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
                                                 <option value="Kesehatan">Kesehatan</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row align-items-right mt-3">
-                                    <div class="col-8">
+                                    <div class="col-6">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><strong>Ruang Lingkup</strong></div>
-                                            <select class="form-control" name="statusDosen" id="statusDosen" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                            <select class="form-control" name="ruangLingkup" id="ruangLingkup" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
                                                 <option value="Penelitian Dosen Pemula">Penelitian Dosen Pemula</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class=" form-row align-items-right mt-3">
-                                    <div class="col-8">
+                                    <div class="col-6">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><strong>Tahun Usulan</strong></div>
-                                            <input type="text" name="tanggalLahir" id="tanggalLahir" class="form-control" placeholder="Masukkan Tanggal Lahir ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return placeDateOnly(event);" value="<?= old('tanggalLahir')?>">
+                                            <input type="text" name="tanggalLahir" id="tahunUsulan" class="form-control" placeholder="Masukkan Tahun Usulan ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return placeDateOnly(event);" value="<?= old('tahunUsulan')?>">
                                         </div>
                                     </div>
                                 </div>
                                 <div class=" form-row align-items-right mt-3">
-                                    <div class="col-8">
+                                    <div class="col-6">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><strong>Tahun Pelaksanaan</strong></div>
-                                            <input type="text" name="tanggalLahir" id="tanggalLahir" class="form-control" placeholder="Masukkan Tanggal Lahir ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return placeDateOnly(event);" value="<?= old('tanggalLahir')?>">
+                                            <input type="text" name="tahunPelaksanaan" id="tahunPelaksanaan" class="form-control" placeholder="Masukkan Tahun Pelaksanaan ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return placeDateOnly(event);" value="<?= old('tahunPelaksanaan')?>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" form-row align-items-right mt-3">
+                                    <div class="col-6">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><strong>Lama Kegiatan</strong></div>
+                                            <input type="text" name="lamaKegiatan" id="lamaKegiatan" class="form-control" placeholder="Masukkan Lama Kegiatan ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return placeDateOnly(event);" value="<?= old('lamaKegiatan')?>">
+                                            <div class="input-group-text">bulan</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row align-items-right mt-3">
+                                    <div class="col-8">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><strong>Tema Penelitian</strong></div>
+                                            <select class="form-control" name="temaPenelitian" id="temaPenelitian" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                                <option value="Teknologi Alat Kesehatan dan Diagnostik">Teknologi Alat Kesehatan dan Diagnostik</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row align-items-right mt-3">
+                                    <div class="col-6">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><strong>Topik Penelitian</strong></div>
+                                            <select class="form-control" name="topikPenelitian" id="topikPenelitian" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                                <option value="Pengembangan Alat Elektronik">Pengembangan Alat Elektronik</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row align-items-right mt-3">
+                                    <div class="col-6">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><strong>Rumpun Ilmu Level 3</strong></div>
+                                            <select class="form-control" name="rumpunIlmu" id="rumpunIlmu" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                                <option value="Ilmu Keperawatan">Ilmu Keperawatan</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" form-row align-items-right mt-3">
+                                    <div class="col-4">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><strong>Target TKT</strong></div>
+                                            <input type="text" name="targetTKT" id="targetTKT" class="form-control" placeholder="Masukkan Target TKT ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return placeDateOnly(event);" value="<?= old('targetTKT')?>">
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +138,7 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="isFile" id="isFile" onclick="myFile()">
                                                 <label class="form-check-label" for="isFile">
-                                                    File Upload
+                                                    File to Upload
                                                 </label>
                                             </div>
                                         </div>

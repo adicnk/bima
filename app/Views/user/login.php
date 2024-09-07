@@ -76,7 +76,7 @@
                                     </div>
                                     <hr>
                                     <p><strong><div class="small text-center text-red">
-                                        Stikep PPNI Jawa Barat © 2024
+                                        Stikep PPNI Jawa Barat © <?= date('Y') ?>
                                     </div></strong></p>
                                 </div>
                             </div>
