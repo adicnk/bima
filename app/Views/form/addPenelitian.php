@@ -29,6 +29,11 @@
                     <div class="form-group">                        
                         <div class="accordion mt-2" id="accordion">
                             <div class="card-body">
+
+                                <div class="form-row align-items-right mt-3"></div>
+                                <div class="col-12 h5 mb-3 text-gray-800"><center><strong>Data Penelitian</strong></center></div>
+                                <div class=" form-row align-items-right mt-3"><hr/></div>
+
                                 <div class="form-row align-items-right mt-3">
                                     <div class="col-12">
                                         <div class="input-group-prepend">            
@@ -39,6 +44,48 @@
                                 </div>
 
                                 <div class="form-row align-items-right mt-3">
+                                    <div class="col-8">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><strong>Bidang Fokus</strong></div>
+                                            <select class="form-control" name="statusDosen" id="statusDosen" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                                <option value="Kesehatan">Kesehatan</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row align-items-right mt-3">
+                                    <div class="col-8">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><strong>Ruang Lingkup</strong></div>
+                                            <select class="form-control" name="statusDosen" id="statusDosen" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                                <option value="Penelitian Dosen Pemula">Penelitian Dosen Pemula</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" form-row align-items-right mt-3">
+                                    <div class="col-8">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><strong>Tahun Usulan</strong></div>
+                                            <input type="text" name="tanggalLahir" id="tanggalLahir" class="form-control" placeholder="Masukkan Tanggal Lahir ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return placeDateOnly(event);" value="<?= old('tanggalLahir')?>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" form-row align-items-right mt-3">
+                                    <div class="col-8">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><strong>Tahun Pelaksanaan</strong></div>
+                                            <input type="text" name="tanggalLahir" id="tanggalLahir" class="form-control" placeholder="Masukkan Tanggal Lahir ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return placeDateOnly(event);" value="<?= old('tanggalLahir')?>">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row align-items-right mt-3"></div>
+                                <hr/>
+                                <div class="form-row align-items-right mt-3"></div>
+                                <div class="col-12 h5 mb-3 text-gray-800"><center><strong>Upload File</strong></center></div>
+                                <div class=" form-row align-items-right mt-3">                        
+                                    
                                     <div class="col-2">
                                         <div class="input-group-prepend">
                                             <div class="form-check">
