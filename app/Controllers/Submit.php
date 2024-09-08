@@ -112,7 +112,7 @@ class Submit extends BaseController
         $this->penelitianModel->save([
             'dosen_id'=> user_id(),
             'judul' => $this->request->getVar('judulPenelitian'),
-            'file' => $renFile,
+            'file' => $renFile.'.'.$isFileUpload->getExtension(),
             'bidang_fokus' => $this->request->getVar('bidangFokus'),
             'ruang_lingkup' => $this->request->getVar('ruangLingkup'),
             'tahun_usulan' => $this->request->getVar('tahunUsulan'),

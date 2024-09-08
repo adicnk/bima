@@ -3,17 +3,18 @@
 namespace App\Controllers;
 
 use App\Models\DosenMDL;
-use App\Models\SoalMDL;
+use App\Models\PenelitianMDL;
 
 
 class User extends BaseController
 {
 
-    protected $dosenModel;
+    protected $dosenModel, $penelitianModel;
 
     public function __construct()
     {
         $this->dosenModel = new DosenMDL();
+        $this->penelitianModel = new PenelitianMDL();
     }
 
     public function index()
@@ -50,6 +51,15 @@ class User extends BaseController
         ];
         //dd($data);
         return view('form/usulanPenelitian', $data);        
+    }
+
+    public function listPenelitian(){
+        $data = [
+            'title' => "List Penelitian",
+            'penelitian'=> $this->penelitianModel->searchPenelitian(user_id())
+        ];
+        //dd($data);
+        return view('list/penelitian', $data);   
     }
     
     public function profile()
