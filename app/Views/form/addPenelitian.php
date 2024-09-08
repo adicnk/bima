@@ -67,7 +67,7 @@
                                     <div class="col-6">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><strong>Tahun Usulan</strong></div>
-                                            <input type="text" name="tanggalLahir" id="tahunUsulan" class="form-control" placeholder="Masukkan Tahun Usulan ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return placeDateOnly(event);" value="<?= old('tahunUsulan')?>">
+                                            <input type="text" name="tahunUsulan" id="tahunUsulan" class="form-control" placeholder="Masukkan Tahun Usulan ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return placeDateOnly(event);" value="<?= old('tahunUsulan')?>">
                                         </div>
                                     </div>
                                 </div>

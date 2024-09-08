@@ -10,7 +10,9 @@ class PenelitianMDL extends Model
     protected $useTimestamps = true;
 
     // Field yang boleh diisi waktu saving data ** harus didefinisikan dulu **
-    protected $allowedFields = ['dosen_id','judul','file'];
+    protected $allowedFields = ['dosen_id','judul','file','bidang_fokus','ruang_lingkup',
+                                'tahun_usulan','tahun_pelaksanaan','lama','tema','topik','rumpun_ilmu',
+                                'target_tkt'];
 
     public function searchPenelitian($keyword = false)
     {

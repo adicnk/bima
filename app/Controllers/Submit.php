@@ -94,7 +94,7 @@ class Submit extends BaseController
 
         //The File
         $isFileUpload = $this->request->getFile('fileUpload');
-        $namaFile = null;
+        $renFile = null;
 
         //dd($this->request->getVar('judulPenelitian'));
         
@@ -112,7 +112,16 @@ class Submit extends BaseController
         $this->penelitianModel->save([
             'dosen_id'=> user_id(),
             'judul' => $this->request->getVar('judulPenelitian'),
-            'file' => $renFile
+            'file' => $renFile,
+            'bidang_fokus' => $this->request->getVar('bidangFokus'),
+            'ruang_lingkup' => $this->request->getVar('ruangLingkup'),
+            'tahun_usulan' => $this->request->getVar('tahunUsulan'),
+            'tahun_pelaksanaan' => $this->request->getVar('tahunPelaksanaan'),
+            'lama' => $this->request->getVar('lamaKegiatan'),
+            'tema' => $this->request->getVar('temaPenelitian'),
+            'topik' => $this->request->getVar('topikPenelitian'),
+            'rumpun_ilmu' => $this->request->getVar('rumpunIlmu'),
+            'target_tkt' => $this->request->getVar('targetTKT')
         ]);
 
         $data = [
