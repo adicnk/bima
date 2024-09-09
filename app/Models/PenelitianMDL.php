@@ -14,10 +14,9 @@ class PenelitianMDL extends Model
                                 'tahun_usulan','tahun_pelaksanaan','lama','tema','topik','rumpun_ilmu',
                                 'target_tkt'];
 
-    public function searchPenelitian($keyword = false)
+    public function searchPenelitian($dosenID, $keyword=false)
     {
-        $this->join('dosen', 'dosen.id = dosen_id');
-        $this->join('dosen_profile', 'dosen_profile.dosen_id = ');
+        $this->where(['id' => $dosenID]);
         if ($keyword == false) {
             return $this->findall();            
         } else {

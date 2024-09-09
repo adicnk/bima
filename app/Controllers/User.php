@@ -54,9 +54,20 @@ class User extends BaseController
     }
 
     public function listPenelitian(){
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword){
+            $this->penelitianModel->searchPenelitian(user_id(),$keyword);
+        } else {
+            $this->penelitianModel->searchPenelitian(user_id());
+        }
+        $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;
         $data = [
             'title' => "List Penelitian",
-            'penelitian'=> $this->penelitianModel->searchPenelitian(user_id())
+            'dosen' => $this->dosenModel->searchDosen(user_id()),
+            'data_penelitian'=> $this->penelitianModel->searchPenelitian(user_id()),
+            'penelitian'  => $this->penelitianModel->paginate(5, 'penelitian'),
+            'pager' => $this->penelitianModel->pager,
+            'currentPage' => $currentPage
         ];
         //dd($data);
         return view('list/penelitian', $data);   

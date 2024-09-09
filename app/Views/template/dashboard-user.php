@@ -78,7 +78,7 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="logout">
+                <a class="nav-link" href="'.base_url().'/listPenelitian">
                     <i class="fas fa-fw fa-flask"></i>
                     <span>Penelitian</span></a>
             </li>

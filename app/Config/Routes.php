@@ -31,11 +31,16 @@ $routes->setAutoRoute(true);
 
 //for Front Page Route
 $routes->get('/', 'User::index');
-$routes->get('/submitDosen', 'Submit::dosen');
+
+//List
+$routes->get('/listPenelitian', 'User::listPenelitian');
 
 //Form 
+$routes->get('/submitDosen', 'Submit::dosen');
 $routes->get('/addDosen', 'Form::addDosen');
 $routes->get('/addPenelitian', 'Form::addPenelitian');
+
+
 
 /*
  * --------------------------------------------------------------------
