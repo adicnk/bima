@@ -40,7 +40,7 @@
                     <th scope="col" width="200px">Bidang Fokus</th>
                     <th scope="col" width="80px" style="text-align: center">Tahun Pelaksanaan</th>
                     <th scope="col" width="80px" style="text-align: center">Status Usulan</th>
-                    <th scope="col" width="120px">Aksi</th>
+                    <th scope="col" width="150px" style="text-align: center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -65,8 +65,9 @@
                         } ?>
                     </td>            
                     <td>
-                        <a href="/edit/user/<?// $usr['idx'] . '?url=mahasiswa' ?>"><img src=" ../../icon/edit.png" class="mr-2" /></a>
-                        <a href="/delete/admin/<?// $usr['idx'] . '?url=mahasiswa' ?>"><img src="../../icon/detail.png" /></a>
+                        <a href="/edit/user/<?// $usr['idx'] . '?url=mahasiswa' ?>" title="Edit Data Penelitian"><img src=" ../../icon/edit.png" class="mr-2" /></a>
+                        <a href="/delete/admin/<?// $usr['idx'] . '?url=mahasiswa' ?>" title="Add Support Data"><img src="../../icon/data.png" /></a>
+                        <a href="/delete/admin/<?// $usr['idx'] . '?url=mahasiswa' ?>" title="View Detail"><img src="../../icon/view.png" /></a>
                     </td>
                 </tr>
             <?php

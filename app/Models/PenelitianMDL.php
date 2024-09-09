@@ -20,7 +20,7 @@ class PenelitianMDL extends Model
         if ($keyword == false) {
             return $this->findall();            
         } else {
-            return  $this->like('dosen_id', $keyword);
+            return  $this->like('judul', $keyword);
         }        
     }
 
