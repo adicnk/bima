@@ -40,3 +40,14 @@ CRITICAL - 2024-09-09 00:04:09 --> Invalid file: App\Views\Pagers\custom_paginat
 CRITICAL - 2024-09-09 03:35:30 --> Maximum execution time of 60 seconds exceeded
 #0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
 #1 {main}
+CRITICAL - 2024-09-09 23:01:17 --> File not found: http://localhost:8080/file/20240908_1_1.pdf
+#0 C:\xampp\htdocs\bima\system\Files\File.php(46): CodeIgniter\Files\Exceptions\FileNotFoundException::forFileNotFound('http://localhos...')
+#1 C:\xampp\htdocs\bima\system\HTTP\DownloadResponse.php(107): CodeIgniter\Files\File->__construct('http://localhos...', true)
+#2 C:\xampp\htdocs\bima\system\HTTP\ResponseTrait.php(774): CodeIgniter\HTTP\DownloadResponse->setFilePath('http://localhos...')
+#3 C:\xampp\htdocs\bima\app\Controllers\FileController.php(12): CodeIgniter\HTTP\Response->download('20240908_1_1.pd...', NULL)
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\FileController->download('20240908_1_1.pd...')
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\FileController))
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#9 {main}

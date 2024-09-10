@@ -44,7 +44,8 @@ $routes->get('/submitDosen', 'Submit::dosen');
 $routes->get('/addDosen', 'Form::addDosen');
 $routes->get('/addPenelitian', 'Form::addPenelitian');
 
-
+//File
+$routes->get('/download', 'User::detpl');
 
 /*
  * --------------------------------------------------------------------

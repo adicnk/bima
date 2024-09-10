@@ -18,6 +18,10 @@
         </div>
     <?php endforeach ?>
     </div>
+    <form method="post" action="<?= base_url() ?>/user/listPenelitian">
+        <?= csrf_field() ?>
+        <button class="btn btn-lg btn-primary btn-block mt-3 mb-4" type="submit">Kembali ke List Penelitian</button>
+    </form>
 </div>
 <!-- /.container-fluid -->
 

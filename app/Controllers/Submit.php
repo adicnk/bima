@@ -101,8 +101,8 @@ class Submit extends BaseController
         if ($isFileUpload) :
             // Pindahkan file ke folder file
             //$isFileUpload->move('file');            
-            $renFile = date("Ymd")."_".$this->penelitianModel->searchUploadPenelitian(date("Ymd")).'_'.user_id();
-            $isFileUpload->move('file', 'PL'.$renFile.'.'.$isFileUpload->getExtension());
+            $renFile = 'PL'.date("Ymd")."_".$this->penelitianModel->searchUploadPenelitian(date("Ymd")).'_'.user_id();
+            $isFileUpload->move('file', $renFile.'.'.$isFileUpload->getExtension());
 
             // Ambil nama file
             //$namaFile = $isFileUpload->getName();
@@ -114,6 +114,7 @@ class Submit extends BaseController
             'judul' => $this->request->getVar('judulPenelitian'),
             'file' => $renFile.'.'.$isFileUpload->getExtension(),
             'bidang_fokus' => $this->request->getVar('bidangFokus'),
+            'skema' => $this->request->getVar('kelompokSkema'),
             'ruang_lingkup' => $this->request->getVar('ruangLingkup'),
             'tahun_usulan' => $this->request->getVar('tahunUsulan'),
             'tahun_pelaksanaan' => $this->request->getVar('tahunPelaksanaan'),

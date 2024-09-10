@@ -56,9 +56,19 @@
                                 <div class="form-row align-items-right mt-3">
                                     <div class="col-6">
                                         <div class="input-group-prepend">
+                                            <div class="input-group-text"><strong>Kelompok Skema</strong></div>
+                                            <select class="form-control" name="kelompokSkema" id="kelompokSkema" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                                <option value="Penelitian Dosen Pemula">Penelitian Dosen Pemula</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row align-items-right mt-3">
+                                    <div class="col-6">
+                                        <div class="input-group-prepend">
                                             <div class="input-group-text"><strong>Ruang Lingkup</strong></div>
                                             <select class="form-control" name="ruangLingkup" id="ruangLingkup" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                                                <option value="Penelitian Dosen Pemula">Penelitian Dosen Pemula</option>
+                                                <option value="Riset Dasar">Riset Dasar</option>
                                             </select>
                                         </div>
                                     </div>
