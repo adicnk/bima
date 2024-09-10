@@ -50,11 +50,11 @@
                 <button name="proposal" type="button" class="btn btn-sm btn-danger me-1"><i class="fa fa-file-pdf" style="font-size: 32px;"></i><br>Download</button>
             </a>
         </div>
-        <form method="post" action="<?= base_url() ?>/user/listPenelitian">
-        <?php endforeach ?>
+    <?php endforeach ?>
+    <form method="post" action="<?= base_url() ?>/user/listPenelitian">
         <?= csrf_field() ?>
+        <button class="btn btn-lg btn-primary btn-block mt-3 mb-4" type="submit">Kembali ke List Penelitian</button>
     </form>
-    <button class="btn btn-lg btn-primary btn-block mt-3 mb-4" type="submit">Kembali ke List Penelitian</button>
 </div>
 <!-- /.container-fluid -->
 

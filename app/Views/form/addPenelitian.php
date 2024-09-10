@@ -58,7 +58,8 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><strong>Kelompok Skema</strong></div>
                                             <select class="form-control" name="kelompokSkema" id="kelompokSkema" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                                                <option value="Penelitian Dosen Pemula">Penelitian Dosen Pemula</option>
+                                                <option value="Riset Dasar">Riset Dasar</option>
+                                                <option value="Riset Terapan">Riset Terapan</option>                                            
                                             </select>
                                         </div>
                                     </div>
@@ -68,7 +69,8 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><strong>Ruang Lingkup</strong></div>
                                             <select class="form-control" name="ruangLingkup" id="ruangLingkup" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                                                <option value="Riset Dasar">Riset Dasar</option>
+                                                <option value="Penelitian Dosen Pemula">Penelitian Dosen Pemula</option>
+                                                <option value="Penelitian Terapan - Penelitian Produk Vokasi">Penelitian Terapan - Penelitian Produk Vokasi</option>
                                             </select>
                                         </div>
                                     </div>
@@ -99,22 +101,18 @@
                                     </div>
                                 </div>
                                 <div class="form-row align-items-right mt-3">
-                                    <div class="col-8">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text"><strong>Tema Penelitian</strong></div>
-                                            <select class="form-control" name="temaPenelitian" id="temaPenelitian" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                                                <option value="Teknologi Alat Kesehatan dan Diagnostik">Teknologi Alat Kesehatan dan Diagnostik</option>
-                                            </select>
+                                    <div class="col-12">
+                                        <div class="input-group-prepend">            
+                                            <div class="input-group-text"><strong>Tema<br>Penelitian</strong></div>
+                                            <textarea class="form-control" name="temaPenelitian" id="temaPenelitian" rows="4"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row align-items-right mt-3">
-                                    <div class="col-6">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text"><strong>Topik Penelitian</strong></div>
-                                            <select class="form-control" name="topikPenelitian" id="topikPenelitian" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                                                <option value="Pengembangan Alat Elektronik">Pengembangan Alat Elektronik</option>
-                                            </select>
+                                    <div class="col-12">
+                                        <div class="input-group-prepend">            
+                                            <div class="input-group-text"><strong>Topik<br>Penelitian</strong></div>
+                                            <textarea class="form-control" name="topikPenelitian" id="topikPenelitian" rows="4"></textarea>
                                         </div>
                                     </div>
                                 </div>

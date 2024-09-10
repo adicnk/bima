@@ -102,7 +102,8 @@ class Submit extends BaseController
             // Pindahkan file ke folder file
             //$isFileUpload->move('file');            
             $renFile = date("Ymd")."_".$this->penelitianModel->searchUploadPenelitian(date("Ymd")).'_'.user_id();
-            $isFileUpload->move('file', $renFile.'.'.$isFileUpload->getExtension());
+            $extension = $isFileUpload->getExtension();
+            $isFileUpload->move('file', 'PL'.$renFile.'.'.$isFileUpload->getExtension());
 
             // Ambil nama file
             //$namaFile = $isFileUpload->getName();
@@ -112,7 +113,7 @@ class Submit extends BaseController
         $this->penelitianModel->save([
             'dosen_id'=> user_id(),
             'judul' => $this->request->getVar('judulPenelitian'),
-            'file' => 'PL'.$renFile.'.'.$isFileUpload->getExtension(),
+            'file' => 'PL'.$renFile.'.'.$extension,
             'bidang_fokus' => $this->request->getVar('bidangFokus'),
             'skema' => $this->request->getVar('kelompokSkema'),
             'ruang_lingkup' => $this->request->getVar('ruangLingkup'),
