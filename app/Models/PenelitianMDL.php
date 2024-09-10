@@ -16,12 +16,17 @@ class PenelitianMDL extends Model
 
     public function searchPenelitian($dosenID, $keyword=false)
     {
-        $this->where(['id' => $dosenID]);
+        $this->where(['dosen_id' => $dosenID]);
         if ($keyword == false) {
             return $this->findall();            
         } else {
             return  $this->like('judul', $keyword);
         }        
+    }
+
+    public function searchJudulPenelitian($penelitianID){
+        $this->where(['id' => $penelitianID]);
+        return $this->findall();            
     }
 
     public function searchUploadPenelitian($name){

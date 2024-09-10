@@ -35,6 +35,10 @@ $routes->get('/', 'User::index');
 //List
 $routes->get('/listPenelitian', 'User::listPenelitian');
 
+//Detail
+$routes->get('/dataPenelitian', 'User::inpl');
+$routes->get('/viewPenelitian', 'User::detpl');
+
 //Form 
 $routes->get('/submitDosen', 'Submit::dosen');
 $routes->get('/addDosen', 'Form::addDosen');

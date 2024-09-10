@@ -72,7 +72,24 @@ class User extends BaseController
         //dd($data);
         return view('list/penelitian', $data);   
     }
+
+    public function detpl($penelitianID) {
+        $data = [
+            'title' => "Detail Data Penelitian",
+            'data_penelitian'=> $this->penelitianModel->searchJudulPenelitian($penelitianID)
+        ];
+        return view('detail/detpl', $data);        
+    }
     
+    public function inpl($penelitianID) {
+        $data = [
+            'title' => "Input Data Penelitian",
+            'data_penelitian'=> $this->penelitianModel->searchJudulPenelitian($penelitianID)
+        ];
+        return view('detail/inpl', $data);        
+    }
+
+
     public function profile()
     {
         $userID = session()->get('userID');

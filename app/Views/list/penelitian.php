@@ -66,8 +66,8 @@
                     </td>            
                     <td>
                         <a href="/edit/user/<?// $usr['idx'] . '?url=mahasiswa' ?>" title="Edit Data Penelitian"><img src=" ../../icon/edit.png" class="mr-2" /></a>
-                        <a href="/delete/admin/<?// $usr['idx'] . '?url=mahasiswa' ?>" title="Add Support Data"><img src="../../icon/data.png" /></a>
-                        <a href="/delete/admin/<?// $usr['idx'] . '?url=mahasiswa' ?>" title="View Detail"><img src="../../icon/view.png" /></a>
+                        <a href="<?= '/user/inpl/' .$data['id'] ?>" title="Add Support Data"><img src="../../icon/data.png" /></a>
+                        <a href="<?= '/user/detpl/' .$data['id'] ?>" title="View Detail"><img src="../../icon/view.png" /></a>
                     </td>
                 </tr>
             <?php
