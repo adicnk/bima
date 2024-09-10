@@ -45,10 +45,11 @@
                     <p>Target TKT : <b><?= $data['target_tkt'] ?></b></p>
                 </div>
             </div>
+            <hr/>
+            <a href="<?= base_url() ?>/FileController/download/<?= $data['file'] ?>">
+                <button name="proposal" type="button" class="btn btn-sm btn-danger me-1"><i class="fa fa-file-pdf" style="font-size: 32px;"></i><br>Download</button>
+            </a>
         </div>
-        <a href="<?= base_url() ?>/FileController/download/<?= $data['file'] ?>">
-            <button name="proposal" type="button" class="btn btn-sm btn-danger me-1"><i class="fa fa-file-pdf" style="font-size: 32px;"></i><br>Download</button>
-        </a>
         <form method="post" action="<?= base_url() ?>/user/listPenelitian">
         <?php endforeach ?>
         <?= csrf_field() ?>
