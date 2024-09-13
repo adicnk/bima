@@ -12,3 +12,13 @@ function myFile() {
     }
 
 }
+
+function showForm() {
+    var x = document.getElementById("formBox");
+    x.removeAttribute("hidden");
+}
+
+function deleteAnggota(id){
+    var x = document.getElementById("anggotaID");
+    x.value = id;
+}

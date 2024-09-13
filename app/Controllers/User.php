@@ -3,17 +3,19 @@
 namespace App\Controllers;
 
 use App\Models\DosenMDL;
+use App\Models\AnggotaMDL;
 use App\Models\PenelitianMDL;
 
 
 class User extends BaseController
 {
 
-    protected $dosenModel, $penelitianModel;
+    protected $dosenModel, $anggotaModel, $penelitianModel;
 
     public function __construct()
     {
         $this->dosenModel = new DosenMDL();
+        $this->anggotaModel = new AnggotaMDL();
         $this->penelitianModel = new PenelitianMDL();
     }
 
@@ -82,53 +84,25 @@ class User extends BaseController
     }
     
     public function inpl($penelitianID) {
+        $db = \Config\Database::connect();
+        $tableAnggota="anggota_dosen_".user_id();
+        $ {'anggota'.$penelitianID} = $this->anggotaModel->copyTable($db,$tableAnggota,$penelitianID);
+
+        $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;        
         $data = [
             'title' => "Input Data Penelitian",
-            'data_penelitian'=> $this->penelitianModel->searchJudulPenelitian($penelitianID)
+            'judul'=> $this->penelitianModel->searchJudulPenelitian($penelitianID),
+            'id'=> $penelitianID,
+            'anggota_'.$penelitianID => $ {'anggota'.$penelitianID},
+            'paginate_'.$penelitianID => $this->anggotaModel->paginate(5, 'user'),
+            'pager' => $this->anggotaModel->pager,
+            'currentPage' => $currentPage
         ];
         return view('detail/inpl', $data);        
     }
-
-
-    public function profile()
-    {
-        $userID = session()->get('userID');
-
-        $data = [
-            'title'   => "User Login"
-        ];                                 
-        if (!isset($userID)) {
-            return view('exercise/login', $data);            
-        }
-
-        $data = [
-            'title' => "PAIT @ PPNI",
-            'user' => $this->userModel->searhAdminID(session()->get('userID')),
-            'nilai_ratarata' => $this->latihanModel->nilaiRatarata(session()->get('userID'))
-        ];
-        return view('exercise/profile', $data);
-    }
-
-    public function info()
-    {
-        $userID = session()->get('userID');
-
-        $data = [
-            'title'   => "User Login"
-        ];                                 
-        if (!isset($userID)) {
-            return view('exercise/login', $data);            
-        }
-
-        $data = [
-            'title' => "PAIT @ PPNI"
-        ];
-        return view('exercise/info', $data);
-    }
-
-    public function about()
-    {
-        return view('exercise/about');
+    
+    public function currURL(){
+        $currURL = $this->request->getVar('currURL');
     }
 
 }
