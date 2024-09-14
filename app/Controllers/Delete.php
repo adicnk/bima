@@ -18,14 +18,11 @@ class Delete extends BaseController
         $this->penelitianModel = new PenelitianMDL();
     }
 
-    public function anggotaDosen()
+    public function anggotaDosen($penelitianID,$anggotaID)
     {
-        $penelitianID = $this->request->getVar('penelitianID');
-        $anggotaID = $this->request->getVar('anggotaID');
-        dd($this->request->getVar());
-
+        $this->anggotaModel->delAnggota($anggotaID);
+        
         $ {'anggota'.$penelitianID} = $this->anggotaModel->copyTable(null,null,$penelitianID);
-
         $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;        
         $data = [
             'title' => "Input Data Penelitian",

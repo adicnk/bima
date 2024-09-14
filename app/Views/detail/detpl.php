@@ -50,7 +50,64 @@
                 <button name="proposal" type="button" class="btn btn-sm btn-danger me-1"><i class="fa fa-file-pdf" style="font-size: 32px;"></i><br>Download</button>
             </a>
         </div>
-    <?php endforeach ?>
+
+        <?php 
+            $anggota = $db->query('SELECT * FROM anggota_dosen WHERE penelitian_id='.$penelitianID)->getResultArray(); 
+            if ($anggota) :
+        ?>
+        <div class="card bg-info text-white shadow">
+            <div class="card-body">
+                Identitas Anggota Dosen                
+            </div>
+        </div>
+        <div class="d-sm-flex align-items-center justify-content-between mb-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">#</th>
+                    <th scope="col" width="50px">NIDN</th>
+                    <th scope="col" width="200px">Nama</th>
+                    <th scope="col" width="200px">Institusi</th>
+                    <th scope="col" width="100px">Prodi</th>
+                    <th scope="col" width="200px">Tugas</th>
+                    <th scope="col" width="80px">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <?php
+                    $index = 1;                            
+                    foreach ($anggota as $data) :
+                    ?>
+                <tr>                    
+                    <td style="text-align: center"><?= $index ?></td>
+                    <td><?= $data['nidn'] ?></td>
+                    <td><?= $data['nama'] ? $data['nama'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td><?= $data['institusi'] ? $data['institusi'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td><?= $data['prodi'] ? $data['prodi'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td><?= $data['tugas'] ? $data['tugas'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td style="text-align: center">
+                        <?php switch ($data['status']) {
+                                case null: echo '<div class="bg-primary text-white small">usulan</div>';                                  
+                                    break;
+                                case 0: echo '<div class="bg-danger text-white small">ditolak</div>';
+                                    break;
+                                case 1: echo '<div class="bg-success text-white small">disetujui</div>';
+                                    break;                                
+                        } ?>
+                    </td>
+                </tr>
+            <?php
+                $index++;
+                endforeach; // Loop Data Angota Dosen
+            ?>
+            </tbody>
+        </table>
+    </div>
+    <?php endif ?>
+
+    <?php endforeach; // Loop Data Penelitian ?>
+
     <form method="post" action="<?= base_url() ?>/user/listPenelitian">
         <?= csrf_field() ?>
         <button class="btn btn-lg btn-primary btn-block mt-3 mb-4" type="submit">Kembali ke List Penelitian</button>

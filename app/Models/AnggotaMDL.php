@@ -37,4 +37,8 @@ class AnggotaMDL extends Model
         //${'anggota_dosen_'.$penelitianID} = $this->findAll();
     }
 
+    public function delAnggota($id){        
+        $this->delete(['id'=>$id]);
+    }
+
 }

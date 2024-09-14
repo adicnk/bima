@@ -13,9 +13,17 @@ function myFile() {
 
 }
 
-function showForm() {
+function showForm(name) {
     var x = document.getElementById("formBox");
-    x.removeAttribute("hidden");
+    var y = document.getElementById("formBox_nondosen");
+    switch(name){
+        case 'dosen' :
+            x.removeAttribute("hidden");
+            break;
+        case 'non dosen':
+            y.removeAttribute("hidden");
+            break;
+    }
 }
 
 function deleteAnggota(id){
