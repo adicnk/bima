@@ -19,6 +19,7 @@
     <?php endforeach; ?>
 
     <?php
+        site_url(uri_string());
         $db = \Config\Database::connect();
         // Defining variables
         $nidn = $nama = $institusi = $prodi = $tugas = "";        
@@ -27,23 +28,39 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $fungsi = input_data($_POST["fungsi"]);
 
-          //Get Var Dosen
-          $nidn = input_data($_POST["nidn"]);
-          $nama = input_data($_POST["nama"]);
-          $institusi = input_data($_POST["institusi"]);
-          $prodi = input_data($_POST["prodi"]);
-          $tugas = input_data($_POST["tugas"]);
+          switch($fungsi){
+            case 'dosen': //Get Var Dosen
+                $nidn = input_data($_POST["nidn"]);
+                $nama = input_data($_POST["nama"]);
+                $institusi = input_data($_POST["institusi"]);
+                $prodi = input_data($_POST["prodi"]);
+                $tugas = input_data($_POST["tugas"]);
+            break;
           
-          switch ($fungsi){
-              case 'add_dosen':
-                  $sql = 'INSERT INTO anggota_dosen (penelitian_id,nidn,nama,institusi,prodi,tugas) '. 'VALUES ('.$id.',"'.$nidn.'","'.$nama.'","'.$institusi.'","'.$prodi.'","'.$tugas.'")';                
-                  $db->query($sql);                        
-                  break;
+            case 'non dosen': //Get Var Non Dosen
+                $jenis_nondosen = input_data($_POST["jenis_nondosen"]);
+                $ktp_nondosen = input_data($_POST["ktp_nondosen"]);
+                $nama_nondosen = input_data($_POST["nama_nondosen"]);
+                $institusi_nondosen = input_data($_POST["institusi_nondosen"]);
+                $tugas_nondosen = input_data($_POST["tugas_nondosen"]);
+            break;
           }
+
+          switch ($fungsi){
+              case 'dosen':
+                  $sql = 'INSERT INTO anggota_dosen (penelitian_id,nidn,nama,institusi,prodi,tugas) '. 'VALUES ('.$id.',"'.$nidn.'","'.$nama.'","'.$institusi.'","'.$prodi.'","'.$tugas.'")';                
+               break;
+               case 'non dosen':
+                   $sql = 'INSERT INTO anggota_non_dosen (penelitian_id,jenis,ktp,nama,institusi,tugas) '. 'VALUES ('.$id.',"'.$jenis_nondosen.'","'.$ktp_nondosen.'","'.$nama_nondosen.'","'.$institusi_nondosen.'","'.$tugas_nondosen.'")';
+               break;
+            }
+            $db->query($sql);                        
         } 
         
           $sql = "SELECT * FROM anggota_dosen WHERE penelitian_id=".$id;                
           ${'anggota_'.$id} = $db->query($sql)->getResultArray();
+          $sql = "SELECT * FROM anggota_non_dosen WHERE penelitian_id=".$id;                
+          $nonDosen = $db->query($sql)->getResultArray();
           //dd(${'anggota_'.$id});
         
  
@@ -74,7 +91,7 @@
             </select>
         </div>
         <div class="col-md-12 mt-2"><textarea class="form-control" name="tugas" rows="4" placeholder="Tugas ....." aria-label="First name" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></textarea></div>
-        <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="add_dosen">Submit</button>
+        <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="dosen">Submit</button>
     </form>
 
     <?php if (${'anggota_'.$id}){?>
@@ -137,16 +154,16 @@
     <div class="h4 font-weight-bold mt-3">Daftar Anggota Non Dosen<img src="<?= base_url() ?>/icon/add.png" onclick="showForm('non dosen')"/></div>
     <hr/>
     <form method="post" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" class="row g-3" id="formBox_nondosen" hidden>        
-        <div class="col-md-2"><input name="jenis" type="text" class="form-control" placeholder="Jenis ...." aria-label="First name" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
-        <div class="col-md-2"><input name="ktp" type="text" class="form-control" placeholder="No.Identitas ...." aria-label="First name" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
-        <div class="col md-6"><input name="namaNonDosen" type="text" class="form-control" placeholder="Nama ....." aria-label="First name" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+        <div class="col-md-2"><input name="jenis_nondosen" type="text" class="form-control" placeholder="Jenis ...." aria-label="First name" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+        <div class="col-md-2"><input name="ktp_nondosen" type="text" class="form-control" placeholder="No.Identitas ...." aria-label="First name" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+        <div class="col md-6"><input name="nama_nondosen" type="text" class="form-control" placeholder="Nama ....." aria-label="First name" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
         <div class="col-md-10 mt-2">           
-            <select class="form-control" name="institusiNonDosen" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+            <select class="form-control" name="institusi_nondosen" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
                 <option value="Sekolah Tinggi Ilmu Keperawatan PPNI Jawa Barat">Sekolah Tinggi Ilmu Keperawatan PPNI Jawa Barat</option>
             </select>
         </div>
-        <div class="col-md-12 mt-2"><textarea class="form-control" name="tugas" rows="4" placeholder="Tugas ....." aria-label="First name" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></textarea></div>
-        <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="add">Submit</button>
+        <div class="col-md-12 mt-2"><textarea class="form-control" name="tugas_nondosen" rows="4" placeholder="Tugas ....." aria-label="First name" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></textarea></div>
+        <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="non dosen">Submit</button>
     </form>
 
     <?php if ($nonDosen){?>
@@ -172,7 +189,6 @@
                     ?>
                 <tr>                    
                     <td style="text-align: center"><?= $index ?></td>
-                    <td><?= $data['nidn'] ?></td>
                     <td><?= $data['jenis'] ? $data['jenis'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
                     <td><?= $data['ktp'] ? $data['ktp'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
                     <td><?= $data['nama'] ? $data['nama'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
@@ -189,7 +205,7 @@
                         } ?>
                     </td>
                     <td>
-                        <a href="/delete/NonDosen/<?= $id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
+                        <a href="/delete/nonDosen/<?= $id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>
