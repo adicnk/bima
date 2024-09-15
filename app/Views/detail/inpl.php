@@ -48,19 +48,21 @@
 
           switch ($fungsi){
               case 'dosen':
-                  $sql = 'INSERT INTO anggota_dosen (penelitian_id,nidn,nama,institusi,prodi,tugas) '. 'VALUES ('.$id.',"'.$nidn.'","'.$nama.'","'.$institusi.'","'.$prodi.'","'.$tugas.'")';                
+                  $sql = 'INSERT INTO anggota_dosen (penelitian_id,dosen_id,nidn,nama,institusi,prodi,tugas) '. 'VALUES ('.$id.','.$dosen_id.',"'.$nidn.'","'.$nama.'","'.$institusi.'","'.$prodi.'","'.$tugas.'")';                
                break;
                case 'non dosen':
-                   $sql = 'INSERT INTO anggota_non_dosen (penelitian_id,jenis,ktp,nama,institusi,tugas) '. 'VALUES ('.$id.',"'.$jenis_nondosen.'","'.$ktp_nondosen.'","'.$nama_nondosen.'","'.$institusi_nondosen.'","'.$tugas_nondosen.'")';
+                   $sql = 'INSERT INTO anggota_non_dosen (penelitian_id,dosen_id,jenis,ktp,nama,institusi,tugas) '. 'VALUES ('.$id.','.$dosen_id.',"'.$jenis_nondosen.'","'.$ktp_nondosen.'","'.$nama_nondosen.'","'.$institusi_nondosen.'","'.$tugas_nondosen.'")';
                break;
             }
             $db->query($sql);                        
         } 
         
-          $sql = "SELECT * FROM anggota_dosen WHERE penelitian_id=".$id;                
+          $sql = "SELECT * FROM anggota_dosen WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
           ${'anggota_'.$id} = $db->query($sql)->getResultArray();
-          $sql = "SELECT * FROM anggota_non_dosen WHERE penelitian_id=".$id;                
-          $nonDosen = $db->query($sql)->getResultArray();
+          $sql = "SELECT * FROM anggota_non_dosen WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;                
+          ${'nonDosen_'.$id} = $db->query($sql)->getResultArray();
+          $sql = "SELECT * FROM substansi_luaran WHERE penelitian_id=".$id;                
+          ${'substansi_'.$id} = $db->query($sql)->getResultArray();
           //dd(${'anggota_'.$id});
         
  
@@ -133,7 +135,7 @@
                         } ?>
                     </td>
                     <td>
-                        <a href="/delete/anggotaDosen/<?= $id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
+                        <a href="/delete/anggotaDosen/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>
@@ -166,7 +168,7 @@
         <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="non dosen">Submit</button>
     </form>
 
-    <?php if ($nonDosen){?>
+    <?php if (${'nonDosen_'.$id}){?>
     
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
         <table class="table table-striped">
@@ -185,7 +187,7 @@
                 <tr>
                     <?php
                     $index = 1 + (5 * ($currentPage - 1));
-                    foreach ($nonDosen as $data) :
+                    foreach (${'nonDosen_'.$id} as $data) :
                     ?>
                 <tr>                    
                     <td style="text-align: center"><?= $index ?></td>
@@ -220,6 +222,83 @@
     <?= $pager_nondosen->links('user', 'custom_pagination') ?>
     <!-- End Table Anggota Non Dosen -->
 
+    <?php } ?>
+
+   <!-- Table Substansi Luaran -->
+   <div class="h4 font-weight-bold">Daftar Substansi dan Luaran<img src="<?= base_url() ?>/icon/add.png" onclick="showForm('substansi')"/></div>
+    <hr/>
+    <form method="post" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" class="row g-3" id="formBox" hidden>        
+        <div class="col-md-2"><input name="makroRiset" type="text" class="form-control" placeholder="Makro Riset ...." aria-label="Makro Riset" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+        <div class="col-12 h5 mb-3 text-gray-800"><center><strong>Upload File</strong></center></div>
+        <div class="col-md-2"><input name="urutanTahun" type="text" class="form-control" placeholder="Makro Riset ...." aria-label="Makro Riset" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+        <div class="col-md-10 mt-2">           
+            <select class="form-control" name="kelompokLuran" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                <option value="Artikel di Jurnal">Artikel di Jurnal</option>
+            </select>
+        </div>
+        <div class="col-md-2 mt-2">           
+            <select class="form-control" name="jenisLuaran" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                <option value="Artikel di Jurnal Bereputasi Nasional Terindeks SINTA 1-4">Artikel di Jurnal Bereputasi Nasional Terindeks SINTA 1-4</option>
+            </select>
+        </div>
+        <div class="col-md-2 mt-2">           
+            <select class="form-control" name="target" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                <option value="Accepted/Published">Accepted/Published</option>
+            </select>
+        </div>
+        <div class="col md-6"><input name="keterangan" type="text" class="form-control" placeholder="Keterangan ....." aria-label="Keterangan" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+        <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="substansi">Submit</button>
+    </form>
+
+    <?php if (${'substansi_'.$id}){?>
+    <div>        
+        <p scope="col" width="50px">Makro Riset</p>
+        <p scope="col" width="200px">File</p>
+    </div>
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">#</th>
+                    <th scope="col" width="100px">Urutan Tahun</th>
+                    <th scope="col" width="200px">Kelompok Luaran</th>
+                    <th scope="col" width="200px">Jenis Luaran</th>
+                    <th scope="col" width="100px">Target</th>
+                    <th scope="col" width="150px">Keterangan</th>
+                    <th scope="col" width="80px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <?php
+                    $index = 1 + (5 * ($currentPage - 1));
+                    foreach ($subtansi as $data) :
+                    ?>
+                <tr>                    
+                    <td style="text-align: center"><?= $index ?></td>
+                    <td><?= $data['makro_riset'] ?></td>
+                    <td><?= '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td><?= $data['urutan_tahun'] ?></td>
+                    <td><?= $data['kelompok_luaran'] ? $data['kelompok_luaran'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td><?= $data['jenis_luaran'] ? $data['jenis_luaran'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td><?= $data['target'] ? $data['target'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td><?= $data['keterangan'] ? $data['keterangan'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td>
+                        <a href="/delete/anggotaDosen/<?= $id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
+                            <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
+                    </td>
+                </tr>
+            <?php
+                $index++;
+                endforeach;
+            ?>
+            </tbody>
+        </table>
+    </div>
+
+    <?= $pager->links('user', 'custom_pagination') ?>
+    <!-- End Table Anggota -->
+    <hr/>
     <?php } ?>
 
     <form method="post" action="<?= base_url() ?>/user/listPenelitian">

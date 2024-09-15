@@ -52,7 +52,8 @@
         </div>
 
         <?php 
-            $anggota = $db->query('SELECT * FROM anggota_dosen WHERE penelitian_id='.$penelitianID)->getResultArray(); 
+            $anggota = $db->query('SELECT * FROM anggota_dosen WHERE dosen_id='.$dosen_id.' AND penelitian_id='.$penelitianID)->getResultArray(); 
+            //dd('SELECT * FROM anggota_dosen WHERE dosen_id='.$dosen_id.' AND penelitian_id='.$penelitianID);
             if ($anggota) :
         ?>
         <div class="card bg-info text-white shadow">
@@ -100,6 +101,62 @@
             <?php
                 $index++;
                 endforeach; // Loop Data Angota Dosen
+            ?>
+            </tbody>
+        </table>
+    </div>
+    <?php endif ?>
+
+    <?php 
+            $nonDosen = $db->query('SELECT * FROM anggota_non_dosen WHERE dosen_id='.$dosen_id.' AND penelitian_id='.$penelitianID)->getResultArray(); 
+            if ($nonDosen) :
+        ?>
+        <div class="card bg-info text-white shadow">
+            <div class="card-body">
+                Identitas Anggota Non Dosen                
+            </div>
+        </div>    
+    <!-- Table Anggota Non Dosen -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">#</th>
+                    <th scope="col" width="50px">Jenis</th>
+                    <th scope="col" width="100px">Identitas</th>
+                    <th scope="col" width="200px">Nama</th>
+                    <th scope="col" width="200px">Institusi</th>
+                    <th scope="col" width="200px">Tugas</th>
+                    <th scope="col" width="80px">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <?php
+                    $index = 1;
+                    foreach ($nonDosen as $data) :
+                    ?>
+                <tr>                    
+                    <td style="text-align: center"><?= $index ?></td>
+                    <td><?= $data['jenis'] ? $data['jenis'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td><?= $data['ktp'] ? $data['ktp'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td><?= $data['nama'] ? $data['nama'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td><?= $data['institusi'] ? $data['institusi'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td><?= $data['tugas'] ? $data['tugas'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td style="text-align: center">
+                        <?php switch ($data['status']) {
+                                case null: echo '<div class="bg-primary text-white small">usulan</div>';                                  
+                                    break;
+                                case 0: echo '<div class="bg-danger text-white small">ditolak</div>';
+                                    break;
+                                case 1: echo '<div class="bg-success text-white small">disetujui</div>';
+                                    break;                                
+                        } ?>
+                    </td>
+                </tr>
+            <?php
+                $index++;
+                endforeach;
             ?>
             </tbody>
         </table>

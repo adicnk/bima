@@ -13,7 +13,7 @@ class AnggotaMDL extends Model
     protected $allowedFields = ['dosen_id','penelitian_id','nidn','nama','institusi',
                                 'prodi','tugas'];
 
-    public function copyTable($db,$tableAnggota,$penelitianID){
+    public function copyTable($db,$tableAnggota,$penelitianID,$dosen_id){
         //$db->query('DROP TABLE IF EXISTS '.$tableAnggota);
 
         //$db->query('
@@ -28,6 +28,7 @@ class AnggotaMDL extends Model
         //');
         
         $this->where('penelitian_id',$penelitianID);
+        $this->where('dosen_id',$dosen_id);
         return $this->findAll();
         
         //$query=$this->findAll();

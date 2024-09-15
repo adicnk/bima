@@ -5,19 +5,22 @@ namespace App\Controllers;
 use App\Models\DosenMDL;
 use App\Models\AnggotaMDL;
 use App\Models\NonDosenMDL;
+use App\Models\SubstansiMDL;
 use App\Models\PenelitianMDL;
 
 
 class User extends BaseController
 {
 
-    protected $dosenModel, $anggotaModel, $nonDosenModel, $penelitianModel;
+    protected $dosenModel, $anggotaModel, $nonDosenModel, $penelitianModel,
+                $substansiModel;
 
     public function __construct()
     {
         $this->dosenModel = new DosenMDL();
         $this->anggotaModel = new AnggotaMDL();
         $this->nonDosenModel = new NonDosenMDL();
+        $this->substansiModel = new SubstansiMDL();
         $this->penelitianModel = new PenelitianMDL();
     }
 
@@ -77,20 +80,22 @@ class User extends BaseController
         return view('list/penelitian', $data);   
     }
 
-    public function detpl($penelitianID) {
+    public function detpl($penelitianID,$dosen_id) {
         $data = [
             'title' => "Detail Data Penelitian",
             'penelitianID' => $penelitianID,
+            'dosen_id' => $dosen_id,
             'data_penelitian'=> $this->penelitianModel->searchJudulPenelitian($penelitianID)
         ];
         return view('detail/detpl', $data);        
     }
     
-    public function inpl($penelitianID) {
+    public function inpl($penelitianID,$dosen_id) {
         $db = \Config\Database::connect();
         $tableAnggota="anggota_dosen_".user_id();
-        $ {'anggota'.$penelitianID} = $this->anggotaModel->copyTable($db,$tableAnggota,$penelitianID);
-        $nonDosen = $this->nonDosenModel->searchAnggota($penelitianID);
+        $ {'anggota'.$penelitianID} = $this->anggotaModel->copyTable($db,$tableAnggota,$penelitianID,$dosen_id);
+        ${'nonDosen'.$penelitianID} = $this->nonDosenModel->searchAnggota($penelitianID);
+        ${'substansi'.$penelitianID} = $this->substansiModel->searchSubstansi($penelitianID);
 
         $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;        
         $currentPage_nondosen = $this->request->getVar('page_user_nondosen') ? $this->request->getVar('page_user_nondosen') : 1;        
@@ -98,6 +103,7 @@ class User extends BaseController
             'title' => "Input Data Penelitian",
             'judul'=> $this->penelitianModel->searchJudulPenelitian($penelitianID),
             'id'=> $penelitianID,
+            'dosen_id'=>$dosen_id,
 
             //for Anggota Dosen
             'anggota_'.$penelitianID => $ {'anggota'.$penelitianID},
@@ -106,10 +112,17 @@ class User extends BaseController
             'currentPage' => $currentPage,
 
             // Non Dosen
-            'nonDosen' => $nonDosen,
+            'nonDosen_'.$penelitianID => ${'nonDosen'.$penelitianID},
+            'paginate_nondosen' => $this->nonDosenModel->paginate(5, 'user'),
+            'pager_nondosen' => $this->nonDosenModel->pager,
+            'currentPage_nondosen' => $currentPage_nondosen,
+
+            //Subtansi
+            'substansi_'.$penelitianID => ${'substansi'.$penelitianID},
             'paginate_nondosen' => $this->nonDosenModel->paginate(5, 'user'),
             'pager_nondosen' => $this->nonDosenModel->pager,
             'currentPage_nondosen' => $currentPage_nondosen
+
         ];
         return view('detail/inpl', $data);        
     }

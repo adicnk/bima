@@ -72,3 +72,13 @@ CRITICAL - 2024-09-14 13:03:14 --> Call to undefined method App\Models\NonDosenM
 #4 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #5 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
 #6 {main}
+CRITICAL - 2024-09-14 13:35:17 --> Unmatched '}'
+#0 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/detpl', Array, true)
+#2 C:\xampp\htdocs\bima\app\Controllers\User.php(86): view('detail/detpl', Array)
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->detpl('1')
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
