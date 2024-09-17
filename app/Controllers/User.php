@@ -94,7 +94,7 @@ class User extends BaseController
         $db = \Config\Database::connect();
         $tableAnggota="anggota_dosen_".user_id();
         $ {'anggota'.$penelitianID} = $this->anggotaModel->copyTable($db,$tableAnggota,$penelitianID,$dosen_id);
-        ${'nonDosen'.$penelitianID} = $this->nonDosenModel->searchAnggota($penelitianID);
+        ${'nonDosen'.$penelitianID} = $this->nonDosenModel->searchAnggota($penelitianID,$dosen_id);
         ${'substansi'.$penelitianID} = $this->substansiModel->searchSubstansi($penelitianID);
 
         $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;        

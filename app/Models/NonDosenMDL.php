@@ -13,8 +13,8 @@ class NonDosenMDL extends Model
     protected $allowedFields = ['dosen_id','penelitian_id','jenis','ktp','nama',
                                 'institusi','tugas','status'];
 
-    public function searchAnggota($id){        
-        $this->where('penelitian_id',$id);
+    public function searchAnggota($id,$dosen_id){        
+        $this->where(['penelitian_id'=>$id, 'dosen_id'=>$dosen_id]);
         return $this->findAll();
     }
 

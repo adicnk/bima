@@ -207,7 +207,7 @@
                         } ?>
                     </td>
                     <td>
-                        <a href="/delete/nonDosen/<?= $id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
+                        <a href="/delete/nonDosen/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>

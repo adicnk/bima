@@ -39,7 +39,7 @@ class Delete extends BaseController
 
     public function dataAnggotaNon($penelitianID,$dosen_id){
         $ {'anggota'.$penelitianID} = $this->anggotaModel->copyTable(null,null,$penelitianID,$dosen_id);
-        ${'nonDosen'.$penelitianID} = $this->nonDosenModel->searchAnggota($penelitianID);
+        ${'nonDosen'.$penelitianID} = $this->nonDosenModel->searchAnggota($penelitianID,$dosen_id);
         ${'substansi'.$penelitianID} = $this->substansiModel->searchSubstansi($penelitianID);
 
         $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;        
