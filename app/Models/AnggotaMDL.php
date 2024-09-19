@@ -27,7 +27,7 @@ class AnggotaMDL extends Model
         //    )
         //');
         
-        $this->where('penelitian_id',$penelitianID);
+        $this->where(['penelitian_id'=>$penelitianID, 'dosen_id'=>$dosen_id]);
         $this->where('dosen_id',$dosen_id);
         return $this->findAll();
         

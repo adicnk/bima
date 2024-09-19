@@ -16,6 +16,7 @@ function myFile() {
 function showForm(name) {
     var x = document.getElementById("formBox");
     var y = document.getElementById("formBox_nondosen");
+    var z = document.getElementById("formBox_substansi");
     switch(name){
         case 'dosen' :
             x.removeAttribute("hidden");
@@ -23,6 +24,10 @@ function showForm(name) {
         case 'non dosen':
             y.removeAttribute("hidden");
             break;
+        case 'substansi':
+            z.removeAttribute("hidden");
+            break;
+
     }
 }
 

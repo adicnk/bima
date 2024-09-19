@@ -22,12 +22,16 @@
         site_url(uri_string());
         $db = \Config\Database::connect();
         // Defining variables
-        $nidn = $nama = $institusi = $prodi = $tugas = "";        
+        $nidn = $nama = $institusi = $prodi = $tugas = 
+        $jenis_nondosen = $ktp_nondosen = $nama_nondosen = 
+        $institusi_nondosen = $tugas_nondosen = 
+        $makro_riset = $fileSubstansi = $urutanTahun =
+        $kelompokLuaran = $jenisLuaran = $targetLuaran = 
+        $keteranganLuaran = null;        
  
         // Checking for a POST request
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $fungsi = input_data($_POST["fungsi"]);
-
           switch($fungsi){
             case 'dosen': //Get Var Dosen
                 $nidn = input_data($_POST["nidn"]);
@@ -35,8 +39,7 @@
                 $institusi = input_data($_POST["institusi"]);
                 $prodi = input_data($_POST["prodi"]);
                 $tugas = input_data($_POST["tugas"]);
-            break;
-          
+            break;          
             case 'non dosen': //Get Var Non Dosen
                 $jenis_nondosen = input_data($_POST["jenis_nondosen"]);
                 $ktp_nondosen = input_data($_POST["ktp_nondosen"]);
@@ -44,14 +47,36 @@
                 $institusi_nondosen = input_data($_POST["institusi_nondosen"]);
                 $tugas_nondosen = input_data($_POST["tugas_nondosen"]);
             break;
+            case "substansi":
+                $makroRiset = input_data($_POST["makroRiset"]);
+                $fileSubstansi = input_data($_FILES["fileSubstansi"]["name"]);                
+                if ($fileSubstansi) {
+                    $path = "file/".basename($fileSubstansi);
+                    $renFile = "PLSub".date("Ymd")."_".$id.'_'.$dosen_id.".".
+                                strtolower(pathinfo($path,PATHINFO_EXTENSION));
+                move_uploaded_file($_FILES["fileSubstansi"]["tmp_name"], "file/".$renFile);
+                } else { $renFile=null; }
+
+                $urutanTahun = input_data($_POST["urutanTahun"]);
+                $kelompokLuaran = input_data($_POST["kelompokLuaran"]);
+                $jenisLuaran = input_data($_POST["jenisLuaran"]);
+                $targetLuaran = input_data($_POST["targetLuaran"]);
+                $keteranganLuaran = input_data($_POST["keteranganLuaran"]);
+                break;
           }
 
           switch ($fungsi){
               case 'dosen':
-                  $sql = 'INSERT INTO anggota_dosen (penelitian_id,dosen_id,nidn,nama,institusi,prodi,tugas) '. 'VALUES ('.$id.','.$dosen_id.',"'.$nidn.'","'.$nama.'","'.$institusi.'","'.$prodi.'","'.$tugas.'")';                
+                  $sql = 'INSERT INTO anggota_dosen (penelitian_id,dosen_id,nidn,nama,institusi,prodi,tugas) '. 
+                        'VALUES ('.$id.','.$dosen_id.',"'.$nidn.'","'.$nama.'","'.$institusi.'","'.$prodi.'","'.$tugas.'")';                
                break;
                case 'non dosen':
-                   $sql = 'INSERT INTO anggota_non_dosen (penelitian_id,dosen_id,jenis,ktp,nama,institusi,tugas) '. 'VALUES ('.$id.','.$dosen_id.',"'.$jenis_nondosen.'","'.$ktp_nondosen.'","'.$nama_nondosen.'","'.$institusi_nondosen.'","'.$tugas_nondosen.'")';
+                   $sql = 'INSERT INTO anggota_non_dosen (penelitian_id,dosen_id,jenis,ktp,nama,institusi,tugas) '. 
+                        'VALUES ('.$id.','.$dosen_id.',"'.$jenis_nondosen.'","'.$ktp_nondosen.'","'.$nama_nondosen.'","'.$institusi_nondosen.'","'.$tugas_nondosen.'")';
+               break;
+               case 'substansi':
+                   $sql = 'INSERT INTO substansi_luaran (penelitian_id,dosen_id,makro_riset,file_luaran,urutan_tahun,kelompok_luaran,jenis_luaran,target_luaran,keterangan) '. 
+                        'VALUES ('.$id.','.$dosen_id.',"'.$makroRiset.'","'.$renFile.'","'.$urutanTahun.'","'.$kelompokLuaran.'","'.$jenisLuaran.'","'.$targetLuaran.'","'.$keteranganLuaran.'")';
                break;
             }
             $db->query($sql);                        
@@ -227,64 +252,94 @@
    <!-- Table Substansi Luaran -->
    <div class="h4 font-weight-bold">Daftar Substansi dan Luaran<img src="<?= base_url() ?>/icon/add.png" onclick="showForm('substansi')"/></div>
     <hr/>
-    <form method="post" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" class="row g-3" id="formBox" hidden>        
-        <div class="col-md-2"><input name="makroRiset" type="text" class="form-control" placeholder="Makro Riset ...." aria-label="Makro Riset" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
-        <div class="col-12 h5 mb-3 text-gray-800"><center><strong>Upload File</strong></center></div>
-        <div class="col-md-2"><input name="urutanTahun" type="text" class="form-control" placeholder="Makro Riset ...." aria-label="Makro Riset" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
-        <div class="col-md-10 mt-2">           
-            <select class="form-control" name="kelompokLuran" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                <option value="Artikel di Jurnal">Artikel di Jurnal</option>
-            </select>
+    <form method="post" enctype="multipart/form-data" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" id="formBox_substansi" hidden>        
+        <div  class="row g-3">
+            <?php  
+                $sql = "SELECT * FROM substansi_luaran WHERE penelitian_id=".$id ;
+                ${'substansi_x'.$id} = $db->query($sql)->getResultArray();
+                if (!${'substansi_x'.$id}) {
+            ?>
+            <div class="col-md-4"><input name="makroRiset" type="text" class="form-control" placeholder="Makro Riset ...." aria-label="Makro Riset" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+            <div class="col-md-6">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="fileSubstansi">
+                    <label class="custom-file-label" for="fileSubstansi">Upload File Substansi</label>
+                </div>
+            </div>
+            <?php } else { ?>
+                <div>
+                    <input name="makroRiset" type="text" hidden>
+                    <input type="file" class="custom-file-input" name="fileSubstansi" hidden>
+                </div>
+            <?php } ?>
         </div>
-        <div class="col-md-2 mt-2">           
-            <select class="form-control" name="jenisLuaran" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                <option value="Artikel di Jurnal Bereputasi Nasional Terindeks SINTA 1-4">Artikel di Jurnal Bereputasi Nasional Terindeks SINTA 1-4</option>
-            </select>
+        <hr/>
+        <div  class="row g-3">
+            <div class="col-md-2"><input name="urutanTahun" type="text" class="form-control" placeholder="Urutan Tahun ...." aria-label="Makro Riset" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+            <div class="col-md-10">           
+                <select class="form-control" name="kelompokLuaran" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                    <option value="Artikel di Jurnal">Artikel di Jurnal</option>
+                </select>
+            </div>
+            <div class="col-md-8 mt-2">           
+                <select class="form-control" name="jenisLuaran" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                    <option value="Artikel di Jurnal Bereputasi Nasional Terindeks SINTA 1-4">Artikel di Jurnal Bereputasi Nasional Terindeks SINTA 1-4</option>
+                </select>
+            </div>
+            <div class="col-md-4 mt-2">           
+                <select class="form-control" name="targetLuaran" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                    <option value="Accepted/Published">Accepted/Published</option>
+                </select>
+            </div>
+            <div class="col md-6 mt-2"><input name="keteranganLuaran" rows="2" type="text" class="form-control" placeholder="Keterangan ....." aria-label="Keterangan" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
         </div>
-        <div class="col-md-2 mt-2">           
-            <select class="form-control" name="target" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
-                <option value="Accepted/Published">Accepted/Published</option>
-            </select>
-        </div>
-        <div class="col md-6"><input name="keterangan" type="text" class="form-control" placeholder="Keterangan ....." aria-label="Keterangan" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
         <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="substansi">Submit</button>
     </form>
 
     <?php if (${'substansi_'.$id}){?>
-    <div>        
-        <p scope="col" width="50px">Makro Riset</p>
-        <p scope="col" width="200px">File</p>
-    </div>
+       <?php  
+          $sql = "SELECT * FROM substansi_luaran WHERE penelitian_id=".$id." AND (makro_riset IS NOT null OR file_luaran IS NOT null)" ;
+          ${'substansi_x'.$id} = $db->query($sql)->getResultArray();        
+          if (${'substansi_x'.$id}) :
+            $idx=1;
+            foreach (${'substansi_x'.$id} as $dataSecondary) :
+                if ($idx==1):
+        ?> 
+            <div>        
+                <p scope="col" width="50px"><b>Nama Makro Riset :</b>  <?= $dataSecondary['makro_riset'] ?></p>
+                <p scope="col" width="200px"><b>Subtansi : <?= $dataSecondary['file_luaran'] ?
+                    '<a target="_blank" rel="noopener noreferrer" href="" download="" 
+                    class="btn btn-sm btn-danger"><span class="fa fa-file-pdf"></span>'.$dataSecondary['file_luaran'].'</a></b></p>' : '-' ?></b>
+            </div>
+        <?php $idx++; endif; endforeach; endif; ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col" style="text-align: center">#</th>
-                    <th scope="col" width="100px">Urutan Tahun</th>
-                    <th scope="col" width="200px">Kelompok Luaran</th>
-                    <th scope="col" width="200px">Jenis Luaran</th>
-                    <th scope="col" width="100px">Target</th>
-                    <th scope="col" width="150px">Keterangan</th>
-                    <th scope="col" width="80px"></th>
+                    <th scope="col" width="120px">Urutan Tahun</th>
+                    <th scope="col" width="150px">Kelompok Luaran</th>
+                    <th scope="col" width="250px">Jenis Luaran</th>
+                    <th scope="col" width="50px">Target</th>
+                    <th scope="col" width="200px">Keterangan</th>
+                    <th scope="col" width="50px"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <?php
                     $index = 1 + (5 * ($currentPage - 1));
-                    foreach ($subtansi as $data) :
+                    foreach (${'substansi_'.$id} as $data) :                        
                     ?>
                 <tr>                    
                     <td style="text-align: center"><?= $index ?></td>
-                    <td><?= $data['makro_riset'] ?></td>
-                    <td><?= '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
-                    <td><?= $data['urutan_tahun'] ?></td>
-                    <td><?= $data['kelompok_luaran'] ? $data['kelompok_luaran'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
-                    <td><?= $data['jenis_luaran'] ? $data['jenis_luaran'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
-                    <td><?= $data['target'] ? $data['target'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
-                    <td><?= $data['keterangan'] ? $data['keterangan'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td>Tahun ke - <?= $data['urutan_tahun'] ?></td>
+                    <td><?= $data['kelompok_luaran'] ? $data['kelompok_luaran'] : '-' ?></td>
+                    <td><?= $data['jenis_luaran'] ? $data['jenis_luaran'] : '-' ?></td>
+                    <td><?= $data['target_luaran'] ? $data['target_luaran'] : '-' ?></td>
+                    <td><?= $data['keterangan'] ? $data['keterangan'] : '-' ?></td>
                     <td>
-                        <a href="/delete/anggotaDosen/<?= $id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
+                        <a href="/delete/substansi/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Substansi">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>
@@ -297,7 +352,7 @@
     </div>
 
     <?= $pager->links('user', 'custom_pagination') ?>
-    <!-- End Table Anggota -->
+    <!-- End Table Substansi -->
     <hr/>
     <?php } ?>
 

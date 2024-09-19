@@ -37,10 +37,17 @@ class Delete extends BaseController
         return view('detail/inpl', $data);
     }
 
+    public function substansi($penelitianID,$dosen_id,$anggotaID)
+    {
+        $this->substansiModel->delAnggota($anggotaID);
+        $data = $this->dataAnggotaNon($penelitianID,$dosen_id);
+        return view('detail/inpl', $data);
+    }
+
     public function dataAnggotaNon($penelitianID,$dosen_id){
         $ {'anggota'.$penelitianID} = $this->anggotaModel->copyTable(null,null,$penelitianID,$dosen_id);
         ${'nonDosen'.$penelitianID} = $this->nonDosenModel->searchAnggota($penelitianID,$dosen_id);
-        ${'substansi'.$penelitianID} = $this->substansiModel->searchSubstansi($penelitianID);
+        ${'substansi'.$penelitianID} = $this->substansiModel->searchSubstansi($penelitianID,$dosen_id);
 
         $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;        
         $currentPage_nondosen = $this->request->getVar('page_user_nondosen') ? $this->request->getVar('page_user_nondosen') : 1;        

@@ -165,6 +165,67 @@
 
     <?php endforeach; // Loop Data Penelitian ?>
 
+    <?php 
+            $substansi = $db->query('SELECT * FROM substansi_luaran WHERE dosen_id='.$dosen_id.' AND penelitian_id='.$penelitianID)->getResultArray(); 
+            if ($substansi) :
+    ?>
+        <div class="card bg-info text-white shadow">
+            <div class="card-body">
+                Substansi dan Luaran
+            </div>
+        </div>    
+       <?php  
+          $sql = "SELECT * FROM substansi_luaran WHERE penelitian_id=".$penelitianID." AND (makro_riset IS NOT null OR file_luaran IS NOT null)" ;
+          $substansi_x = $db->query($sql)->getResultArray();        
+          if ($substansi_x) :
+            $idx=1;
+            foreach ($substansi_x as $dataSecondary) :
+                if ($idx==1):
+        ?> 
+            <div>        
+                <p scope="col" width="50px"><b>Nama Makro Riset :</b>  <?= $dataSecondary['makro_riset'] ?></p>
+                <p scope="col" width="200px"><b>Subtansi : <?= $dataSecondary['file_luaran'] ?
+                    '<a href="'.base_url().'/FileController/downloadSubstanti/'. $dataSecondary['file_luaran'].'"  
+                    class="btn btn-sm btn-danger"><span class="fa fa-file-pdf"></span>Download</a></b></p>' : '-' ?></b>
+            </div>
+        <?php $idx++; endif; endforeach; endif; ?>
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">#</th>
+                    <th scope="col" width="120px">Urutan Tahun</th>
+                    <th scope="col" width="150px">Kelompok Luaran</th>
+                    <th scope="col" width="250px">Jenis Luaran</th>
+                    <th scope="col" width="50px">Target</th>
+                    <th scope="col" width="200px">Keterangan</th>
+                    <th scope="col" width="50px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <?php
+                    $index = 1;
+                    foreach ($substansi as $data) :                        
+                    ?>
+                <tr>                    
+                    <td style="text-align: center"><?= $index ?></td>
+                    <td>Tahun ke - <?= $data['urutan_tahun'] ?></td>
+                    <td><?= $data['kelompok_luaran'] ? $data['kelompok_luaran'] : '-' ?></td>
+                    <td><?= $data['jenis_luaran'] ? $data['jenis_luaran'] : '-' ?></td>
+                    <td><?= $data['target_luaran'] ? $data['target_luaran'] : '-' ?></td>
+                    <td><?= $data['keterangan'] ? $data['keterangan'] : '-' ?></td>
+                </tr>
+            <?php
+                $index++;
+                endforeach;
+            ?>
+            </tbody>
+        </table>
+    </div>
+    <?php endif; ?>
+
+
     <form method="post" action="<?= base_url() ?>/user/listPenelitian">
         <?= csrf_field() ?>
         <button class="btn btn-lg btn-primary btn-block mt-3 mb-4" type="submit">Kembali ke List Penelitian</button>
