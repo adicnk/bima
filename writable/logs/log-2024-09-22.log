@@ -1,0 +1,60 @@
+CRITICAL - 2024-09-22 04:52:46 --> Undefined variable $1000000
+#0 C:\xampp\htdocs\bima\app\Views\detail\inpl.php(105): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 105)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpl', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\User.php(136): view('detail/inpl', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->inpl('1', '1')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+ERROR - 2024-09-22 06:14:49 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'INNER JOIN rab_detail ON rab.id=rab_detail.rab_id' at line 1
+CRITICAL - 2024-09-22 06:14:49 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'INNER JOIN rab_detail ON rab.id=rab_detail.rab_id' at line 1
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT * FROM r...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM r...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM r...')
+#3 C:\xampp\htdocs\bima\app\Views\detail\inpl.php(121): CodeIgniter\Database\BaseConnection->query('SELECT * FROM r...')
+#4 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpl', Array, true)
+#7 C:\xampp\htdocs\bima\app\Controllers\User.php(136): view('detail/inpl', Array)
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->inpl('1', '1')
+#9 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#10 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+ERROR - 2024-09-22 06:16:34 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'INNER JOIN rab_detail rd ON r.id=rd.rab_id' at line 1
+CRITICAL - 2024-09-22 06:16:34 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'INNER JOIN rab_detail rd ON r.id=rd.rab_id' at line 1
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT * FROM r...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM r...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM r...')
+#3 C:\xampp\htdocs\bima\app\Views\detail\inpl.php(121): CodeIgniter\Database\BaseConnection->query('SELECT * FROM r...')
+#4 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpl', Array, true)
+#7 C:\xampp\htdocs\bima\app\Controllers\User.php(136): view('detail/inpl', Array)
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->inpl('1', '1')
+#9 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#10 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+ERROR - 2024-09-22 06:16:39 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'INNER JOIN rab_detail rd ON r.id=rd.rab_id' at line 1
+CRITICAL - 2024-09-22 06:16:39 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'INNER JOIN rab_detail rd ON r.id=rd.rab_id' at line 1
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT * FROM r...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM r...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM r...')
+#3 C:\xampp\htdocs\bima\app\Views\detail\inpl.php(121): CodeIgniter\Database\BaseConnection->query('SELECT * FROM r...')
+#4 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpl', Array, true)
+#7 C:\xampp\htdocs\bima\app\Controllers\User.php(136): view('detail/inpl', Array)
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->inpl('1', '1')
+#9 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#10 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#13 {main}

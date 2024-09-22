@@ -5,6 +5,7 @@ Use App\Models\UserMDL;
 use App\Models\DosenMDL;
 use App\Models\DosenProfileMDL;
 use App\Models\PenelitianMDL;
+use App\Models\RabMDL;
 use App\Models\SintaMDL;
 use App\Models\ScopusMDL;
 
@@ -13,7 +14,8 @@ class Submit extends BaseController
 {
 
     protected $userModel, $dosenModel, $dosenProfileModel,
-                $penelitianModel, $sintaModel, $scopusModel;
+                $penelitianModel, $sintaModel, $scopusModel,
+                $rabModel;
 
     public function __construct()
     {
@@ -21,6 +23,7 @@ class Submit extends BaseController
         $this->dosenModel = new DosenMDL();
         $this->dosenProfileModel = new DosenProfileMDL();
         $this->penelitianModel = new PenelitianMDL();
+        $this->rabModel = new RabMDL();
         $this->sintaModel = new SintaMDL();
         $this->scopusModel = new ScopusMDL();
     }

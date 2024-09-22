@@ -6,6 +6,7 @@ use App\Models\DosenMDL;
 use App\Models\AnggotaMDL;
 use App\Models\NonDosenMDL;
 use App\Models\SubstansiMDL;
+use App\Models\RabMDL;
 use App\Models\PenelitianMDL;
 
 
@@ -13,7 +14,7 @@ class User extends BaseController
 {
 
     protected $dosenModel, $anggotaModel, $nonDosenModel, $penelitianModel,
-                $substansiModel;
+                $substansiModel, $rabModel;
 
     public function __construct()
     {
@@ -21,6 +22,7 @@ class User extends BaseController
         $this->anggotaModel = new AnggotaMDL();
         $this->nonDosenModel = new NonDosenMDL();
         $this->substansiModel = new SubstansiMDL();
+        $this->rabModel = new RabMDL();
         $this->penelitianModel = new PenelitianMDL();
     }
 
@@ -96,6 +98,7 @@ class User extends BaseController
         $ {'anggota'.$penelitianID} = $this->anggotaModel->copyTable($db,$tableAnggota,$penelitianID,$dosen_id);
         ${'nonDosen'.$penelitianID} = $this->nonDosenModel->searchAnggota($penelitianID,$dosen_id);
         ${'substansi'.$penelitianID} = $this->substansiModel->searchSubstansi($penelitianID,$dosen_id);
+        ${'rab'.$penelitianID} = $this->rabModel->searchRab($penelitianID,$dosen_id);
 
         $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;        
         $currentPage_nondosen = $this->request->getVar('page_user_nondosen') ? $this->request->getVar('page_user_nondosen') : 1;        
@@ -121,7 +124,13 @@ class User extends BaseController
             'substansi_'.$penelitianID => ${'substansi'.$penelitianID},
             'paginate_nondosen' => $this->nonDosenModel->paginate(5, 'user'),
             'pager_nondosen' => $this->nonDosenModel->pager,
-            'currentPage_nondosen' => $currentPage_nondosen
+            'currentPage_nondosen' => $currentPage_nondosen,
+            
+            //RAB
+            'rab_'.$penelitianID => ${'rab'.$penelitianID},
+            'paginate_rab' => $this->nonDosenModel->paginate(5, 'user'),
+            'pager_rab' => $this->nonDosenModel->pager,
+            'currentPage_rab' => $currentPage_nondosen,
 
         ];
         return view('detail/inpl', $data);        

@@ -27,7 +27,10 @@
         $institusi_nondosen = $tugas_nondosen = 
         $makro_riset = $fileSubstansi = $urutanTahun =
         $kelompokLuaran = $jenisLuaran = $targetLuaran = 
-        $keteranganLuaran = null;        
+        $keteranganLuaran = $kelompokRAB = $komponenRAB =
+        $itemRAB = $tahunRAB = null;   
+        
+        $hargaRAB = $volumeRAB = $danaRencanaRAB = 0;
  
         // Checking for a POST request
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -63,6 +66,23 @@
                 $targetLuaran = input_data($_POST["targetLuaran"]);
                 $keteranganLuaran = input_data($_POST["keteranganLuaran"]);
                 break;
+
+                case 'rab' :
+                $tahunRAB =  input_data($_POST["tahunRAB"]);                
+                $kelompokRAB = input_data($_POST["kelompokRAB"]);                
+                $komponenRAB = input_data($_POST["komponenRAB"]);                
+                $itemRAB = input_data($_POST["itemRAB"]);                
+                $satuanRAB = input_data($_POST["satuanRAB"]);                
+                $hargaRAB = input_data($_POST["hargaRAB"]);                
+                $volumeRAB = input_data($_POST["volumeRAB"]);              
+                $totalRAB = $hargaRAB * $volumeRAB;
+                break;
+                
+                case "tahun rab":
+                    $danaRencanaRAB = input_data($_POST["danaRencanaRAB"]);              
+                    $sql = "SELECT * FROM rab WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
+                    $tahunRAB = $db->query($sql)->getNumRows() + 1;
+                break;
           }
 
           switch ($fungsi){
@@ -78,17 +98,27 @@
                    $sql = 'INSERT INTO substansi_luaran (penelitian_id,dosen_id,makro_riset,file_luaran,urutan_tahun,kelompok_luaran,jenis_luaran,target_luaran,keterangan) '. 
                         'VALUES ('.$id.','.$dosen_id.',"'.$makroRiset.'","'.$renFile.'","'.$urutanTahun.'","'.$kelompokLuaran.'","'.$jenisLuaran.'","'.$targetLuaran.'","'.$keteranganLuaran.'")';
                break;
+               case 'rab':
+                   $sql = 'INSERT INTO rab_detail (rab_id,rab_kelompok_id,rab_komponen_id,item,rab_satuan_id,harga,volume,total) '. 
+                        'VALUES ('.$tahunRAB.','.$kelompokRAB.','.$komponenRAB.',"'.$itemRAB.'",'.$satuanRAB.','.$hargaRAB.','.$volumeRAB.','.$totalRAB.')';
+               break;
+               case 'tahun rab':
+                   $sql = 'INSERT INTO rab (penelitian_id,dosen_id,tahun,dana_direncanakan) '. 
+                        'VALUES ('.$id.','.$dosen_id.','.$tahunRAB.','.$danaRencanaRAB.')';
+               break;
             }
             $db->query($sql);                        
+            //dd($sql);
         } 
         
           $sql = "SELECT * FROM anggota_dosen WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
           ${'anggota_'.$id} = $db->query($sql)->getResultArray();
           $sql = "SELECT * FROM anggota_non_dosen WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;                
           ${'nonDosen_'.$id} = $db->query($sql)->getResultArray();
-          $sql = "SELECT * FROM substansi_luaran WHERE penelitian_id=".$id;                
+          $sql = "SELECT * FROM substansi_luaran WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;                
           ${'substansi_'.$id} = $db->query($sql)->getResultArray();
-          //dd(${'anggota_'.$id});
+          $sql = "SELECT * FROM rab r INNER JOIN rab_detail rd ON r.id=rd.rab_id WHERE r.dosen_id=".$dosen_id." AND r.penelitian_id=".$id.'' ;                
+          ${'rab_'.$id} = $db->query($sql)->getResultArray();
         
  
         // Removing the redundant HTML characters if any exist.
@@ -353,6 +383,210 @@
 
     <?= $pager->links('user', 'custom_pagination') ?>
     <!-- End Table Substansi -->
+    <hr/>
+    <?php } ?>
+
+   <!-- Table RAB -->   
+    <?php 
+        $sql= "SELECT * FROM rab WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
+        $rabCombo = $db->query($sql)->getResultArray();
+    ?>
+    <div class="h4 font-weight-bold">Daftar Rancangan Anggaran Biaya</div>
+    <hr/>
+    <div class="row mr-2">
+        <form method="post" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
+            <div class="form-group mt-2">                        
+                <div class="accordion" id="accordion">
+                    <div class="card-body">
+                        <div class=" form-row align-items-right mt-2">
+                            <?php  
+                            if ($rabCombo) { 
+                                $idx=1;
+                                foreach ($rabCombo as $data) :
+                                    if ($idx==1) :
+                            ?>
+
+                            <div class="col-12 mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Dana yang direncanakan</strong></div>
+                                    <input type="text" name="danaRencanaRAB" class="form-control" placeholder=<?= $data['dana_direncanakan'] ?> disabled>
+                                </div>
+                            </div>
+                            <?php endif; endforeach; } else { ?>                            
+                            <div class="col-12 mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><strong>Dana yang direncanakan</strong></div>
+                                    <input type="text" name="danaRencanaRAB" class="form-control" placeholder="Masukkan Dana ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);">
+                                </div>
+                            </div>
+                            <?php } ?>
+                            <div class="col-6">
+                                <button name="fungsi" value="tahun rab" type="submit" class="btn btn-sm btn-primary shadow-sm mb-2"><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Tahun</button>
+                                <select id="tahunSelect" class="form-control" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onchange="insertValue('rab')">
+                                    <option value="">Pilih Tahun</option>
+                                    <?php                                  
+                                    foreach ($rabCombo as $data) :
+                                        ?>
+                                    <option value="<?= $data['id'] ?>"> <?= $data['tahun']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <div id="tambahTahun" onclick="showForm('rab')" class="btn btn-sm btn-danger shadow-sm mt-2" hidden><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Item</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <form method="post" enctype="multipart/form-data" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" id="formBox_rab" hidden>        
+        <hr/><b>Add Detail RAB</b>
+        <div class="form-group mt-2">                        
+            <div class="accordion" id="accordion">
+                <div class="card-body">
+                    <div class="form-row align-items-right">
+                        <div class="col-8">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><strong>Kelompok</strong></div>
+                                <select class="form-control" name="kelompokRAB" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                <?php 
+                                    $sql="SELECT * FROM rab_kelompok"; 
+                                    $rabCombo = $db->query($sql)->getResultArray();
+                                    foreach ($rabCombo as $data) :
+                                ?>
+                                    <option value="<?= $data['id'] ?>"><?= $data['name'] ?></option>    
+                                <?php endforeach; ?>                            </select>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="form-row align-items-right mt-2">
+                        <div class="col-6">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><strong>Komponen</strong></div>
+                                <select class="form-control" name="komponenRAB" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                <?php 
+                                    $sql="SELECT * FROM rab_komponen"; 
+                                    $rabCombo = $db->query($sql)->getResultArray();
+                                    foreach ($rabCombo as $data) :
+                                ?>
+                                    <option value="<?= $data['id'] ?>"><?= $data['name'] ?></option>    
+                                <?php endforeach; ?>                            </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row align-items-right mt-2">
+                        <div class="col-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><strong>Satuan</strong></div>
+                                <select class="form-control" name="satuanRAB" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                                <?php 
+                                    $sql="SELECT * FROM rab_satuan"; 
+                                    $rabCombo = $db->query($sql)->getResultArray();
+                                    foreach ($rabCombo as $data) :
+                                ?>
+                                    <option value="<?= $data['id'] ?>"><?= $data['name'] ?></option>    
+                                <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" form-row align-items-right mt-2">
+                        <div class="col-10">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><strong>Item</strong></div>
+                                <textarea class="form-control" name="itemRAB" rows="2" placeholder="Masukkan Item ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" form-row align-items-right mt-2">
+                        <div class="col-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><strong>Harga (Rp)</strong></div>
+                                <input type="text" name="hargaRAB" class="form-control" placeholder="Masukkan Harga ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);">
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" form-row align-items-right mt-2">
+                        <div class="col-4">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><strong>Volume</strong></div>
+                                <input type="text" name="volumeRAB" class="form-control" placeholder="Masukkan Volume ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);">
+                            </div>
+                        </div>
+                    </div>
+                    <input id="tahunRAB" name="tahunRAB" type="text" hidden>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="rab">Submit</button>    </form>
+    </form>
+    <?php if (${'rab_'.$id}){?>        
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">#</th>
+                    <th scope="col" width="250px">Kelompok</th>
+                    <th scope="col" width="250px">Komponen</th>
+                    <th scope="col" width="300px">Item</th>
+                    <th scope="col" width="150px">Satuan</th>
+                    <th scope="col" width="80px">Harga</th>
+                    <th scope="col" width="80px">Volume</th>
+                    <th scope="col" width="80px">Total</th>
+                    <th scope="col" width="50px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <?php
+                    $index = 1 + (5 * ($currentPage - 1));
+                    foreach (${'rab_'.$id} as $data) :                        
+                    ?>
+                <tr>                    
+                    <td style="text-align: center"><?= $index ?></td>
+                    <?php 
+                        $query="SELECT * FROM rab_kelompok WHERE id=". $data['rab_kelompok_id']; 
+                        $rabDetail = $db->query($query)->getResultArray();
+                        foreach ($rabDetail as $rd) :
+                    ?>
+                    <td><?= $rd['name'] ? $rd['name'] : '-' ?></td>
+                    <?php endforeach ?>
+
+                    <?php 
+                        $query="SELECT * FROM rab_komponen WHERE id=". $data['rab_komponen_id']; 
+                        $rabDetail = $db->query($query)->getResultArray();
+                        foreach ($rabDetail as $rd) :
+                    ?>
+                    <td><?= $rd['name'] ? $rd['name'] : '-' ?></td>
+                    <?php endforeach ?>
+                    
+                    <td><?= $data['item'] ? $data['item'] : '-' ?></td>
+                    
+                    <?php 
+                        $query="SELECT * FROM rab_satuan WHERE id=". $data['rab_satuan_id']; 
+                        $rabDetail = $db->query($query)->getResultArray();
+                        foreach ($rabDetail as $rd) :
+                    ?>
+                    <td><?= $rd['name'] ? $rd['name'] : '-' ?></td>
+                    <?php endforeach ?>
+
+                    <td><?= $data['harga'] ? $data['harga'] : '-' ?></td>
+                    <td><?= $data['volume'] ? $data['volume'] : '-' ?></td>
+                    <td><?= $data['total'] ? $data['total'] : '-' ?></td>
+                    <td>
+                        <a href="/delete/substansi/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Substansi">
+                            <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
+                    </td>
+                </tr>
+            <?php
+                $index++;
+                endforeach;
+            ?>
+            </tbody>
+        </table>
+    </div>
+
+    <?= $pager->links('user', 'custom_pagination') ?>
+    <!-- End Table RAB -->
     <hr/>
     <?php } ?>
 
