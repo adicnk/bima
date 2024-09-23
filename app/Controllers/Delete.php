@@ -5,13 +5,16 @@ use App\Models\DosenMDL;
 use App\Models\AnggotaMDL;
 use App\Models\NonDosenMDL;
 use App\Models\SubstansiMDL;
+use App\Models\RabMDL;
+use App\Models\RabDetailMDL;
 use App\Models\PenelitianMDL;
 
 
 class Delete extends BaseController
 {
 
-    protected $dosenModel, $anggotaModel, $nonDosenModel, $substansiModel, $penelitianModel;
+    protected $dosenModel, $anggotaModel, $nonDosenModel, $substansiModel, $penelitianModel,
+                $rabModel, $rabDetailModel;
 
     public function __construct()
     {
@@ -19,6 +22,8 @@ class Delete extends BaseController
         $this->anggotaModel = new AnggotaMDL();
         $this->nonDosenModel = new NonDosenMDL();
         $this->substansiModel = new SubstansiMDL();
+        $this->rabModel = new RabMDL();
+        $this->rabDetailModel = new RabDetailMDL();
         $this->penelitianModel = new PenelitianMDL();
     }
 
@@ -37,9 +42,28 @@ class Delete extends BaseController
         return view('detail/inpl', $data);
     }
 
-    public function substansi($penelitianID,$dosen_id,$anggotaID)
+    public function substansi($penelitianID,$dosen_id,$id)
     {
-        $this->substansiModel->delAnggota($anggotaID);
+        $this->substansiModel->delAnggota($id);
+        $data = $this->dataAnggotaNon($penelitianID,$dosen_id);
+        return view('detail/inpl', $data);
+    }
+
+    public function rab($penelitianID,$dosen_id,$id)
+    {
+        $this->rabModel->where(['penelitian_id'=>$penelitianID, 'dosen_id'=>$dosen_id]);
+        $query = $this->rabModel->findAll();
+        foreach ($query as $qry) :
+            $this->rabDetailModel->delRab($qry['id']);
+        endforeach;
+        $this->rabModel->delRab($penelitianID,$dosen_id);
+        $data = $this->dataAnggotaNon($penelitianID,$dosen_id);
+        return view('detail/inpl', $data);
+    }
+
+    public function item($penelitianID,$dosen_id,$id)
+    {
+        $this->rabDetailModel->delItem($id);
         $data = $this->dataAnggotaNon($penelitianID,$dosen_id);
         return view('detail/inpl', $data);
     }
@@ -48,15 +72,18 @@ class Delete extends BaseController
         $ {'anggota'.$penelitianID} = $this->anggotaModel->copyTable(null,null,$penelitianID,$dosen_id);
         ${'nonDosen'.$penelitianID} = $this->nonDosenModel->searchAnggota($penelitianID,$dosen_id);
         ${'substansi'.$penelitianID} = $this->substansiModel->searchSubstansi($penelitianID,$dosen_id);
+        ${'rab'.$penelitianID} = $this->rabModel->searchRab($penelitianID,$dosen_id);
 
         $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;        
         $currentPage_nondosen = $this->request->getVar('page_user_nondosen') ? $this->request->getVar('page_user_nondosen') : 1;        
+        $currentPage_substansi = $this->request->getVar('page_user_substansi') ? $this->request->getVar('page_user_substansi') : 1;        
+        $currentPage_rab = $this->request->getVar('page_user_rab') ? $this->request->getVar('page_user_rab') : 1;      
+          
         $data = [
             'title' => "Input Data Penelitian",
             'judul'=> $this->penelitianModel->searchJudulPenelitian($penelitianID),
             'id'=> $penelitianID,
             'dosen_id'=>$dosen_id,
-
 
             //for Anggota Dosen
             'anggota_'.$penelitianID => $ {'anggota'.$penelitianID},
@@ -72,9 +99,16 @@ class Delete extends BaseController
 
             //Subtansi
             'substansi_'.$penelitianID => ${'substansi'.$penelitianID},
-            'paginate_nondosen' => $this->nonDosenModel->paginate(5, 'user'),
-            'pager_nondosen' => $this->nonDosenModel->pager,
-            'currentPage_nondosen' => $currentPage_nondosen
+            'paginate_substansi' => $this->substansiModel->paginate(5, 'user'),
+            'pager_substansi' => $this->substansiModel->pager,
+            'currentPage_substansi' => $currentPage_substansi,
+            
+            //RAB
+            'rab_'.$penelitianID => ${'rab'.$penelitianID},
+            'paginate_rab' => $this->rabModel->paginate(5, 'user'),
+            'pager_rab' => $this->rabModel->pager,
+            'currentPage_rab' => $currentPage_rab,
+
         ];
         return $data;
     }

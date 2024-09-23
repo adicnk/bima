@@ -19,8 +19,9 @@ class RabMDL extends Model
         return $this->findAll();
     }
 
-    public function delRab($id){        
-        $this->delete(['id'=>$id]);
+    public function delRab($pen,$dosen){ 
+        $this-> where(['penelitian_id'=>$pen, 'dosen_id'=>$dosen]);
+        $this->delete();
     }
 
 }

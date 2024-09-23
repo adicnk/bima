@@ -75,11 +75,18 @@
                 $satuanRAB = input_data($_POST["satuanRAB"]);                
                 $hargaRAB = input_data($_POST["hargaRAB"]);                
                 $volumeRAB = input_data($_POST["volumeRAB"]);              
+
+
+                if ($hargaRAB==""){$hargaRAB=0;}
+                if ($volumeRAB==""){$volumeRAB=0;} 
                 $totalRAB = $hargaRAB * $volumeRAB;
                 break;
                 
                 case "tahun rab":
-                    $danaRencanaRAB = input_data($_POST["danaRencanaRAB"]);              
+                    if (isset($_POST["danaRencanaRAB"])){
+                        $danaRencanaRAB = input_data($_POST["danaRencanaRAB"]);
+                        if ($danaRencanaRAB==""){$danaRencanaRAB=0;}
+                    }                    
                     $sql = "SELECT * FROM rab WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
                     $tahunRAB = $db->query($sql)->getNumRows() + 1;
                 break;
@@ -107,8 +114,8 @@
                         'VALUES ('.$id.','.$dosen_id.','.$tahunRAB.','.$danaRencanaRAB.')';
                break;
             }
-            $db->query($sql);                        
             //dd($sql);
+            $db->query($sql);                        
         } 
         
           $sql = "SELECT * FROM anggota_dosen WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
@@ -174,11 +181,11 @@
                     ?>
                 <tr>                    
                     <td style="text-align: center"><?= $index ?></td>
-                    <td><?= $data['nidn'] ?></td>
-                    <td><?= $data['nama'] ? $data['nama'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
-                    <td><?= $data['institusi'] ? $data['institusi'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
-                    <td><?= $data['prodi'] ? $data['prodi'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
-                    <td><?= $data['tugas'] ? $data['tugas'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td><?= $data['nidn'] ? $data['nidn'] : '-' ?></td>
+                    <td><?= $data['nama'] ? $data['nama'] : '-' ?></td>
+                    <td><?= $data['institusi'] ? $data['institusi'] : '-' ?></td>
+                    <td><?= $data['prodi'] ? $data['prodi'] : '-' ?></td>
+                    <td><?= $data['tugas'] ? $data['tugas'] : '-' ?></td>
                     <td style="text-align: center">
                         <?php switch ($data['status']) {
                                 case null: echo '<div class="bg-primary text-white small">usulan</div>';                                  
@@ -241,16 +248,16 @@
             <tbody>
                 <tr>
                     <?php
-                    $index = 1 + (5 * ($currentPage - 1));
+                    $index = 1 + (5 * ($currentPage_nondosen - 1));
                     foreach (${'nonDosen_'.$id} as $data) :
                     ?>
                 <tr>                    
                     <td style="text-align: center"><?= $index ?></td>
-                    <td><?= $data['jenis'] ? $data['jenis'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
-                    <td><?= $data['ktp'] ? $data['ktp'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
-                    <td><?= $data['nama'] ? $data['nama'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
-                    <td><?= $data['institusi'] ? $data['institusi'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
-                    <td><?= $data['tugas'] ? $data['tugas'] : '<img src="../../icon/not_available.png" class="mr-2" />' ?></td>
+                    <td><?= $data['jenis'] ? $data['jenis'] : '-' ?></td>
+                    <td><?= $data['ktp'] ? $data['ktp'] : '-' ?></td>
+                    <td><?= $data['nama'] ? $data['nama'] : '-' ?></td>
+                    <td><?= $data['institusi'] ? $data['institusi'] : '-' ?></td>
+                    <td><?= $data['tugas'] ? $data['tugas'] : '-' ?></td>
                     <td style="text-align: center">
                         <?php switch ($data['status']) {
                                 case null: echo '<div class="bg-primary text-white small">usulan</div>';                                  
@@ -358,7 +365,7 @@
             <tbody>
                 <tr>
                     <?php
-                    $index = 1 + (5 * ($currentPage - 1));
+                    $index = 1 + (5 * ($currentPage_substansi - 1));
                     foreach (${'substansi_'.$id} as $data) :                        
                     ?>
                 <tr>                    
@@ -404,15 +411,16 @@
                                 $idx=1;
                                 foreach ($rabCombo as $data) :
                                     if ($idx==1) :
-                            ?>
-
-                            <div class="col-12 mb-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"><strong>Dana yang direncanakan</strong></div>
-                                    <input type="text" name="danaRencanaRAB" class="form-control" placeholder=<?= $data['dana_direncanakan'] ?> disabled>
+                                        ?>
+                                <div class="col-12 mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><strong>Dana yang direncanakan</strong></div>
+                                        <input type="text" name="danaRencanaRAB" class="form-control mr-4" value="<?= $data['dana_direncanakan'] ?>" disabled>
+                                        <a href="/delete/rab/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Item">
+                                        <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <?php endif; endforeach; } else { ?>                            
+                            <?php $idx++; endif; endforeach; } else { ?>                            
                             <div class="col-12 mb-2">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Dana yang direncanakan</strong></div>
@@ -519,7 +527,14 @@
         </div>
         <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="rab">Submit</button>    </form>
     </form>
-    <?php if (${'rab_'.$id}){?>        
+    
+    <?php if (${'rab_'.$id}){           
+    $sql ="SELECT * FROM rab WHERE penelitian_id=".$id." AND dosen_id=".$dosen_id;
+    //dd($sql);
+    $query  = $db->query($sql)->getResultArray();
+    foreach ($query as $qry) :
+    ?>
+    Tahun ke - <?= $qry['tahun'] ?>     
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
         <table class="table table-striped">
             <thead>
@@ -535,11 +550,15 @@
                     <th scope="col" width="50px"></th>
                 </tr>
             </thead>
+            <?php 
+                foreach (${'rab_'.$id} as $data) :
+                    if ($data['tahun']==$qry['tahun']) :
+            ?>
+            
             <tbody>
                 <tr>
                     <?php
-                    $index = 1 + (5 * ($currentPage - 1));
-                    foreach (${'rab_'.$id} as $data) :                        
+                    $index = 1 + (5 * ($currentPage_rab - 1));
                     ?>
                 <tr>                    
                     <td style="text-align: center"><?= $index ?></td>
@@ -573,19 +592,25 @@
                     <td><?= $data['volume'] ? $data['volume'] : '-' ?></td>
                     <td><?= $data['total'] ? $data['total'] : '-' ?></td>
                     <td>
-                        <a href="/delete/substansi/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Substansi">
+                        <a href="/delete/item/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Item">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>
             <?php
                 $index++;
-                endforeach;
             ?>
+    <?php
+        endif;
+    endforeach; 
+    ?>
             </tbody>
         </table>
     </div>
 
     <?= $pager->links('user', 'custom_pagination') ?>
+    <?php           
+        endforeach;
+    ?>
     <!-- End Table RAB -->
     <hr/>
     <?php } ?>

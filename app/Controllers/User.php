@@ -102,6 +102,9 @@ class User extends BaseController
 
         $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;        
         $currentPage_nondosen = $this->request->getVar('page_user_nondosen') ? $this->request->getVar('page_user_nondosen') : 1;        
+        $currentPage_substansi = $this->request->getVar('page_user_substansi') ? $this->request->getVar('page_user_substansi') : 1;        
+        $currentPage_rab = $this->request->getVar('page_user_rab') ? $this->request->getVar('page_user_rab') : 1;      
+
         $data = [
             'title' => "Input Data Penelitian",
             'judul'=> $this->penelitianModel->searchJudulPenelitian($penelitianID),
@@ -122,15 +125,15 @@ class User extends BaseController
 
             //Subtansi
             'substansi_'.$penelitianID => ${'substansi'.$penelitianID},
-            'paginate_nondosen' => $this->nonDosenModel->paginate(5, 'user'),
-            'pager_nondosen' => $this->nonDosenModel->pager,
-            'currentPage_nondosen' => $currentPage_nondosen,
+            'paginate_substansi' => $this->substansiModel->paginate(5, 'user'),
+            'pager_substansi' => $this->substansiModel->pager,
+            'currentPage_substansi' => $currentPage_substansi,
             
             //RAB
             'rab_'.$penelitianID => ${'rab'.$penelitianID},
-            'paginate_rab' => $this->nonDosenModel->paginate(5, 'user'),
-            'pager_rab' => $this->nonDosenModel->pager,
-            'currentPage_rab' => $currentPage_nondosen,
+            'paginate_rab' => $this->rabModel->paginate(5, 'user'),
+            'pager_rab' => $this->rabModel->pager,
+            'currentPage_rab' => $currentPage_rab,
 
         ];
         return view('detail/inpl', $data);        
