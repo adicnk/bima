@@ -80,15 +80,22 @@
                 if ($hargaRAB==""){$hargaRAB=0;}
                 if ($volumeRAB==""){$volumeRAB=0;} 
                 $totalRAB = $hargaRAB * $volumeRAB;
+
+                $sql = "SELECT * FROM rab  WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
+                $query = $db->query($sql)->getResultArray();
+                foreach ($query as $qry) :
+                    $danaRencanaRAB = $qry['dana_direncanakan'] + $totalRAB;
+                endforeach;
+
                 break;
                 
                 case "tahun rab":
                     if (isset($_POST["danaRencanaRAB"])){
-                        $danaRencanaRAB = input_data($_POST["danaRencanaRAB"]);
+                        //$danaRencanaRAB = input_data($_POST["danaRencanaRAB"]);
                         if ($danaRencanaRAB==""){$danaRencanaRAB=0;}
+                        $sql = "SELECT * FROM rab WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
+                        $tahunRAB = $db->query($sql)->getNumRows() + 1;
                     }                    
-                    $sql = "SELECT * FROM rab WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
-                    $tahunRAB = $db->query($sql)->getNumRows() + 1;
                 break;
           }
 
@@ -108,24 +115,26 @@
                case 'rab':
                    $sql = 'INSERT INTO rab_detail (rab_id,rab_kelompok_id,rab_komponen_id,item,rab_satuan_id,harga,volume,total) '. 
                         'VALUES ('.$tahunRAB.','.$kelompokRAB.','.$komponenRAB.',"'.$itemRAB.'",'.$satuanRAB.','.$hargaRAB.','.$volumeRAB.','.$totalRAB.')';
+                    $db->query($sql); 
+                    $sql = "UPDATE rab SET dana_direncanakan = ".$danaRencanaRAB." WHERE penelitian_id=".$id." AND dosen_id=".$dosen_id;                
                break;
                case 'tahun rab':
                    $sql = 'INSERT INTO rab (penelitian_id,dosen_id,tahun,dana_direncanakan) '. 
                         'VALUES ('.$id.','.$dosen_id.','.$tahunRAB.','.$danaRencanaRAB.')';
                break;
             }
-            //dd($sql);
             $db->query($sql);                        
+            //dd($sql);
         } 
         
-          $sql = "SELECT * FROM anggota_dosen WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
-          ${'anggota_'.$id} = $db->query($sql)->getResultArray();
-          $sql = "SELECT * FROM anggota_non_dosen WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;                
-          ${'nonDosen_'.$id} = $db->query($sql)->getResultArray();
-          $sql = "SELECT * FROM substansi_luaran WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;                
-          ${'substansi_'.$id} = $db->query($sql)->getResultArray();
-          $sql = "SELECT * FROM rab r INNER JOIN rab_detail rd ON r.id=rd.rab_id WHERE r.dosen_id=".$dosen_id." AND r.penelitian_id=".$id.'' ;                
-          ${'rab_'.$id} = $db->query($sql)->getResultArray();
+        $sql = "SELECT * FROM anggota_dosen WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
+        ${'anggota_'.$id} = $db->query($sql)->getResultArray();
+        $sql = "SELECT * FROM anggota_non_dosen WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;                
+        ${'nonDosen_'.$id} = $db->query($sql)->getResultArray();
+        $sql = "SELECT * FROM substansi_luaran WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;                
+        ${'substansi_'.$id} = $db->query($sql)->getResultArray();
+        $sql = "SELECT * FROM rab r INNER JOIN rab_detail rd ON r.id=rd.rab_id WHERE r.dosen_id=".$dosen_id." AND r.penelitian_id=".$id.'' ;                
+        ${'rab_'.$id} = $db->query($sql)->getResultArray();
         
  
         // Removing the redundant HTML characters if any exist.
@@ -248,7 +257,7 @@
             <tbody>
                 <tr>
                     <?php
-                    $index = 1 + (5 * ($currentPage_nondosen - 1));
+                    $index = 1 + (5 * ($currentPage - 1));
                     foreach (${'nonDosen_'.$id} as $data) :
                     ?>
                 <tr>                    
@@ -365,7 +374,7 @@
             <tbody>
                 <tr>
                     <?php
-                    $index = 1 + (5 * ($currentPage_substansi - 1));
+                    $index = 1 + (5 * ($currentPage - 1));
                     foreach (${'substansi_'.$id} as $data) :                        
                     ?>
                 <tr>                    
@@ -401,7 +410,7 @@
     <div class="h4 font-weight-bold">Daftar Rancangan Anggaran Biaya</div>
     <hr/>
     <div class="row mr-2">
-        <form method="post" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
+        <form method="post" action="<?= 'user/inpl/'.$id.'/'.$dosen_id ?>">
             <div class="form-group mt-2">                        
                 <div class="accordion" id="accordion">
                     <div class="card-body">
@@ -415,7 +424,7 @@
                                 <div class="col-12 mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><strong>Dana yang direncanakan</strong></div>
-                                        <input type="text" name="danaRencanaRAB" class="form-control mr-4" value="<?= $data['dana_direncanakan'] ?>" disabled>
+                                        <input type="text" name="danaRencanaRAB" class="form-control mr-4" value="<?= number_format($data['dana_direncanakan']) ?>" disabled>
                                         <a href="/delete/rab/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Item">
                                         <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                                     </div>
@@ -424,7 +433,7 @@
                             <div class="col-12 mb-2">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><strong>Dana yang direncanakan</strong></div>
-                                    <input type="text" name="danaRencanaRAB" class="form-control" placeholder="Masukkan Dana ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);">
+                                    <input type="text" name="danaRencanaRAB" class="form-control" value=0 onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);" disabled>
                                 </div>
                             </div>
                             <?php } ?>
@@ -549,32 +558,28 @@
                     <th scope="col" width="80px">Total</th>
                     <th scope="col" width="50px"></th>
                 </tr>
-            </thead>
-            <?php 
-                foreach (${'rab_'.$id} as $data) :
-                    if ($data['tahun']==$qry['tahun']) :
-            ?>
-            
-            <tbody>
-                <tr>
-                    <?php
-                    $index = 1 + (5 * ($currentPage_rab - 1));
-                    ?>
-                <tr>                    
-                    <td style="text-align: center"><?= $index ?></td>
                     <?php 
+                        $index = 1 + (5 * ($currentPage - 1));
+                        foreach (${'rab_'.$id} as $data) :                            
+                            if ($data['tahun']==$qry['tahun']) :
+                    ?>
+            </thead>
+                 <tbody>
+                    <td style="text-align: center"><?= $index ?></td>
+
+                    <?php
                         $query="SELECT * FROM rab_kelompok WHERE id=". $data['rab_kelompok_id']; 
                         $rabDetail = $db->query($query)->getResultArray();
                         foreach ($rabDetail as $rd) :
                     ?>
                     <td><?= $rd['name'] ? $rd['name'] : '-' ?></td>
                     <?php endforeach ?>
-
+                    
                     <?php 
                         $query="SELECT * FROM rab_komponen WHERE id=". $data['rab_komponen_id']; 
                         $rabDetail = $db->query($query)->getResultArray();
                         foreach ($rabDetail as $rd) :
-                    ?>
+                            ?>
                     <td><?= $rd['name'] ? $rd['name'] : '-' ?></td>
                     <?php endforeach ?>
                     
@@ -584,25 +589,19 @@
                         $query="SELECT * FROM rab_satuan WHERE id=". $data['rab_satuan_id']; 
                         $rabDetail = $db->query($query)->getResultArray();
                         foreach ($rabDetail as $rd) :
-                    ?>
+                            ?>
                     <td><?= $rd['name'] ? $rd['name'] : '-' ?></td>
                     <?php endforeach ?>
-
-                    <td><?= $data['harga'] ? $data['harga'] : '-' ?></td>
-                    <td><?= $data['volume'] ? $data['volume'] : '-' ?></td>
-                    <td><?= $data['total'] ? $data['total'] : '-' ?></td>
+                    
+                    <td><?= $data['harga'] ? number_format($data['harga']) : '-' ?></td>
+                    <td><?= $data['volume'] ? number_format($data['volume']) : '-' ?></td>
+                    <td><?= $data['total'] ? number_format($data['total']) : '-' ?></td>
                     <td>
                         <a href="/delete/item/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Item">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
-                    </td>
-                </tr>
-            <?php
-                $index++;
-            ?>
-    <?php
-        endif;
-    endforeach; 
-    ?>
+                    </td>                    
+            <?php $index++; endif; 
+        endforeach; ?>
             </tbody>
         </table>
     </div>
@@ -612,6 +611,85 @@
         endforeach;
     ?>
     <!-- End Table RAB -->
+    <hr/>
+    <?php } ?>
+
+   <!-- Table Mitra -->
+   <div class="h4 font-weight-bold">Daftar Mitra<img src="<?= base_url() ?>/icon/add.png" onclick="showForm('mitra')"/></div>
+    <hr/>
+    <form method="post" enctype="multipart/form-data" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" id="formBox_mitra" hidden>        
+        <div  class="row g-3">
+            <div class="col-md-6 mb-2"><input name="namaMitra" type="text" class="form-control" placeholder="Nama ...." aria-label="Nama" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+            <div class="col-md-8 mb-2"><input name="institusiMitra" type="text" class="form-control" placeholder="Institusi ...." aria-label="Insitusi" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+            <div class="col-md-12 mb-2"><textarea class="form-control" name="alamatMitra" rows="2" placeholder="Alamat ....." aria-label="Alamat" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></textarea></div>
+            <div class="col-md-8 mb-2"><input name="emailMitra" type="text" class="form-control" placeholder="Email ...." aria-label="Email" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+            <div class="col-md-6">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="fileNitra">
+                    <label class="custom-file-label" for="fileMitra">Upload Surat Kesanggupan</label>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="substansi">Submit</button>
+    </form>
+
+    <?php if (${'mitra_'.$id}){?>
+       <?php  
+          $sql = "SELECT * FROM substansi_luaran WHERE penelitian_id=".$id." AND (makro_riset IS NOT null OR file_luaran IS NOT null)" ;
+          ${'substansi_x'.$id} = $db->query($sql)->getResultArray();        
+          if (${'substansi_x'.$id}) :
+            $idx=1;
+            foreach (${'substansi_x'.$id} as $dataSecondary) :
+                if ($idx==1):
+        ?> 
+            <div>        
+                <p scope="col" width="50px"><b>Nama Makro Riset :</b>  <?= $dataSecondary['makro_riset'] ?></p>
+                <p scope="col" width="200px"><b>Subtansi : <?= $dataSecondary['file_luaran'] ?
+                    '<a target="_blank" rel="noopener noreferrer" href="" download="" 
+                    class="btn btn-sm btn-danger"><span class="fa fa-file-pdf"></span>'.$dataSecondary['file_luaran'].'</a></b></p>' : '-' ?></b>
+            </div>
+        <?php $idx++; endif; endforeach; endif; ?>
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">#</th>
+                    <th scope="col" width="120px">Urutan Tahun</th>
+                    <th scope="col" width="150px">Kelompok Luaran</th>
+                    <th scope="col" width="250px">Jenis Luaran</th>
+                    <th scope="col" width="50px">Target</th>
+                    <th scope="col" width="200px">Keterangan</th>
+                    <th scope="col" width="50px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <?php
+                    $index = 1 + (5 * ($currentPage - 1));
+                    foreach (${'substansi_'.$id} as $data) :                        
+                    ?>
+                <tr>                    
+                    <td style="text-align: center"><?= $index ?></td>
+                    <td>Tahun ke - <?= $data['urutan_tahun'] ?></td>
+                    <td><?= $data['kelompok_luaran'] ? $data['kelompok_luaran'] : '-' ?></td>
+                    <td><?= $data['jenis_luaran'] ? $data['jenis_luaran'] : '-' ?></td>
+                    <td><?= $data['target_luaran'] ? $data['target_luaran'] : '-' ?></td>
+                    <td><?= $data['keterangan'] ? $data['keterangan'] : '-' ?></td>
+                    <td>
+                        <a href="/delete/substansi/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Substansi">
+                            <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
+                    </td>
+                </tr>
+            <?php
+                $index++;
+                endforeach;
+            ?>
+            </tbody>
+        </table>
+    </div>
+
+    <?= $pager->links('user', 'custom_pagination') ?>
+    <!-- End Table Mitra -->
     <hr/>
     <?php } ?>
 

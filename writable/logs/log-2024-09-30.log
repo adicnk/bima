@@ -1,0 +1,15 @@
+CRITICAL - 2024-09-30 01:34:36 --> Object of class App\Models\RabDetailMDL could not be converted to string
+#0 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Delete->item('1', '1', '29')
+#1 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Delete))
+#2 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2024-09-30 01:41:43 --> Array to string conversion
+#0 C:\xampp\htdocs\bima\app\Controllers\Delete.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string...', 'C:\\xampp\\htdocs...', 72)
+#1 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Delete->item('1', '1', '30')
+#2 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Delete))
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}

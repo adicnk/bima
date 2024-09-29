@@ -7,6 +7,7 @@ use App\Models\AnggotaMDL;
 use App\Models\NonDosenMDL;
 use App\Models\SubstansiMDL;
 use App\Models\RabMDL;
+use App\Models\MitraMDL;
 use App\Models\PenelitianMDL;
 
 
@@ -14,7 +15,7 @@ class User extends BaseController
 {
 
     protected $dosenModel, $anggotaModel, $nonDosenModel, $penelitianModel,
-                $substansiModel, $rabModel;
+                $substansiModel, $rabModel, $mitraModel;
 
     public function __construct()
     {
@@ -23,6 +24,7 @@ class User extends BaseController
         $this->nonDosenModel = new NonDosenMDL();
         $this->substansiModel = new SubstansiMDL();
         $this->rabModel = new RabMDL();
+        $this->mitraModel = new MitraMDL();
         $this->penelitianModel = new PenelitianMDL();
     }
 
@@ -98,12 +100,10 @@ class User extends BaseController
         $ {'anggota'.$penelitianID} = $this->anggotaModel->copyTable($db,$tableAnggota,$penelitianID,$dosen_id);
         ${'nonDosen'.$penelitianID} = $this->nonDosenModel->searchAnggota($penelitianID,$dosen_id);
         ${'substansi'.$penelitianID} = $this->substansiModel->searchSubstansi($penelitianID,$dosen_id);
-        ${'rab'.$penelitianID} = $this->rabModel->searchRab($penelitianID,$dosen_id);
+        ${'rab_detail'.$penelitianID} = $this->rabModel->searchRab($penelitianID,$dosen_id);
+        ${'mitra'.$penelitianID} = $this->mitraModel->searchMitra($penelitianID,$dosen_id);
 
         $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;        
-        $currentPage_nondosen = $this->request->getVar('page_user_nondosen') ? $this->request->getVar('page_user_nondosen') : 1;        
-        $currentPage_substansi = $this->request->getVar('page_user_substansi') ? $this->request->getVar('page_user_substansi') : 1;        
-        $currentPage_rab = $this->request->getVar('page_user_rab') ? $this->request->getVar('page_user_rab') : 1;      
 
         $data = [
             'title' => "Input Data Penelitian",
@@ -121,20 +121,25 @@ class User extends BaseController
             'nonDosen_'.$penelitianID => ${'nonDosen'.$penelitianID},
             'paginate_nondosen' => $this->nonDosenModel->paginate(5, 'user'),
             'pager_nondosen' => $this->nonDosenModel->pager,
-            'currentPage_nondosen' => $currentPage_nondosen,
+            'currentPage' => $currentPage,
 
             //Subtansi
             'substansi_'.$penelitianID => ${'substansi'.$penelitianID},
             'paginate_substansi' => $this->substansiModel->paginate(5, 'user'),
             'pager_substansi' => $this->substansiModel->pager,
-            'currentPage_substansi' => $currentPage_substansi,
+            'currentPage' => $currentPage,
             
             //RAB
-            'rab_'.$penelitianID => ${'rab'.$penelitianID},
+            'rab_'.$penelitianID => ${'rab_detail'.$penelitianID},
             'paginate_rab' => $this->rabModel->paginate(5, 'user'),
             'pager_rab' => $this->rabModel->pager,
-            'currentPage_rab' => $currentPage_rab,
-
+            'currentPage' => $currentPage,
+            
+            //Mita
+            'mitra_'.$penelitianID => ${'mitra'.$penelitianID},
+            'paginate_mitra' => $this->mitraModel->paginate(5, 'user'),
+            'pager_mitra' => $this->mitraModel->pager,
+            'currentPage' => $currentPage,
         ];
         return view('detail/inpl', $data);        
     }

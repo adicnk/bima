@@ -64,6 +64,20 @@ class Delete extends BaseController
     public function item($penelitianID,$dosen_id,$id)
     {
         $this->rabDetailModel->delItem($id);
+
+        $this->rabDetailModel->selectSum('total');
+        $query=$this->rabDetailModel->findAll();
+        $idx=1;
+        foreach ($query as $qry) :
+            if ($idx==1) :
+                $total = $qry['total'];
+        endif; endforeach;
+        $db = \Config\Database::connect();
+        $db->query('
+            UPDATE rab SET dana_direncanakan='.$total.
+            ' WHERE penelitian_id='.$penelitianID.' AND dosen_id='.$dosen_id
+        );        
+
         $data = $this->dataAnggotaNon($penelitianID,$dosen_id);
         return view('detail/inpl', $data);
     }

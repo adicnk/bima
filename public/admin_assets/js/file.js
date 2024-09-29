@@ -18,6 +18,7 @@ function showForm(name) {
     var y = document.getElementById("formBox_nondosen");
     var z = document.getElementById("formBox_substansi");
     var r = document.getElementById("formBox_rab");
+    var s = document.getElementById("formBox_mitra");
     
     switch(name){
         case 'dosen' :
@@ -31,6 +32,9 @@ function showForm(name) {
             break;
         case 'rab':
             r.removeAttribute("hidden");
+            break;
+        case 'mitra':
+            s.removeAttribute("hidden");
             break;
 
     }
