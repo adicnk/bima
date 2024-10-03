@@ -28,9 +28,12 @@
         $makro_riset = $fileSubstansi = $urutanTahun =
         $kelompokLuaran = $jenisLuaran = $targetLuaran = 
         $keteranganLuaran = $kelompokRAB = $komponenRAB =
-        $itemRAB = $tahunRAB = null;   
+        $itemRAB = $tahunRAB = $namaMitra = $institusiMita = 
+        $alamatMitra = $emailMitra = $negaraMitra = 
+        $fileMitra = null;   
         
-        $hargaRAB = $volumeRAB = $danaRencanaRAB = 0;
+        $hargaRAB = $volumeRAB = $danaRencanaRAB = 
+        $danaMitra = 0;
  
         // Checking for a POST request
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -76,7 +79,6 @@
                 $hargaRAB = input_data($_POST["hargaRAB"]);                
                 $volumeRAB = input_data($_POST["volumeRAB"]);              
 
-
                 if ($hargaRAB==""){$hargaRAB=0;}
                 if ($volumeRAB==""){$volumeRAB=0;} 
                 $totalRAB = $hargaRAB * $volumeRAB;
@@ -87,8 +89,7 @@
                     $danaRencanaRAB = $qry['dana_direncanakan'] + $totalRAB;
                 endforeach;
 
-                break;
-                
+                break;                
                 case "tahun rab":
                     if (isset($_POST["danaRencanaRAB"])){
                         //$danaRencanaRAB = input_data($_POST["danaRencanaRAB"]);
@@ -96,6 +97,24 @@
                         $sql = "SELECT * FROM rab WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
                         $tahunRAB = $db->query($sql)->getNumRows() + 1;
                     }                    
+                break;
+                case "mitra":
+                    $namaMitra =  input_data($_POST["namaMitra"]);
+                    $institusiMitra =  input_data($_POST["institusiMitra"]);
+                    $alamatMitra =  input_data($_POST["alamatMitra"]);
+                    $emailMitra =  input_data($_POST["emailMitra"]);
+                    $negaraMitra =  input_data($_POST["negaraMitra"]);
+
+                    $danaMitra =  input_data($_POST["danaMitra"]);
+                    if ($danaMitra==""){$danaMitra=0;}
+
+                    $fileMitra = input_data($_FILES["fileMitra"]["name"]);                
+                    if ($fileMitra) {
+                        $path = "file/".basename($fileMitra);
+                        $renFileMitra = "PLMit".date("Ymd")."_".$id.'_'.$dosen_id.".".
+                                    strtolower(pathinfo($path,PATHINFO_EXTENSION));                                    
+                    move_uploaded_file($_FILES["fileMitra"]["tmp_name"], "file/".$renFileMitra);
+                    } else { $renFileMitra=null; }    
                 break;
           }
 
@@ -122,6 +141,11 @@
                    $sql = 'INSERT INTO rab (penelitian_id,dosen_id,tahun,dana_direncanakan) '. 
                         'VALUES ('.$id.','.$dosen_id.','.$tahunRAB.','.$danaRencanaRAB.')';
                break;
+               case "mitra":
+                    $sql = 'INSERT INTO mitra (penelitian_id,dosen_id,nama,institusi,alamat,negara,email,file_mitra,dana) '. 
+                    'VALUES ('.$id.','.$dosen_id.',"'.$namaMitra.'","'.$institusiMitra.'","'.$alamatMitra.'","'.$negaraMitra.
+                    '","'.$emailMitra.'","'.$renFileMitra.'",'.$danaMitra.')';
+               break;
             }
             $db->query($sql);                        
             //dd($sql);
@@ -135,6 +159,8 @@
         ${'substansi_'.$id} = $db->query($sql)->getResultArray();
         $sql = "SELECT * FROM rab r INNER JOIN rab_detail rd ON r.id=rd.rab_id WHERE r.dosen_id=".$dosen_id." AND r.penelitian_id=".$id.'' ;                
         ${'rab_'.$id} = $db->query($sql)->getResultArray();
+        $sql = "SELECT * FROM mitra WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id.'' ;                
+        ${'mitra_'.$id} = $db->query($sql)->getResultArray();
         
  
         // Removing the redundant HTML characters if any exist.
@@ -155,6 +181,7 @@
         <div class="col-md-10 mt-2">           
             <select class="form-control" name="institusi" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
                 <option value="Sekolah Tinggi Ilmu Keperawatan PPNI Jawa Barat">Sekolah Tinggi Ilmu Keperawatan PPNI Jawa Barat</option>
+                <option value="Universitas Pendidikan Indonesia">Universitas Pendidikan Indonesia</option>
             </select>
         </div>
         <div class="col-md-2 mt-2">           
@@ -218,7 +245,7 @@
         </table>
     </div>
 
-    <?= $pager->links('user', 'custom_pagination') ?>
+    <?php //$pager->links('user', 'custom_pagination') ?>
     <!-- End Table Anggota -->
     <hr/>
     <?php } ?>
@@ -290,7 +317,7 @@
         </table>
     </div>
 
-    <?= $pager_nondosen->links('user', 'custom_pagination') ?>
+    <?php //$pager_nondosen->links('user', 'custom_pagination') ?>
     <!-- End Table Anggota Non Dosen -->
 
     <?php } ?>
@@ -325,11 +352,18 @@
             <div class="col-md-10">           
                 <select class="form-control" name="kelompokLuaran" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
                     <option value="Artikel di Jurnal">Artikel di Jurnal</option>
+                    <option value="Feasibility Study">Feasibility Study</option>
+                    <option value="Naskah Akademik">Naskah Akademik</option>
+                    <option value="Purwarupa/Prototipe">Purwarupa/Prototipe</option>
                 </select>
             </div>
             <div class="col-md-8 mt-2">           
                 <select class="form-control" name="jenisLuaran" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
                     <option value="Artikel di Jurnal Bereputasi Nasional Terindeks SINTA 1-4">Artikel di Jurnal Bereputasi Nasional Terindeks SINTA 1-4</option>
+                    <option value="Feasibility Study">Feasibility Study</option>
+                    <option value="Policy brief, rekomendasi kebijakan, atau model kebijakan strategis">Policy brief, rekomendasi kebijakan, atau model kebijakan strategis</option>
+                    <option value="Prototipe/Purwarupa">Prototipe/Purwarupa</option>
+                    <option value="Prototipe/Purwarupa">Prototipe/Purwarupa</option>
                 </select>
             </div>
             <div class="col-md-4 mt-2">           
@@ -353,9 +387,9 @@
         ?> 
             <div>        
                 <p scope="col" width="50px"><b>Nama Makro Riset :</b>  <?= $dataSecondary['makro_riset'] ?></p>
-                <p scope="col" width="200px"><b>Subtansi : <?= $dataSecondary['file_luaran'] ?
-                    '<a target="_blank" rel="noopener noreferrer" href="" download="" 
-                    class="btn btn-sm btn-danger"><span class="fa fa-file-pdf"></span>'.$dataSecondary['file_luaran'].'</a></b></p>' : '-' ?></b>
+                <p scope="col" width="200px"><b>Subtansi :</b><?= $dataSecondary['file_luaran'] ?'<a href="'. 
+                    base_url().'/FileController/download/'.$dataSecondary['file_luaran'].'">
+                    <button class="btn btn-sm btn-danger"><i class="fa fa-file-pdf"></i>Download</button></a></p>' : '-' ?>
             </div>
         <?php $idx++; endif; endforeach; endif; ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
@@ -397,7 +431,7 @@
         </table>
     </div>
 
-    <?= $pager->links('user', 'custom_pagination') ?>
+    <?php //$pager->links('user', 'custom_pagination') ?>
     <!-- End Table Substansi -->
     <hr/>
     <?php } ?>
@@ -606,7 +640,7 @@
         </table>
     </div>
 
-    <?= $pager->links('user', 'custom_pagination') ?>
+    <?php //$pager->links('user', 'custom_pagination') ?>
     <?php           
         endforeach;
     ?>
@@ -621,44 +655,40 @@
         <div  class="row g-3">
             <div class="col-md-6 mb-2"><input name="namaMitra" type="text" class="form-control" placeholder="Nama ...." aria-label="Nama" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
             <div class="col-md-8 mb-2"><input name="institusiMitra" type="text" class="form-control" placeholder="Institusi ...." aria-label="Insitusi" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
-            <div class="col-md-12 mb-2"><textarea class="form-control" name="alamatMitra" rows="2" placeholder="Alamat ....." aria-label="Alamat" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></textarea></div>
-            <div class="col-md-8 mb-2"><input name="emailMitra" type="text" class="form-control" placeholder="Email ...." aria-label="Email" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+            <div class="col-md-8 mb-2"><textarea class="form-control" name="alamatMitra" rows="2" placeholder="Alamat ....." aria-label="Alamat" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></textarea></div>
+            <div class="col-md-6 mb-2"><input name="emailMitra" type="text" class="form-control" placeholder="Email ...." aria-label="Email" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+            <div class="col-md-4 mb-2"><input name="negaraMitra" type="text" class="form-control" placeholder="Negara ...." aria-label="Email" onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
             <div class="col-md-6">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="fileNitra">
+                    <input type="file" class="custom-file-input" name="fileMitra">
                     <label class="custom-file-label" for="fileMitra">Upload Surat Kesanggupan</label>
                 </div>
             </div>
         </div>
-        <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="substansi">Submit</button>
+        <div class=" form-row align-items-right mt-2">
+            <div class="col-4">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><strong>Dana (Rp)</strong></div>
+                    <input type="text" name="danaMitra" class="form-control" placeholder="Dana ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);">
+                </div>
+            </div>
+        </div>        
+        <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="mitra">Submit</button>
     </form>
 
     <?php if (${'mitra_'.$id}){?>
-       <?php  
-          $sql = "SELECT * FROM substansi_luaran WHERE penelitian_id=".$id." AND (makro_riset IS NOT null OR file_luaran IS NOT null)" ;
-          ${'substansi_x'.$id} = $db->query($sql)->getResultArray();        
-          if (${'substansi_x'.$id}) :
-            $idx=1;
-            foreach (${'substansi_x'.$id} as $dataSecondary) :
-                if ($idx==1):
-        ?> 
-            <div>        
-                <p scope="col" width="50px"><b>Nama Makro Riset :</b>  <?= $dataSecondary['makro_riset'] ?></p>
-                <p scope="col" width="200px"><b>Subtansi : <?= $dataSecondary['file_luaran'] ?
-                    '<a target="_blank" rel="noopener noreferrer" href="" download="" 
-                    class="btn btn-sm btn-danger"><span class="fa fa-file-pdf"></span>'.$dataSecondary['file_luaran'].'</a></b></p>' : '-' ?></b>
-            </div>
-        <?php $idx++; endif; endforeach; endif; ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col" style="text-align: center">#</th>
-                    <th scope="col" width="120px">Urutan Tahun</th>
-                    <th scope="col" width="150px">Kelompok Luaran</th>
-                    <th scope="col" width="250px">Jenis Luaran</th>
-                    <th scope="col" width="50px">Target</th>
-                    <th scope="col" width="200px">Keterangan</th>
+                    <th scope="col" width="120px">Nama</th>
+                    <th scope="col" width="150px">Institusi</th>
+                    <th scope="col" width="250px">Alamat</th>
+                    <th scope="col" width="80px">Negara</th>
+                    <th scope="col" width="100px">Email</th>
+                    <th scope="col" width="100px">Surat Kesanggupan</th>
+                    <th scope="col" width="150px">Dana</th>
                     <th scope="col" width="50px"></th>
                 </tr>
             </thead>
@@ -666,17 +696,23 @@
                 <tr>
                     <?php
                     $index = 1 + (5 * ($currentPage - 1));
-                    foreach (${'substansi_'.$id} as $data) :                        
+                    foreach (${'mitra_'.$id} as $data) :                        
                     ?>
                 <tr>                    
                     <td style="text-align: center"><?= $index ?></td>
-                    <td>Tahun ke - <?= $data['urutan_tahun'] ?></td>
-                    <td><?= $data['kelompok_luaran'] ? $data['kelompok_luaran'] : '-' ?></td>
-                    <td><?= $data['jenis_luaran'] ? $data['jenis_luaran'] : '-' ?></td>
-                    <td><?= $data['target_luaran'] ? $data['target_luaran'] : '-' ?></td>
-                    <td><?= $data['keterangan'] ? $data['keterangan'] : '-' ?></td>
+                    <td><?= $data['nama'] ? $data['nama'] : '-' ?></td>
+                    <td><?= $data['institusi'] ? $data['institusi'] : '-' ?></td>
+                    <td><?= $data['alamat'] ? $data['alamat'] : '-' ?></td>
+                    <td><?= $data['negara'] ? $data['negara'] : '-' ?></td>
+                    <td><?= $data['email'] ? $data['email'] : '-' ?></td>
+                    
+                    <td><?= $data['file_mitra'] ? '<a href="'. base_url().'/FileController/download/'.$data['file_mitra'].'">
+                        <button class="btn btn-sm btn-danger"><i class="fa fa-file-pdf"></i>
+                        Download</button></a>' : '-' ?></td>
+                                        
+                    <td><?= $data['dana'] ? $data['dana'] : '-' ?></td>
                     <td>
-                        <a href="/delete/substansi/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Substansi">
+                        <a href="/delete/mitra/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Mitra">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>
@@ -688,9 +724,8 @@
         </table>
     </div>
 
-    <?= $pager->links('user', 'custom_pagination') ?>
+    <?php //$pager->links('user', 'custom_pagination') ?>
     <!-- End Table Mitra -->
-    <hr/>
     <?php } ?>
 
     <form method="post" action="<?= base_url() ?>/user/listPenelitian">

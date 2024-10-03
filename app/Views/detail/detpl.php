@@ -116,6 +116,7 @@
                 Identitas Anggota Non Dosen                
             </div>
         </div>    
+
     <!-- Table Anggota Non Dosen -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
         <table class="table table-striped">
@@ -163,7 +164,7 @@
     </div>
     <?php endif ?>
 
-    <?php endforeach; // Loop Data Penelitian ?>
+    <?php endforeach; // Loop Data Non Dosen ?>
 
     <?php 
             $substansi = $db->query('SELECT * FROM substansi_luaran WHERE dosen_id='.$dosen_id.' AND penelitian_id='.$penelitianID)->getResultArray(); 
@@ -185,7 +186,7 @@
             <div>        
                 <p scope="col" width="50px"><b>Nama Makro Riset :</b>  <?= $dataSecondary['makro_riset'] ?></p>
                 <p scope="col" width="200px"><b>Subtansi : <?= $dataSecondary['file_luaran'] ?
-                    '<a href="'.base_url().'/FileController/downloadSubstanti/'. $dataSecondary['file_luaran'].'"  
+                    '<a href="'.base_url().'/FileController/download/'. $dataSecondary['file_luaran'].'"  
                     class="btn btn-sm btn-danger"><span class="fa fa-file-pdf"></span>Download</a></b></p>' : '-' ?></b>
             </div>
         <?php $idx++; endif; endforeach; endif; ?>
@@ -225,6 +226,147 @@
     </div>
     <?php endif; ?>
 
+    <?php 
+            $rab = $db->query('SELECT * FROM rab r INNER JOIN rab_detail rd 
+            ON r.id=rd.rab_id WHERE r.dosen_id='.$dosen_id.
+            ' AND r.penelitian_id='.$penelitianID)->getResultArray(); 
+            if ($rab) :
+        ?>
+        <div class="card bg-info text-white shadow">
+            <div class="card-body">
+                Rancangan Anggaran Belanja                
+            </div>
+        </div>    
+
+    <!-- Table RAB -->
+    <?php
+    $sql ="SELECT * FROM rab WHERE penelitian_id=".$penelitianID." AND dosen_id=".$dosen_id;
+    //dd($sql);
+    $query  = $db->query($sql)->getResultArray();
+    foreach ($query as $qry) :
+    ?>
+    Tahun ke - <?= $qry['tahun'] ?>     
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">#</th>
+                    <th scope="col" width="250px">Kelompok</th>
+                    <th scope="col" width="250px">Komponen</th>
+                    <th scope="col" width="300px">Item</th>
+                    <th scope="col" width="150px">Satuan</th>
+                    <th scope="col" width="80px">Harga</th>
+                    <th scope="col" width="80px">Volume</th>
+                    <th scope="col" width="80px">Total</th>
+                    <th scope="col" width="50px"></th>
+                </tr>
+                    <?php 
+                        $index = 1;
+                        foreach ($rab as $data) :                            
+                            if ($data['tahun']==$qry['tahun']) :
+                    ?>
+            </thead>
+                 <tbody>
+                    <td style="text-align: center"><?= $index ?></td>
+
+                    <?php
+                        $query="SELECT * FROM rab_kelompok WHERE id=". $data['rab_kelompok_id']; 
+                        $rabDetail = $db->query($query)->getResultArray();
+                        foreach ($rabDetail as $rd) :
+                    ?>
+                    <td><?= $rd['name'] ? $rd['name'] : '-' ?></td>
+                    <?php endforeach ?>
+                    
+                    <?php 
+                        $query="SELECT * FROM rab_komponen WHERE id=". $data['rab_komponen_id']; 
+                        $rabDetail = $db->query($query)->getResultArray();
+                        foreach ($rabDetail as $rd) :
+                            ?>
+                    <td><?= $rd['name'] ? $rd['name'] : '-' ?></td>
+                    <?php endforeach ?>
+                    
+                    <td><?= $data['item'] ? $data['item'] : '-' ?></td>
+                    
+                    <?php 
+                        $query="SELECT * FROM rab_satuan WHERE id=". $data['rab_satuan_id']; 
+                        $rabDetail = $db->query($query)->getResultArray();
+                        foreach ($rabDetail as $rd) :
+                            ?>
+                    <td><?= $rd['name'] ? $rd['name'] : '-' ?></td>
+                    <?php endforeach ?>
+                    
+                    <td><?= $data['harga'] ? number_format($data['harga']) : '-' ?></td>
+                    <td><?= $data['volume'] ? number_format($data['volume']) : '-' ?></td>
+                    <td><?= $data['total'] ? number_format($data['total']) : '-' ?></td>
+            <?php $index++; endif; 
+        endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <?php //$pager->links('user', 'custom_pagination') ?>
+    <?php           
+        endforeach;
+    ?>
+    <!-- End Table RAB -->
+    <hr/>
+    <?php endif ?>
+
+    <?php 
+            $mitra = $db->query('SELECT * FROM mitra WHERE dosen_id='.$dosen_id.
+            ' AND penelitian_id='.$penelitianID)->getResultArray(); 
+            if ($mitra) :
+        ?>
+        <div class="card bg-info text-white shadow">
+            <div class="card-body">
+                Mitra
+            </div>
+        </div>    
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">#</th>
+                    <th scope="col" width="120px">Nama</th>
+                    <th scope="col" width="150px">Institusi</th>
+                    <th scope="col" width="250px">Alamat</th>
+                    <th scope="col" width="80px">Negara</th>
+                    <th scope="col" width="100px">Email</th>
+                    <th scope="col" width="100px">Surat Kesanggupan</th>
+                    <th scope="col" width="150px">Dana</th>
+                    <th scope="col" width="50px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <?php
+                    $index = 1;
+                    foreach ($mitra as $data) :                        
+                    ?>
+                <tr>                    
+                    <td style="text-align: center"><?= $index ?></td>
+                    <td><?= $data['nama'] ? $data['nama'] : '-' ?></td>
+                    <td><?= $data['institusi'] ? $data['institusi'] : '-' ?></td>
+                    <td><?= $data['alamat'] ? $data['alamat'] : '-' ?></td>
+                    <td><?= $data['negara'] ? $data['negara'] : '-' ?></td>
+                    <td><?= $data['email'] ? $data['email'] : '-' ?></td>
+                    
+                    <td><?= $data['file_mitra'] ? '<a href="'.base_url().'/FileController/download/'. $data['file_mitra'].'"  
+                    class="btn btn-sm btn-danger"><span class="fa fa-file-pdf"></span>Download</a>' : '-' ?></td>
+                                        
+                    <td><?= $data['dana'] ? $data['dana'] : '-' ?></td>
+                </tr>
+            <?php
+                $index++;
+                endforeach;
+            ?>
+            </tbody>
+        </table>
+    </div>
+
+    <?php //$pager->links('user', 'custom_pagination') ?>
+    <!-- End Table Mitra -->
+    <?php endif ?>
 
     <form method="post" action="<?= base_url() ?>/user/listPenelitian">
         <?= csrf_field() ?>

@@ -7,6 +7,7 @@ use App\Models\NonDosenMDL;
 use App\Models\SubstansiMDL;
 use App\Models\RabMDL;
 use App\Models\RabDetailMDL;
+use App\Models\MitraMDL;
 use App\Models\PenelitianMDL;
 
 
@@ -14,7 +15,7 @@ class Delete extends BaseController
 {
 
     protected $dosenModel, $anggotaModel, $nonDosenModel, $substansiModel, $penelitianModel,
-                $rabModel, $rabDetailModel;
+                $rabModel, $rabDetailModel, $mitraModel;
 
     public function __construct()
     {
@@ -24,6 +25,7 @@ class Delete extends BaseController
         $this->substansiModel = new SubstansiMDL();
         $this->rabModel = new RabMDL();
         $this->rabDetailModel = new RabDetailMDL();
+        $this->mitraModel = new MitraMDL();
         $this->penelitianModel = new PenelitianMDL();
     }
 
@@ -82,17 +84,22 @@ class Delete extends BaseController
         return view('detail/inpl', $data);
     }
 
+    public function mitra($penelitianID,$dosen_id,$id)
+    {
+        $this->mitraModel->delMitra($id);
+        $data = $this->dataAnggotaNon($penelitianID,$dosen_id);
+        return view('detail/inpl', $data);
+    }
+
     public function dataAnggotaNon($penelitianID,$dosen_id){
         $ {'anggota'.$penelitianID} = $this->anggotaModel->copyTable(null,null,$penelitianID,$dosen_id);
         ${'nonDosen'.$penelitianID} = $this->nonDosenModel->searchAnggota($penelitianID,$dosen_id);
         ${'substansi'.$penelitianID} = $this->substansiModel->searchSubstansi($penelitianID,$dosen_id);
-        ${'rab'.$penelitianID} = $this->rabModel->searchRab($penelitianID,$dosen_id);
+        ${'rab_detail'.$penelitianID} = $this->rabModel->searchRab($penelitianID,$dosen_id);
+        ${'mitra'.$penelitianID} = $this->mitraModel->searchMitra($penelitianID,$dosen_id);
 
         $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;        
-        $currentPage_nondosen = $this->request->getVar('page_user_nondosen') ? $this->request->getVar('page_user_nondosen') : 1;        
-        $currentPage_substansi = $this->request->getVar('page_user_substansi') ? $this->request->getVar('page_user_substansi') : 1;        
-        $currentPage_rab = $this->request->getVar('page_user_rab') ? $this->request->getVar('page_user_rab') : 1;      
-          
+
         $data = [
             'title' => "Input Data Penelitian",
             'judul'=> $this->penelitianModel->searchJudulPenelitian($penelitianID),
@@ -109,20 +116,25 @@ class Delete extends BaseController
             'nonDosen_'.$penelitianID => ${'nonDosen'.$penelitianID},
             'paginate_nondosen' => $this->nonDosenModel->paginate(5, 'user'),
             'pager_nondosen' => $this->nonDosenModel->pager,
-            'currentPage_nondosen' => $currentPage_nondosen,
+            'currentPage' => $currentPage,
 
             //Subtansi
             'substansi_'.$penelitianID => ${'substansi'.$penelitianID},
             'paginate_substansi' => $this->substansiModel->paginate(5, 'user'),
             'pager_substansi' => $this->substansiModel->pager,
-            'currentPage_substansi' => $currentPage_substansi,
+            'currentPage' => $currentPage,
             
             //RAB
-            'rab_'.$penelitianID => ${'rab'.$penelitianID},
+            'rab_'.$penelitianID => ${'rab_detail'.$penelitianID},
             'paginate_rab' => $this->rabModel->paginate(5, 'user'),
             'pager_rab' => $this->rabModel->pager,
-            'currentPage_rab' => $currentPage_rab,
-
+            'currentPage' => $currentPage,
+            
+            //Mitra
+            'mitra_'.$penelitianID => ${'mitra'.$penelitianID},
+            'paginate_mitra' => $this->mitraModel->paginate(5, 'user'),
+            'pager_mitra' => $this->mitraModel->pager,
+            'currentPage' => $currentPage,
         ];
         return $data;
     }

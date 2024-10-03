@@ -12,11 +12,4 @@ class FileController extends Controller
     {   
         return $this->response->download('file/'.$filePath, null);
     }
-
-    public function downloadSubstanti($filePath)
-    {   
-        return $this->response->download('file/'.$filePath, null);
-    }
-
-
 }

@@ -135,7 +135,7 @@ class User extends BaseController
             'pager_rab' => $this->rabModel->pager,
             'currentPage' => $currentPage,
             
-            //Mita
+            //Mitra
             'mitra_'.$penelitianID => ${'mitra'.$penelitianID},
             'paginate_mitra' => $this->mitraModel->paginate(5, 'user'),
             'pager_mitra' => $this->mitraModel->pager,
