@@ -1,0 +1,127 @@
+ERROR - 2024-10-10 00:00:53 --> Table 'bp3mi.rb_detail' doesn't exist
+CRITICAL - 2024-10-10 00:00:53 --> Table 'bp3mi.rb_detail' doesn't exist
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT SUM(rd.t...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(rd.t...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(rd.t...')
+#3 C:\xampp\htdocs\bima\app\Controllers\Delete.php(74): CodeIgniter\Database\BaseConnection->query('SELECT SUM(rd.t...')
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Delete->item('1', '1', '95')
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Delete))
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#9 {main}
+CRITICAL - 2024-10-10 00:05:13 --> Cannot use object of type mysqli as array
+#0 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Delete->item('1', '1', '96')
+#1 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Delete))
+#2 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2024-10-10 00:21:32 --> Undefined array key "rd.total"
+#0 C:\xampp\htdocs\bima\app\Views\detail\inpl.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 91)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpl', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\Delete.php(88): view('detail/inpl', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\Delete->item('1', '1', '99')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Delete))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-10-10 01:18:44 --> syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+#0 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/detpl', Array, true)
+#2 C:\xampp\htdocs\bima\app\Controllers\User.php(94): view('detail/detpl', Array)
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->detpl('2', '1')
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2024-10-10 01:20:00 --> syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+#0 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/detpl', Array, true)
+#2 C:\xampp\htdocs\bima\app\Controllers\User.php(94): view('detail/detpl', Array)
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->detpl('2', '1')
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2024-10-10 01:21:26 --> syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+#0 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/detpl', Array, true)
+#2 C:\xampp\htdocs\bima\app\Controllers\User.php(94): view('detail/detpl', Array)
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->detpl('2', '1')
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2024-10-10 01:27:58 --> syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+#0 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/detpl', Array, true)
+#2 C:\xampp\htdocs\bima\app\Controllers\User.php(94): view('detail/detpl', Array)
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->detpl('2', '1')
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2024-10-10 01:30:00 --> syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+#0 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/detpl', Array, true)
+#2 C:\xampp\htdocs\bima\app\Controllers\User.php(94): view('detail/detpl', Array)
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->detpl('2', '1')
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2024-10-10 01:31:43 --> syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+#0 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/detpl', Array, true)
+#2 C:\xampp\htdocs\bima\app\Controllers\User.php(94): view('detail/detpl', Array)
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->detpl('2', '1')
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2024-10-10 01:34:35 --> Undefined variable $id
+#0 C:\xampp\htdocs\bima\app\Views\detail\detpl.php(242): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 242)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/detpl', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\User.php(94): view('detail/detpl', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->detpl('2', '1')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-10-10 01:37:01 --> Undefined variable $id
+#0 C:\xampp\htdocs\bima\app\Views\detail\detpl.php(242): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 242)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/detpl', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\User.php(94): view('detail/detpl', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->detpl('2', '1')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-10-10 01:38:13 --> Undefined variable $id
+#0 C:\xampp\htdocs\bima\app\Views\detail\detpl.php(303): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 303)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/detpl', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\User.php(94): view('detail/detpl', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->detpl('2', '1')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}

@@ -67,8 +67,12 @@ class Delete extends BaseController
     {
         $this->rabDetailModel->delItem($id);
 
-        $this->rabDetailModel->selectSum('total');
-        $query=$this->rabDetailModel->findAll();
+        $db = \Config\Database::connect();
+        $query =$db->query(
+            'SELECT SUM(rd.total) as total FROM rab r '.
+            'INNER JOIN rab_detail rd ON r.id = rd.rab_id '.
+            ' WHERE r.penelitian_id='.$penelitianID.' AND r.dosen_id='.$dosen_id
+        )->getResultArray();
         $idx=1;
         foreach ($query as $qry) :
             if ($idx==1) :

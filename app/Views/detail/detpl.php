@@ -226,24 +226,32 @@
     </div>
     <?php endif; ?>
 
-    <?php 
-            $rab = $db->query('SELECT * FROM rab r INNER JOIN rab_detail rd 
-            ON r.id=rd.rab_id WHERE r.dosen_id='.$dosen_id.
-            ' AND r.penelitian_id='.$penelitianID)->getResultArray(); 
-            if ($rab) :
-        ?>
-        <div class="card bg-info text-white shadow">
-            <div class="card-body">
-                Rancangan Anggaran Belanja                
-            </div>
-        </div>    
-
     <!-- Table RAB -->
-    <?php
+    <?php 
+        $rab = $db->query('SELECT * FROM rab r INNER JOIN rab_detail rd  '.
+                    'ON r.id=rd.rab_id WHERE dosen_id='.$dosen_id.
+                    ' AND penelitian_id='.$penelitianID)->getResultArray(); 
+        if ($rab) :
+    ?>
+    <div class="card bg-info text-white shadow">
+        <div class="card-body">
+            Rancangan Anggaran Biaya
+        </div>
+    </div>    
+   <?php      
     $sql ="SELECT * FROM rab WHERE penelitian_id=".$penelitianID." AND dosen_id=".$dosen_id;
     //dd($sql);
     $query  = $db->query($sql)->getResultArray();
+    $idx=1;
     foreach ($query as $qry) :
+        if ($idx==1) : ?>
+            <div class="mb-3"><b>Dana yang disetujui : <?= number_format($qry['dana_direncanakan']) ?></b></div>        
+        <?php
+        $idx++;
+        endif;
+    endforeach;
+    foreach ($query as $qry) :
+        $tahun = $qry['tahun'];
     ?>
     Tahun ke - <?= $qry['tahun'] ?>     
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
@@ -261,6 +269,7 @@
                     <th scope="col" width="50px"></th>
                 </tr>
                     <?php 
+                        $totalTahun=0;
                         $index = 1;
                         foreach ($rab as $data) :                            
                             if ($data['tahun']==$qry['tahun']) :
@@ -269,7 +278,7 @@
                  <tbody>
                     <td style="text-align: center"><?= $index ?></td>
 
-                    <?php
+                    <?php                        
                         $query="SELECT * FROM rab_kelompok WHERE id=". $data['rab_kelompok_id']; 
                         $rabDetail = $db->query($query)->getResultArray();
                         foreach ($rabDetail as $rd) :
@@ -298,11 +307,12 @@
                     <td><?= $data['harga'] ? number_format($data['harga']) : '-' ?></td>
                     <td><?= $data['volume'] ? number_format($data['volume']) : '-' ?></td>
                     <td><?= $data['total'] ? number_format($data['total']) : '-' ?></td>
-            <?php $index++; endif; 
+            <?php $totalTahun=$totalTahun+$data['total']; $index++; endif; 
         endforeach; ?>
             </tbody>
         </table>
     </div>
+    <div class="mb-3"><b>Total Biaya Tahun ke- <?= $tahun ?> : <?= number_format($totalTahun) ?></b></div>
 
     <?php //$pager->links('user', 'custom_pagination') ?>
     <?php           
@@ -310,8 +320,10 @@
     ?>
     <!-- End Table RAB -->
     <hr/>
-    <?php endif ?>
+    <?php endif; ?>
 
+
+    <!-- Table Mitra -->
     <?php 
             $mitra = $db->query('SELECT * FROM mitra WHERE dosen_id='.$dosen_id.
             ' AND penelitian_id='.$penelitianID)->getResultArray(); 
@@ -365,8 +377,8 @@
     </div>
 
     <?php //$pager->links('user', 'custom_pagination') ?>
-    <!-- End Table Mitra -->
     <?php endif ?>
+    <!-- End Table Mitra -->
 
     <form method="post" action="<?= base_url() ?>/user/listPenelitian">
         <?= csrf_field() ?>

@@ -82,21 +82,11 @@
                 if ($hargaRAB==""){$hargaRAB=0;}
                 if ($volumeRAB==""){$volumeRAB=0;} 
                 $totalRAB = $hargaRAB * $volumeRAB;
-
-                $sql = "SELECT * FROM rab  WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
-                $query = $db->query($sql)->getResultArray();
-                foreach ($query as $qry) :
-                    $danaRencanaRAB = $qry['dana_direncanakan'] + $totalRAB;
-                endforeach;
-
                 break;                
-                case "tahun rab":
-                    if (isset($_POST["danaRencanaRAB"])){
-                        //$danaRencanaRAB = input_data($_POST["danaRencanaRAB"]);
-                        if ($danaRencanaRAB==""){$danaRencanaRAB=0;}
+                case "tahun rab":                    
                         $sql = "SELECT * FROM rab WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
-                        $tahunRAB = $db->query($sql)->getNumRows() + 1;
-                    }                    
+                        //dd($sql);
+                        $tahunRAB = $db->query($sql)->getNumRows() + 1;        
                 break;
                 case "mitra":
                     $namaMitra =  input_data($_POST["namaMitra"]);
@@ -135,6 +125,17 @@
                    $sql = 'INSERT INTO rab_detail (rab_id,rab_kelompok_id,rab_komponen_id,item,rab_satuan_id,harga,volume,total) '. 
                         'VALUES ('.$tahunRAB.','.$kelompokRAB.','.$komponenRAB.',"'.$itemRAB.'",'.$satuanRAB.','.$hargaRAB.','.$volumeRAB.','.$totalRAB.')';
                     $db->query($sql); 
+
+                    $sql = "SELECT SUM(rd.total) as total FROM rab r 
+                    INNER JOIN rab_detail rd ON r.id = rd.rab_id 
+                    WHERE r.dosen_id=".$dosen_id." AND r.penelitian_id=".$id;  
+                    $query = $db->query($sql)->getResultArray();
+                    $idx=1;
+                    foreach ($query as $qry) :
+                        if ($idx==1) :
+                            $danaRencanaRAB = $qry['total'];
+                        endif;
+                    endforeach;
                     $sql = "UPDATE rab SET dana_direncanakan = ".$danaRencanaRAB." WHERE penelitian_id=".$id." AND dosen_id=".$dosen_id;                
                break;
                case 'tahun rab':
@@ -363,7 +364,6 @@
                     <option value="Feasibility Study">Feasibility Study</option>
                     <option value="Policy brief, rekomendasi kebijakan, atau model kebijakan strategis">Policy brief, rekomendasi kebijakan, atau model kebijakan strategis</option>
                     <option value="Prototipe/Purwarupa">Prototipe/Purwarupa</option>
-                    <option value="Prototipe/Purwarupa">Prototipe/Purwarupa</option>
                 </select>
             </div>
             <div class="col-md-4 mt-2">           
@@ -444,7 +444,7 @@
     <div class="h4 font-weight-bold">Daftar Rancangan Anggaran Biaya</div>
     <hr/>
     <div class="row mr-2">
-        <form method="post" action="<?= 'user/inpl/'.$id.'/'.$dosen_id ?>">
+        <form method="post" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
             <div class="form-group mt-2">                        
                 <div class="accordion" id="accordion">
                     <div class="card-body">
@@ -576,6 +576,7 @@
     //dd($sql);
     $query  = $db->query($sql)->getResultArray();
     foreach ($query as $qry) :
+        $tahun = $qry['tahun'];
     ?>
     Tahun ke - <?= $qry['tahun'] ?>     
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
@@ -593,7 +594,8 @@
                     <th scope="col" width="50px"></th>
                 </tr>
                     <?php 
-                        $index = 1 + (5 * ($currentPage - 1));
+                        $totalTahun=0;
+                        $index = 1;
                         foreach (${'rab_'.$id} as $data) :                            
                             if ($data['tahun']==$qry['tahun']) :
                     ?>
@@ -601,7 +603,7 @@
                  <tbody>
                     <td style="text-align: center"><?= $index ?></td>
 
-                    <?php
+                    <?php                        
                         $query="SELECT * FROM rab_kelompok WHERE id=". $data['rab_kelompok_id']; 
                         $rabDetail = $db->query($query)->getResultArray();
                         foreach ($rabDetail as $rd) :
@@ -634,11 +636,12 @@
                         <a href="/delete/item/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Item">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>                    
-            <?php $index++; endif; 
+            <?php $totalTahun=$totalTahun+$data['total']; $index++; endif; 
         endforeach; ?>
             </tbody>
         </table>
     </div>
+    <div class="mb-3"><b>Total Biaya Tahun ke- <?= $tahun ?> : <?= number_format($totalTahun) ?></b></div>
 
     <?php //$pager->links('user', 'custom_pagination') ?>
     <?php           

@@ -198,3 +198,51 @@ CRITICAL - 2024-10-03 07:54:30 --> Undefined variable $id
 #8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
 #10 {main}
+ERROR - 2024-10-03 23:07:01 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '0)' at line 1
+CRITICAL - 2024-10-03 23:07:01 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '0)' at line 1
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO rab...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO rab...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO rab...')
+#3 C:\xampp\htdocs\bima\app\Views\detail\inpl.php(150): CodeIgniter\Database\BaseConnection->query('INSERT INTO rab...')
+#4 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpl', Array, true)
+#7 C:\xampp\htdocs\bima\app\Controllers\User.php(144): view('detail/inpl', Array)
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->inpl('2', 'user', 'inpl', '2', '1')
+#9 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#10 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+ERROR - 2024-10-03 23:16:10 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '0)' at line 1
+CRITICAL - 2024-10-03 23:16:10 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '0)' at line 1
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO rab...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO rab...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO rab...')
+#3 C:\xampp\htdocs\bima\app\Views\detail\inpl.php(150): CodeIgniter\Database\BaseConnection->query('INSERT INTO rab...')
+#4 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpl', Array, true)
+#7 C:\xampp\htdocs\bima\app\Controllers\User.php(144): view('detail/inpl', Array)
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->inpl('2', 'user', 'inpl', '2', '1')
+#9 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#10 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+ERROR - 2024-10-03 23:23:45 --> Unknown column 'user' in 'where clause'
+CRITICAL - 2024-10-03 23:23:45 --> Unknown column 'user' in 'where clause'
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT * FROM r...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM r...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM r...')
+#3 C:\xampp\htdocs\bima\app\Views\detail\inpl.php(96): CodeIgniter\Database\BaseConnection->query('SELECT * FROM r...')
+#4 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpl', Array, true)
+#7 C:\xampp\htdocs\bima\app\Controllers\User.php(144): view('detail/inpl', Array)
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->inpl('2', 'user', 'inpl', '2', '1')
+#9 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#10 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#13 {main}
