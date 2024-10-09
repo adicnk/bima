@@ -9,13 +9,14 @@ use App\Models\SubstansiMDL;
 use App\Models\RabMDL;
 use App\Models\MitraMDL;
 use App\Models\PenelitianMDL;
+use App\Models\PengabdianMDL;
 
 
 class User extends BaseController
 {
 
     protected $dosenModel, $anggotaModel, $nonDosenModel, $penelitianModel,
-                $substansiModel, $rabModel, $mitraModel;
+                $substansiModel, $rabModel, $mitraModel, $pengabdianModel;
 
     public function __construct()
     {
@@ -26,6 +27,7 @@ class User extends BaseController
         $this->rabModel = new RabMDL();
         $this->mitraModel = new MitraMDL();
         $this->penelitianModel = new PenelitianMDL();
+        $this->pengabdianModel = new PengabdianMDL();
     }
 
     public function index()
@@ -55,15 +57,6 @@ class User extends BaseController
         return view('form/registrasi', $data);        
     }
 
-    public function usulanPenelitian(){       
-        $data = [
-            'title' => "Form Isian Usulan Penlitian<br/>Stikep PPNI Jawa Barat",
-            'validation'=> \Config\Services::validation()
-        ];
-        //dd($data);
-        return view('form/usulanPenelitian', $data);        
-    }
-
     public function listPenelitian(){
         $keyword = $this->request->getVar('keyword');        
         if ($keyword){
@@ -82,6 +75,26 @@ class User extends BaseController
         ];
         //dd($data);
         return view('list/penelitian', $data);   
+    }
+
+    public function listPengabdian(){
+        $keyword = $this->request->getVar('keyword');        
+        if ($keyword){
+            $this->pengabdianModel->searchPengabdian(user_id(),$keyword);
+        } else {
+            $this->pengabdianModel->searchPengabdian(user_id());
+        }
+        $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;
+        $data = [
+            'title' => "List Pengabdian",
+            'dosen' => $this->dosenModel->searchDosen(user_id()),
+            'data_pengabdian'=> $this->pengabdianModel->searchPengabdian(user_id()),
+            'pengabdian'  => $this->pengabdianModel->paginate(5, 'user'),
+            'pager' => $this->pengabdianModel->pager,
+            'currentPage' => $currentPage
+        ];
+        //dd($data);
+        return view('list/pengabdian', $data);   
     }
 
     public function detpl($penelitianID,$dosen_id) {

@@ -62,7 +62,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <?= user()->dosen_id ? '' : '<a class="collapse-item" href="'.base_url().'/addDosen" >Profile</a>'; ?>
                         <?= user()->dosen_id ? '<a class="collapse-item" href="'.base_url().'/addPenelitian">Penelitian</a>' : ''; ?>
-                        <?= user()->dosen_id ? '<a class="collapse-item" href="">Pengabdian</a>' : ''; ?>
+                        <?= user()->dosen_id ? '<a class="collapse-item" href="'.base_url().'/addPengabdian">Pengabdian</a>' : ''; ?>
                     </div>
                 </div>
             </li>
@@ -83,8 +83,8 @@
                     <span>Penelitian</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="logout">
-                    <i class="fas fa-fw fa-graduation-cap"></i>
+                <a class="nav-link" href="'.base_url().'/listPengabdian">
+                    <i class="fas fa-fw fa-flask"></i>
                     <span>Pengabdian</span></a>
             </li>
             

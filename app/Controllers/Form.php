@@ -33,4 +33,13 @@ class Form extends BaseController
         ];
         return view('form/addPenelitian', $data);
     }
+
+    public function addPengabdian()
+    {
+        // d($this->request->getVar('url'));
+        $data = [
+            'title'   => "Form Isian Pengabdian<br/>Stikep PPNI Jawa Barat",
+        ];
+        return view('form/addPengabdian', $data);
+    }
 }

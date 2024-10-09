@@ -8,6 +8,7 @@ use App\Models\PenelitianMDL;
 use App\Models\RabMDL;
 use App\Models\SintaMDL;
 use App\Models\ScopusMDL;
+use App\Models\PengabdianMDL;
 
 class Submit extends BaseController
 
@@ -15,7 +16,7 @@ class Submit extends BaseController
 
     protected $userModel, $dosenModel, $dosenProfileModel,
                 $penelitianModel, $sintaModel, $scopusModel,
-                $rabModel;
+                $rabModel, $pengabdianModel;
 
     public function __construct()
     {
@@ -26,6 +27,7 @@ class Submit extends BaseController
         $this->rabModel = new RabMDL();
         $this->sintaModel = new SintaMDL();
         $this->scopusModel = new ScopusMDL();
+        $this->pengabdianModel = new PengabdianMDL();
     }
 
     public function dosen()
@@ -101,22 +103,23 @@ class Submit extends BaseController
 
         //dd($this->request->getVar('judulPenelitian'));
         
-        if ($isFileUpload) :
+        if ($isFileUpload) {
             // Pindahkan file ke folder file
             //$isFileUpload->move('file');            
             $renFile = date("Ymd")."_".$this->penelitianModel->searchUploadPenelitian(date("Ymd")).'_'.user_id();
             $extension = $isFileUpload->getExtension();
             $isFileUpload->move('file', 'PL'.$renFile.'.'.$isFileUpload->getExtension());
-
+            $file = 'PL'.$renFile.'.'.$extension;
             // Ambil nama file
             //$namaFile = $isFileUpload->getName();
-        endif;
-
+        } else { 
+            $file = null;
+        };
 
         $this->penelitianModel->save([
             'dosen_id'=> user_id(),
             'judul' => $this->request->getVar('judulPenelitian'),
-            'file' => 'PL'.$renFile.'.'.$extension,
+            'file' => $file,
             'bidang_fokus' => $this->request->getVar('bidangFokus'),
             'skema' => $this->request->getVar('kelompokSkema'),
             'ruang_lingkup' => $this->request->getVar('ruangLingkup'),
@@ -127,6 +130,52 @@ class Submit extends BaseController
             'topik' => $this->request->getVar('topikPenelitian'),
             'rumpun_ilmu' => $this->request->getVar('rumpunIlmu'),
             'target_tkt' => $this->request->getVar('targetTKT')
+        ]);
+
+        $data = [
+            'title' => "Dashboard",
+            'dosen' => $this->dosenModel->searchDosen(user_id())
+        ];
+
+        return view('user/dashboard', $data);
+    }
+
+    public function pengabdian()
+    {
+        //The attribute of File
+        //$isFileUpload = $this->request->getVar('isFileUpload');
+
+        //The File
+        $isFileUpload = $this->request->getFile('fileUpload');
+        $renFile = null;
+
+        //dd($this->request->getVar('judulPenelitian'));
+        
+        if ($isFileUpload) {
+            // Pindahkan file ke folder file
+            //$isFileUpload->move('file');            
+            $renFile = date("Ymd")."_".$this->penelitianModel->searchUploadPenelitian(date("Ymd")).'_'.user_id();
+            $extension = $isFileUpload->getExtension();
+            $isFileUpload->move('file', 'PB'.$renFile.'.'.$isFileUpload->getExtension());
+            $file = 'PB'.$renFile.'.'.$extension;
+            // Ambil nama file
+            //$namaFile = $isFileUpload->getName();
+        } else { 
+            $file = null;
+        };
+
+
+        $this->pengabdianModel->save([
+            'dosen_id'=> user_id(),
+            'judul' => $this->request->getVar('judulPengabdian'),
+            'file' => $file,
+            'bidang_fokus' => $this->request->getVar('bidangFokus'),
+            'skema' => $this->request->getVar('kelompokSkema'),
+            'ruang_lingkup' => $this->request->getVar('ruangLingkup'),
+            'tahun_usulan' => $this->request->getVar('tahunUsulan'),
+            'tahun_pelaksanaan' => $this->request->getVar('tahunPelaksanaan'),
+            'lama' => $this->request->getVar('lamaKegiatan'),
+            'rumpun_ilmu' => $this->request->getVar('rumpunIlmu'),
         ]);
 
         $data = [

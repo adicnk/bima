@@ -34,6 +34,7 @@ $routes->get('/', 'User::index');
 
 //List
 $routes->get('/listPenelitian', 'User::listPenelitian');
+$routes->get('/listPengabdian', 'User::listPengabdian');
 
 //Detail
 $routes->get('/dataPenelitian', 'User::inpl');
@@ -43,6 +44,7 @@ $routes->get('/viewPenelitian', 'User::detpl');
 $routes->get('/submitDosen', 'Submit::dosen');
 $routes->get('/addDosen', 'Form::addDosen');
 $routes->get('/addPenelitian', 'Form::addPenelitian');
+$routes->get('/addPengabdian', 'Form::addPengabdian');
 
 //File
 $routes->get('/download', 'User::detpl');

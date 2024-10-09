@@ -1,0 +1,29 @@
+CRITICAL - 2024-10-09 15:29:39 --> Class "App\Models\PengabdianMDL" not found
+#0 C:\xampp\htdocs\bima\system\CodeIgniter.php(809): App\Controllers\Submit->__construct()
+#1 C:\xampp\htdocs\bima\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2024-10-09 15:32:16 --> Class "App\Models\PengabdianMDL" not found
+#0 C:\xampp\htdocs\bima\system\CodeIgniter.php(809): App\Controllers\Submit->__construct()
+#1 C:\xampp\htdocs\bima\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2024-10-09 15:35:18 --> Class "App\Models\PengabdianMDL" not found
+#0 C:\xampp\htdocs\bima\system\CodeIgniter.php(809): App\Controllers\Submit->__construct()
+#1 C:\xampp\htdocs\bima\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2024-10-09 15:42:50 --> syntax error, unexpected token "{", expecting "("
+#0 C:\xampp\htdocs\bima\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('submit/pengabdi...')
+#1 C:\xampp\htdocs\bima\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('submit/pengabdi...')
+#2 C:\xampp\htdocs\bima\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
