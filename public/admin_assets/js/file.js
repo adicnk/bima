@@ -16,9 +16,16 @@ function myFile() {
 function showForm(name) {
     var x = document.getElementById("formBox");
     var y = document.getElementById("formBox_nondosen");
+    var y1 = document.getElementById("formBox_vokasi");
+    var y2 = document.getElementById("formBox_mahasiswa");
     var z = document.getElementById("formBox_substansi");
+    var z1 = document.getElementById("formBox_substansi_pb");
+    var z2 = document.getElementById("formBox_luaran");
     var r = document.getElementById("formBox_rab");
     var s = document.getElementById("formBox_mitra");
+    var s1 = document.getElementById("formbox_file_mitra");
+    var t = document.getElementById("formBox_iku");
+    var u = document.getElementById("formBox_sdgs");
     
     switch(name){
         case 'dosen' :
@@ -27,8 +34,20 @@ function showForm(name) {
         case 'non dosen':
             y.removeAttribute("hidden");
             break;
+        case 'vokasi':
+            y1.removeAttribute("hidden");
+            break;
+        case 'mahasiswa':
+            y2.removeAttribute("hidden");
+            break;
         case 'substansi':
             z.removeAttribute("hidden");
+            break;
+        case 'substansi_pb':
+            z1.removeAttribute("hidden");
+            break;
+        case 'luaran':
+            z2.removeAttribute("hidden");
             break;
         case 'rab':
             r.removeAttribute("hidden");
@@ -36,7 +55,16 @@ function showForm(name) {
         case 'mitra':
             s.removeAttribute("hidden");
             break;
-
+        case 'file_mitra':
+            s1.removeAttribute("hidden");
+        break;
+        case 'iku':
+            t.removeAttribute("hidden");
+        break;
+        case 'sdgs':
+            u.removeAttribute("hidden");
+        break;
+    
     }
 }
 

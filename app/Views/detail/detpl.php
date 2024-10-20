@@ -25,7 +25,11 @@
         <div class="card bg-info text-white shadow">
             <div class="card-body">
                 Informasi
-                <div class="text-white-50 small">Penelitian ini telah disetujui</div>
+                <?php if ($data['status']) { ?>
+                    <div class="text-white-50 small">Penelitian ini telah disetujui</div>
+                    <?php } else { ?>
+                        <div class="text-white-50 small">Penelitian ini masih diusulkan</div>
+                <?php } ?>
             </div>
         </div>
         <div class="card-body">

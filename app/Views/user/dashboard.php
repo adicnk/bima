@@ -31,7 +31,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Penelitian</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $dsn['penelitian']==""?0:$dsn['penelitian'] ?></b></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $plCount==""?0:$plCount ?></b></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-flask fa-2x text-gray-300"></i>
@@ -49,7 +49,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                 Pengabdian</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $dsn['pengabdian']==""?0:$dsn['pengabdian'] ?></b></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $pbCount==""?0:$pbCount ?></b></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-graduation-cap fa-2x text-gray-300"></i>

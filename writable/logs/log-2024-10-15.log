@@ -1,0 +1,83 @@
+CRITICAL - 2024-10-15 07:50:19 --> Undefined array key "nidnVokasi"
+#0 C:\xampp\htdocs\bima\app\Views\detail\inpb.php(53): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 53)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpb', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\User.php(213): view('detail/inpb', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->inpb('1', '1')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-10-15 07:53:41 --> Undefined array key "rumpunIlmuMahasiswa"
+#0 C:\xampp\htdocs\bima\app\Views\detail\inpb.php(64): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 64)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpb', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\User.php(213): view('detail/inpb', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->inpb('1', '1')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+ERROR - 2024-10-15 07:55:17 --> Unknown column 'instansi' in 'field list'
+CRITICAL - 2024-10-15 07:55:17 --> Unknown column 'instansi' in 'field list'
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO ang...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO ang...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO ang...')
+#3 C:\xampp\htdocs\bima\app\Views\detail\inpb.php(169): CodeIgniter\Database\BaseConnection->query('INSERT INTO ang...')
+#4 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpb', Array, true)
+#7 C:\xampp\htdocs\bima\app\Controllers\User.php(213): view('detail/inpb', Array)
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->inpb('1', '1')
+#9 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#10 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-10-15 07:56:28 --> Undefined array key "rumpun_ilmu"
+#0 C:\xampp\htdocs\bima\app\Views\detail\inpb.php(423): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 423)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpb', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\User.php(213): view('detail/inpb', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->inpb('1', '1')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-10-15 08:23:23 --> Undefined variable $currentPage
+#0 C:\xampp\htdocs\bima\app\Views\detail\detpb.php(202): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 202)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/detpb', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\User.php(126): view('detail/detpb', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->detpb('1', '1')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-10-15 08:23:59 --> Undefined variable $id
+#0 C:\xampp\htdocs\bima\app\Views\detail\detpb.php(203): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 203)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/detpb', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\User.php(126): view('detail/detpb', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->detpb('1', '1')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-10-15 11:31:06 --> Class "App\Models\SubstansiPBMDL" not found
+#0 C:\xampp\htdocs\bima\system\CodeIgniter.php(809): App\Controllers\User->__construct()
+#1 C:\xampp\htdocs\bima\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}

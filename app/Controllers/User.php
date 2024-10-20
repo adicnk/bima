@@ -10,13 +10,18 @@ use App\Models\RabMDL;
 use App\Models\MitraMDL;
 use App\Models\PenelitianMDL;
 use App\Models\PengabdianMDL;
+use App\Models\AnggotaPBMDL;
+use App\Models\VokasiMDL;
+use App\Models\MahasiswaMDL;
+use App\Models\SubstansiPBMDL;
 
 
 class User extends BaseController
 {
 
     protected $dosenModel, $anggotaModel, $nonDosenModel, $penelitianModel,
-                $substansiModel, $rabModel, $mitraModel, $pengabdianModel;
+                $substansiModel, $rabModel, $mitraModel, $pengabdianModel,
+                $anggotapbModel, $vokasiModel, $mahasiswaModel, $substansipbModel;
 
     public function __construct()
     {
@@ -28,6 +33,10 @@ class User extends BaseController
         $this->mitraModel = new MitraMDL();
         $this->penelitianModel = new PenelitianMDL();
         $this->pengabdianModel = new PengabdianMDL();
+        $this->anggotapbModel = new AnggotaPBMDL();
+        $this->vokasiModel = new VokasiMDL();
+        $this->mahasiswaModel = new MahasiswaMDL();
+        $this->substansipbModel = new SubstansiPBMDL();
     }
 
     public function index()
@@ -42,7 +51,9 @@ class User extends BaseController
         
         $data = [
             'title' => "Dashboard",
-            'dosen' => $this->dosenModel->searchDosen(user_id())
+            'dosen' => $this->dosenModel->searchDosen(user_id()),
+            'plCount' => $this->dosenModel->countPenelitian(user_id()),
+            'pbCount' => $this->dosenModel->countPengabdian(user_id()),
         ];
         return view('user/dashboard', $data);
     }
@@ -106,6 +117,16 @@ class User extends BaseController
         ];
         return view('detail/detpl', $data);        
     }
+
+    public function detpb($pengabdianID,$dosen_id) {
+        $data = [
+            'title' => "Detail Data Pengabdian",
+            'pengabdianID' => $pengabdianID,
+            'dosen_id' => $dosen_id,
+            'data_pengabdian'=> $this->pengabdianModel->searchJudulPengabdian($pengabdianID)
+        ];
+        return view('detail/detpb', $data);        
+    }
     
     public function inpl($penelitianID,$dosen_id) {
         $db = \Config\Database::connect();
@@ -155,6 +176,16 @@ class User extends BaseController
             'currentPage' => $currentPage,
         ];
         return view('detail/inpl', $data);        
+    }
+
+    public function inpb($pengabdianID,$dosen_id) {
+        $data = [
+            'title' => "Input Data Pengabdian",
+            'judul'=> $this->pengabdianModel->searchJudulPengabdian($pengabdianID),
+            'id'=> $pengabdianID,
+            'dosen_id'=>$dosen_id,
+        ];
+        return view('detail/inpb', $data);        
     }
     
     public function currURL(){
