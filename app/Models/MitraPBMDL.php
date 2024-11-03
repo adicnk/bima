@@ -18,7 +18,7 @@ class MitraPBMDL extends Model
         return $this->findAll();
     }
 
-    public function delAnggota($id){        
+    public function delMitra($id){        
         $this->delete(['id'=> $id]);
     }
 

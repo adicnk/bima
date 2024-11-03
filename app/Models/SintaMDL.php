@@ -18,4 +18,16 @@ class SintaMDL extends Model
         return $this->findAll();
  
     }
+
+    public function sintaID($id){
+        $this->where(['dosen_id' => $id]);
+        $query = $this->findAll();
+        foreach ($query as $qry) {
+            if ($qry) {
+                return $qry['id'];
+            } else {
+                return false;
+            }
+        }
+    }
 }

@@ -23,9 +23,10 @@ function showForm(name) {
     var z2 = document.getElementById("formBox_luaran");
     var r = document.getElementById("formBox_rab");
     var s = document.getElementById("formBox_mitra");
-    var s1 = document.getElementById("formbox_file_mitra");
+    var s1 = document.getElementById("formBox_file_mitra");
     var t = document.getElementById("formBox_iku");
     var u = document.getElementById("formBox_sdgs");
+    var v = document.getElementById("formBox_pendukung");
     
     switch(name){
         case 'dosen' :
@@ -64,6 +65,9 @@ function showForm(name) {
         case 'sdgs':
             u.removeAttribute("hidden");
         break;
+        case 'pendukung':
+            v.removeAttribute("hidden");
+        break;
     
     }
 }
@@ -72,6 +76,12 @@ function insertValue(name){
     var x = document.getElementById("tahunRAB");
     var t = document.getElementById("tambahTahun");
     var u = document.getElementById("tahunSelect");
+
+    var p = document.getElementById("fileMitra");
+    var q = document.getElementById("tambahFile");
+    var r = document.getElementById("mitraSelect");
+
+    
     switch(name){
         case "rab":
             if (u.value==""){
@@ -79,6 +89,14 @@ function insertValue(name){
             } else {
                 t.removeAttribute("hidden");
                 x.value = u.value;
+            }
+        break;
+        case "mitra":
+            if (r.value==""){
+                return
+            } else {
+                q.removeAttribute("hidden");
+                p.value = r.value;
             }
         break;
     }    

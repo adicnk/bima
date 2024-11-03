@@ -64,6 +64,7 @@
                 $prodiMahasiswa = input_data($_POST["prodiMahasiswa"]);
                 $mataKuliah = input_data($_POST["mataKuliah"]);
                 $sks = input_data($_POST["sks"]);
+                if ($sks==""){$sks=0;}
                 $tugasMahasiswa = input_data($_POST["tugasMahasiswa"]);
             break;
             case "substansi":
@@ -75,24 +76,25 @@
                     strtolower(pathinfo($path,PATHINFO_EXTENSION));
                     move_uploaded_file($_FILES["fileSubstansi"]["tmp_name"], "file/".$renFile);
                 } else { $renFile=null; }
-                break;
-                case 'luaran': //Get Var Vokasi
+            break;
+            case 'luaran': //Get Var Vokasi
                     $tahunLuaran = input_data($_POST["tahunLuaran"]);
+                    if ($tahunLuaran==""){$tahunLuaran=0;}
                     $kelompokLuaran = input_data($_POST["kelompokLuaran"]);
                     $jenisLuaran = input_data($_POST["jenisLuaran"]);
                     $targetLuaran = input_data($_POST["targetLuaran"]);
                     $keteranganLuaran = input_data($_POST["keteranganLuaran"]);
-                break;
-                case 'iku': //Get Var Vokasi
+            break;
+            case 'iku': //Get Var Vokasi
                     $indikatorIKU = input_data($_POST["indikatorIKU"]);
                     $uraianIKU = input_data($_POST["uraianIKU"]);
                     $kegiatanIKU = input_data($_POST["kegiatanIKU"]);
-                break;
-                case 'sdgs': //Get Var Vokasi
+            break;
+            case 'sdgs': //Get Var Vokasi
                     $SDGs = input_data($_POST["sdgs"]);
                     $kegiatanSDGs = input_data($_POST["kegiatanSDGs"]);
-                break;
-                case 'rab' :
+            break;
+            case 'rab' :
                 $tahunRAB =  input_data($_POST["tahunRAB"]);                
                 $kelompokRAB = input_data($_POST["kelompokRAB"]);                
                 $komponenRAB = input_data($_POST["komponenRAB"]);                
@@ -100,17 +102,18 @@
                 $satuanRAB = input_data($_POST["satuanRAB"]);                
                 $hargaRAB = input_data($_POST["hargaRAB"]);                
                 $volumeRAB = input_data($_POST["volumeRAB"]);              
+                $urlRAB = input_data($_POST["urlHPS"]);              
 
                 if ($hargaRAB==""){$hargaRAB=0;}
                 if ($volumeRAB==""){$volumeRAB=0;} 
                 $totalRAB = $hargaRAB * $volumeRAB;
-                break;                
-                case "tahun rab":                    
-                        $sql = "SELECT * FROM rab WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
-                        //dd($sql);
+            break;                
+            case "tahun rab":                    
+                        $sql = "SELECT * FROM rab_pb WHERE dosen_id=".$dosen_id." AND pengabdian_id=".$id;  
                         $tahunRAB = $db->query($sql)->getNumRows() + 1;        
-                break;
-                case "mitra":
+                        //dd($tahunRAB);
+            break;
+            case "mitra":
                     $namaMitra =  input_data($_POST["namaMitra"]);
                     $jenisMitra =  input_data($_POST["jenisMitra"]);
                     $kelompokMitra =  input_data($_POST["kelompokMitra"]);
@@ -121,8 +124,8 @@
                     if($dana1Mitra=="") {$dana1Mitra=0;}
                     if($dana2Mitra=="") {$dana2Mitra=0;}
                     if($dana3Mitra=="") {$dana3Mitra=0;}
-                break;
-                case "file_mitra" :
+            break;
+            case "file_mitra" :
                     $sql = "SELECT * FROM mitra_file_pb";
                     $fileNumber = $db->query($sql)->getNumRows() + 1;
                     $fileMitra = input_data($_FILES["fileMitra"]["name"]);                
@@ -132,7 +135,19 @@
                                     strtolower(pathinfo($path,PATHINFO_EXTENSION));                                    
                     move_uploaded_file($_FILES["fileMitra"]["tmp_name"], "file/".$renFileMitra);
                     } else { $renFileMitra=null; }    
-                break;
+            break;
+            case "pendukung" :
+                $sql = "SELECT * FROM pendukung WHERE dosen_id=".$dosen_id." AND pengabdian_id=".$id.'' ;
+                $fileNumber = $db->query($sql)->getNumRows() + 1;
+                $filePendukung = input_data($_FILES["filePendukung"]["name"]);                
+                $jenisPendukung =  input_data($_POST["jenisPendukung"]);
+                if ($filePendukung) {
+                    $path = "file/".basename($filePendukung);
+                    $renFilePendukung = "PBPend".date("Ymd")."_".$id.'_'.$dosen_id."_".$fileNumber.".".
+                                strtolower(pathinfo($path,PATHINFO_EXTENSION));                                    
+                move_uploaded_file($_FILES["filePendukung"]["tmp_name"], "file/".$renFilePendukung);
+                } else { $renFilePendukung=null; }    
+            break;
           }
 
           switch ($fungsi){
@@ -165,8 +180,8 @@
                 'VALUES ('.$id.','.$dosen_id.',"'.$SDGs.'","'.$kegiatanSDGs.'")';                
                break;
                case 'rab':
-                   $sql = 'INSERT INTO rab_detail_pb (rab_id,rab_kelompok_id,rab_komponen_id,item,rab_satuan_id,harga,volume,total) '. 
-                        'VALUES ('.$tahunRAB.','.$kelompokRAB.','.$komponenRAB.',"'.$itemRAB.'",'.$satuanRAB.','.$hargaRAB.','.$volumeRAB.','.$totalRAB.')';
+                   $sql = 'INSERT INTO rab_detail_pb (rab_id,rab_kelompok_id,rab_komponen_id,item,rab_satuan_id,harga,volume,total,url_) '. 
+                        'VALUES ('.$tahunRAB.','.$kelompokRAB.','.$komponenRAB.',"'.$itemRAB.'",'.$satuanRAB.','.$hargaRAB.','.$volumeRAB.','.$totalRAB.',"'.$urlRAB.'")';
                     $db->query($sql); 
 
                     $sql = "SELECT SUM(rd.total) as total FROM rab_pb r 
@@ -179,7 +194,7 @@
                             $danaRencanaRAB = $qry['total'];
                         endif;
                     endforeach;
-                    $sql = "UPDATE rab_pb SET dana_direncanakan = ".$danaRencanaRAB." WHERE penelitian_id=".$id." AND dosen_id=".$dosen_id;                
+                    $sql = "UPDATE rab_pb SET dana_direncanakan = ".$danaRencanaRAB." WHERE pengabdian_id=".$id." AND dosen_id=".$dosen_id;                
                break;
                case 'tahun rab':
                    $sql = 'INSERT INTO rab_pb (pengabdian_id,dosen_id,tahun,dana_direncanakan) '. 
@@ -199,6 +214,10 @@
                     $sql = 'INSERT INTO mitra_file_pb (mitra_pb_id,file_mitra) '.
                             'VALUES ('.$mitraID.',"'.$renFileMitra.'")';
                 break;
+                case "pendukung":
+                    $sql = 'INSERT INTO pendukung (pengabdian_id,dosen_id,jenis,file_) '. 
+                    'VALUES ('.$id.','.$dosen_id.',"'.$jenisPendukung.'","'.$renFilePendukung.'")';
+               break;
             }
             //dd($sql);
             $db->query($sql);                        
@@ -218,10 +237,12 @@
         ${'iku_'.$id} = $db->query($sql)->getResultArray();
         $sql = "SELECT * FROM sdgs WHERE dosen_id=".$dosen_id." AND pengabdian_id=".$id;
         ${'sdgs_'.$id} = $db->query($sql)->getResultArray();
-        $sql = "SELECT * FROM rab r INNER JOIN rab_detail rd ON r.id=rd.rab_id WHERE r.dosen_id=".$dosen_id." AND r.penelitian_id=".$id.'' ;                
+        $sql = "SELECT * FROM rab_pb r INNER JOIN rab_detail_pb rd ON r.id=rd.rab_id WHERE r.dosen_id=".$dosen_id." AND r.pengabdian_id=".$id.'' ;                
         ${'rab_'.$id} = $db->query($sql)->getResultArray();
         $sql = "SELECT * FROM mitra_pb WHERE dosen_id=".$dosen_id." AND pengabdian_id=".$id.'' ;                
         ${'mitra_'.$id} = $db->query($sql)->getResultArray();
+        $sql = "SELECT * FROM pendukung WHERE dosen_id=".$dosen_id." AND pengabdian_id=".$id.'' ;                
+        ${'pendukung_'.$id} = $db->query($sql)->getResultArray();
         
  
         // Removing the redundant HTML characters if any exist.
@@ -300,7 +321,7 @@
                         } ?>
                     </td>
                     <td>
-                        <a href="/delete/anggotaDosenPB/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
+                        <a href="/deletepb/anggotaDosen/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>
@@ -381,7 +402,7 @@
                         } ?>
                     </td>
                     <td>
-                        <a href="/delete/anggotaVokasi/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
+                        <a href="/deletepb/anggotaVokasi/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>
@@ -471,7 +492,7 @@
                         } ?>
                     </td>
                     <td>
-                        <a href="/delete/anggotaVokasi/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
+                        <a href="/deletepb/anggotaMahasiswa/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>
@@ -528,7 +549,7 @@
                     <button class="btn btn-sm btn-danger">
                     <i class="fa fa-file-pdf"></i>Download</button></a>' : '-' ?></td>
                     <td>
-                        <a href="/delete/substansi_pb/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Substansi">
+                        <a href="/deletepb/substansi/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Substansi">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>
@@ -608,7 +629,7 @@
                     <td><?= $data['target_'] ? $data['target_'] : '-' ?></td>
                     <td><?= $data['keterangan'] ? $data['keterangan'] : '-' ?></td>
                     <td>
-                        <a href="/delete/luaran/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
+                        <a href="/deletepb/luaran/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data Anggota">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>
@@ -623,43 +644,61 @@
     <?php } ?>
     <!-- End Table Luaran -->
 
-   <!-- Table Mitra -->
-   <?php 
-        $mitra = $db->query('SELECT * FROM mitra_pb WHERE dosen_id='.$dosen_id.' AND pengabdian_id='.$id)->getResultArray();         
-    ?>
-
-    <div class="h4 font-weight-bold">Daftar Mitra
-    <?php if (!$mitra) : ?> 
-    <img src="<?= base_url() ?>/icon/add.png" onclick="showForm('mitra')"/></div>
-    <?php endif; ?>
-    </div>
+    <!-- Table Mitra -->
+    <div class="h4 font-weight-bold mt-3">Daftar Mitra<img src="<?= base_url() ?>/icon/add.png" onclick="showForm('mitra')"/></div>
     <hr/>
-    <form method="post" enctype="multipart/form-data" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" id="formBox_mitra" hidden>        
-        <div  class="row g-3">
-            <div class="col-md-6 mb-2"><input name="jenisMitra" type="text" class="form-control" placeholder="Jenis ...." onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
-            <div class="col-md-6 mb-2"><input name="kelompokMitra" type="text" class="form-control" placeholder="Kelompok ...." onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
-            <div class="col-md-6 mb-2"><input name="namaMitra" type="text" class="form-control" placeholder="Nama ...." onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
-            <div class="col-md-6 mb-2"><input name="dana1Mitra" type="text" onkeypress="return numOnly(event);" class="form-control" placeholder="Dana Tahun 1 ...." onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
-            <div class="col-md-6 mb-2"><input name="dana2Mitra" type="text" onkeypress="return numOnly(event);" class="form-control" placeholder="Dana Tahun 2 ...." onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
-            <div class="col-md-6 mb-2"><input name="dana3Mitra" type="text" onkeypress="return numOnly(event);" class="form-control" placeholder="Dana Tahun 3 ...." onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+    <form method="post" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" class="row g-3" id="formBox_mitra" hidden>        
+        <div class="col-md-12 mt-2"><textarea class="form-control" name="namaMitra" rows="2" placeholder="Nama Mitra ....."  onfocusin="yellowin(this);" onfocusout="whiteout(this)"></textarea></div>
+        <div class="col-md-4 mt-2">           
+            <select class="form-control" name="jenisMitra" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                <option value="Sasaran">Sasaran</option>
+            </select>
         </div>
+        <div class="col-md-8 mt-2">           
+            <select class="form-control" name="kelompokMitra" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
+                <option value="Kelompok masyarakat yang tidak produktif secara ekonomi">Kelompok masyarakat yang tidak produktif secara ekonomi</option>
+            </select>
+        </div>
+        <div class="col-md-4 mt-2"><input type="text" name="dana1Mitra" class="form-control" placeholder="Masukkan Dana Tahun 1  ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);"></div>
+        <div class="col-md-4 mt-2"><input type="text" name="dana2Mitra" class="form-control" placeholder="Masukkan Dana Tahun 2  ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);"></div>
+        <div class="col-md-4 mt-2"><input type="text" name="dana3Mitra" class="form-control" placeholder="Masukkan Dana Tahun 3  ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)" onkeypress="return numOnly(event);"></div>
         <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="mitra">Submit</button>
     </form>
-    <?php if ($mitra) : ?>
-        <div id="tambahFile" onclick="showForm('file_mitra')" class="btn btn-sm btn-danger shadow-sm mb-3"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah File</div>
-        <form method="post" enctype="multipart/form-data" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" id="formbox_file_mitra" hidden>
+
+    <?php 
+        $mitra = $db->query('SELECT * FROM mitra_pb WHERE dosen_id='.$dosen_id.' AND pengabdian_id='.$id)->getResultArray(); 
+        if ($mitra) :
+    ?>    
+    <div class="col-6">
+        <select id="mitraSelect" class="form-control" onfocusin="yellowin(this);" onfocusout="whiteout(this)" onchange="insertValue('mitra')">
+            <option value="">Pilih Mitra</option>
+            <?php
+            $mitraCombo = $db->query('SELECT * FROM mitra_pb WHERE dosen_id='.$dosen_id.' AND pengabdian_id='.$id)->getResultArray(); 
+            foreach ($mitraCombo as $data) :
+                ?>
+            <option value="<?= $data['id'] ?>"> <?= $data['nama']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <div id="tambahFile" onclick="showForm('file_mitra')" class="btn btn-sm btn-danger shadow-sm mt-2" hidden><i class="fas fa-plus fa-sm text-white-50"></i> Tambah File</div>
+    </div>
+<?php endif; ?>
+
+    <form method="post" enctype="multipart/form-data" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" id="formBox_file_mitra" hidden>        
+        <div  class="row g-3">
             <div class="col-md-6 mt-2 mb-2">
-                <div class="custom-file" name="file_mitra">
+                <div class="custom-file">
                     <input type="file" class="custom-file-input" name="fileMitra">
                     <label class="custom-file-label" for="fileMitra">Upload File</label>
                 </div>
             </div>
-            <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="file_mitra">Submit</button>
-        </form>
-    <?php endif; ?>
+        </div>
+        <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="file_mitra">Submit</button>
+    </form>
+
 
     <?php if (${'mitra_'.$id}){?>
-    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+    
+        <div class="d-sm-flex align-items-center justify-content-between mb-2">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -696,9 +735,9 @@
                         <button class="btn btn-sm btn-danger"><i class="fa fa-file-pdf"></i>
                         Download</button></a>' : '-' ?><br/><br/>
                         <?php endforeach;; ?>
-                    </td>                                        
+                    </td>
                     <td>
-                        <a href="/delete/mitra/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Mitra">
+                        <a href="/deletepb/mitra/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data IKU">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>
@@ -710,7 +749,7 @@
         </table>
     </div>
     <?php } ?>
-    <!-- End Table Mitra -->
+    <!-- End Table Mitra -->    
 
     <!-- Table SDGs -->
     <div class="h4 font-weight-bold mt-3">Daftar SDGs<img src="<?= base_url() ?>/icon/add.png" onclick="showForm('sdgs')"/></div>
@@ -744,7 +783,7 @@
                     <td><?= $data['kegiatan'] ? $data['kegiatan'] : '-' ?></td>
                     </td>
                     <td>
-                        <a href="/delete/sdgs/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data IKU">
+                        <a href="/deletepb/sdgs/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data IKU">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>
@@ -793,7 +832,7 @@
                     <td><?= $data['kegiatan'] ? $data['kegiatan'] : '-' ?></td>
                     </td>
                     <td>
-                        <a href="/delete/iku/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data IKU">
+                        <a href="/deletepb/iku/<?= $id ?>/<?= $dosen_id ?>/<?= $data['id'] ?>" title="Delete Data IKU">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>
                 </tr>
@@ -805,14 +844,14 @@
         </table>
     </div>
     <?php } ?>
-    <!-- End Table IKU -->
+    <!-- End Table IKU -->    
 
    <!-- Table RAB -->   
     <?php 
-        $sql= "SELECT * FROM rab_pb WHERE dosen_id=".$dosen_id." AND penelitian_id=".$id;  
+        $sql= "SELECT * FROM rab_pb WHERE dosen_id=".$dosen_id." AND pengabdian_id=".$id;  
         $rabCombo = $db->query($sql)->getResultArray();
     ?>
-    <div class="h4 font-weight-bold">Daftar Rancangan Anggaran Biaya</div>
+    <div class="h4 font-weight-bold">Daftar Rencana Anggaran Biaya</div>
     <hr/>
     <div class="row mr-2">
         <form method="post" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
@@ -830,7 +869,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><strong>Dana yang direncanakan</strong></div>
                                         <input type="text" name="danaRencanaRAB" class="form-control mr-4" value="<?= number_format($data['dana_direncanakan']) ?>" disabled>
-                                        <a href="/delete/rab/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Item">
+                                        <a href="/deletepb/rab/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Item">
                                         <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                                     </div>
                                 </div>
@@ -871,7 +910,7 @@
                                 <div class="input-group-text"><strong>Kelompok</strong></div>
                                 <select class="form-control" name="kelompokRAB" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
                                 <?php 
-                                    $sql="SELECT * FROM rab_kelompok"; 
+                                    $sql="SELECT * FROM rab_kelompok_pb"; 
                                     $rabCombo = $db->query($sql)->getResultArray();
                                     foreach ($rabCombo as $data) :
                                 ?>
@@ -886,7 +925,7 @@
                                 <div class="input-group-text"><strong>Komponen</strong></div>
                                 <select class="form-control" name="komponenRAB" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
                                 <?php 
-                                    $sql="SELECT * FROM rab_komponen"; 
+                                    $sql="SELECT * FROM rab_komponen_pb"; 
                                     $rabCombo = $db->query($sql)->getResultArray();
                                     foreach ($rabCombo as $data) :
                                 ?>
@@ -935,6 +974,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class=" form-row align-items-right mt-2">
+                        <div class="col-10">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><strong>Item</strong></div>
+                                <textarea class="form-control" name="urlHPS" rows="2" placeholder="Masukkan Item ....." onfocusin="yellowin(this);" onfocusout="whiteout(this)"></textarea>
+                            </div>
+                        </div>
+                    </div>
                     <input id="tahunRAB" name="tahunRAB" type="text" hidden>
                 </div>
             </div>
@@ -943,7 +990,7 @@
     </form>
     
     <?php if (${'rab_'.$id}){           
-    $sql ="SELECT * FROM rab WHERE penelitian_id=".$id." AND dosen_id=".$dosen_id;
+    $sql ="SELECT * FROM rab_pb WHERE pengabdian_id=".$id." AND dosen_id=".$dosen_id;
     //dd($sql);
     $query  = $db->query($sql)->getResultArray();
     foreach ($query as $qry) :
@@ -962,6 +1009,7 @@
                     <th scope="col" width="80px">Harga</th>
                     <th scope="col" width="80px">Volume</th>
                     <th scope="col" width="80px">Total</th>
+                    <th scope="col" width="50px">URL HPS</th>
                     <th scope="col" width="50px"></th>
                 </tr>
                     <?php 
@@ -975,7 +1023,7 @@
                     <td style="text-align: center"><?= $index ?></td>
 
                     <?php                        
-                        $query="SELECT * FROM rab_kelompok WHERE id=". $data['rab_kelompok_id']; 
+                        $query="SELECT * FROM rab_kelompok_pb WHERE id=". $data['rab_kelompok_id']; 
                         $rabDetail = $db->query($query)->getResultArray();
                         foreach ($rabDetail as $rd) :
                     ?>
@@ -983,7 +1031,7 @@
                     <?php endforeach ?>
                     
                     <?php 
-                        $query="SELECT * FROM rab_komponen WHERE id=". $data['rab_komponen_id']; 
+                        $query="SELECT * FROM rab_komponen_pb WHERE id=". $data['rab_komponen_id']; 
                         $rabDetail = $db->query($query)->getResultArray();
                         foreach ($rabDetail as $rd) :
                             ?>
@@ -1003,8 +1051,9 @@
                     <td><?= $data['harga'] ? number_format($data['harga']) : '-' ?></td>
                     <td><?= $data['volume'] ? number_format($data['volume']) : '-' ?></td>
                     <td><?= $data['total'] ? number_format($data['total']) : '-' ?></td>
+                    <td><?= $data['url_'] ? '<a href="'.$data['url_'].'" target="_blank">Lihat</a>' : '-' ?></td>
                     <td>
-                        <a href="/delete/item/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Item">
+                        <a href="/deletepb/item/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Item">
                             <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
                     </td>                    
             <?php $totalTahun=$totalTahun+$data['total']; $index++; endif; 
@@ -1020,6 +1069,62 @@
     <hr/>
     <?php } ?>
     <!-- End Table RAB -->
+
+   <!-- Table Pendukung -->
+    <div class="h4 font-weight-bold">File Pendukung
+    <img src="<?= base_url() ?>/icon/add.png" onclick="showForm('pendukung')"/>
+    </div>
+    <hr/>
+    <form method="post" enctype="multipart/form-data" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" id="formBox_pendukung" hidden>        
+        <div  class="row g-3">
+            <div class="col-md-6 mb-2"><input name="jenisPendukung" type="text" class="form-control" placeholder="Jenis ...." onfocusin="yellowin(this);" onfocusout="whiteout(this)"></div>
+            <div class="col-md-6 mb-2">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="filePendukung">
+                    <label class="custom-file-label" for="filePendukung">Upload File</label>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-lg btn-danger btn-block mt-3 mb-4" type="submit" name="fungsi" value="pendukung">Submit</button>
+    </form>
+
+    <?php if (${'pendukung_'.$id}){?>
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">#</th>
+                    <th scope="col" width="500px">Jenis</th>
+                    <th scope="col" width="500px">File</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                    <?php
+                    $index = 1;
+                    foreach (${'pendukung_'.$id} as $data) :                        
+                    ?>
+                    <td style="text-align: center"><?= $index ?></td>
+                    <td><?= $data['jenis'] ? $data['jenis'] : '-' ?></td>
+                    <td>
+                        <?= $data['file_'] ? '<a href="'. base_url().'/FileController/download/'.$data['file_'].'">
+                        <button class="btn btn-sm btn-danger"><i class="fa fa-file-pdf"></i>
+                        Download</button></a>' : '-' ?><br/><br/>
+                    </td>                                        
+                    <td>
+                        <a href="/deletepb/pendukung/<?= $id ?>/<?= $data['dosen_id'] ?>/<?= $data['id'] ?>" title="Delete Mitra">
+                            <img src="<?= base_url() ?>/icon/delete.png" class="mr-2"/></a>
+                    </td>
+                </tr>
+            <?php
+                $index++;
+                endforeach;
+            ?>
+            </tbody>
+        </table>
+    </div>
+    <?php } ?>
+    <!-- End Table Pendukung -->    
 
     <form method="post" action="<?= base_url() ?>/user/listPengabdian">
         <?= csrf_field() ?>

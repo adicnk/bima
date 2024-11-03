@@ -65,7 +65,7 @@
                         } ?>
                     </td>            
                     <td>
-                        <a href="" title="Edit Data Pengabdian"><img src="<?= base_url() ?>/icon/edit.png" class="mr-2" /></a>
+                        <a href="<?= '/form/editpengabdian/' .$data['id'].'/'.$data['dosen_id'] ?>" title="Edit Data Pengabdian"><img src="<?= base_url() ?>/icon/edit.png" class="mr-2" /></a>
                         <a href="<?= '/user/inpb/' .$data['id'].'/'.$data['dosen_id'] ?>" title="Add Support Data"><img src="<?= base_url() ?>/icon/data.png" /></a>
                         <a href="<?= '/user/detpb/' .$data['id'].'/'.$data['dosen_id'] ?>" title="View Detail"><img src="<?= base_url() ?>/icon/view.png" /></a>
                     </td>

@@ -86,7 +86,9 @@ class Submit extends BaseController
         //$lastID = $db->insertID();
         $data = [
             'title' => "Dashboard",
-            'dosen' => $this->dosenModel->searchDosen(user_id())
+            'dosen' => $this->dosenModel->searchDosen(user_id()),
+            'plCount' => $this->dosenModel->countPenelitian(user_id()),
+            'pbCount' => $this->dosenModel->countPengabdian(user_id()),
         ];
 
         return view('user/dashboard', $data);
@@ -134,7 +136,9 @@ class Submit extends BaseController
 
         $data = [
             'title' => "Dashboard",
-            'dosen' => $this->dosenModel->searchDosen(user_id())
+            'dosen' => $this->dosenModel->searchDosen(user_id()),
+            'plCount' => $this->dosenModel->countPenelitian(user_id()),
+            'pbCount' => $this->dosenModel->countPengabdian(user_id()),
         ];
 
         return view('user/dashboard', $data);
@@ -180,7 +184,9 @@ class Submit extends BaseController
 
         $data = [
             'title' => "Dashboard",
-            'dosen' => $this->dosenModel->searchDosen(user_id())
+            'dosen' => $this->dosenModel->searchDosen(user_id()),
+            'plCount' => $this->dosenModel->countPenelitian(user_id()),
+            'pbCount' => $this->dosenModel->countPengabdian(user_id()),
         ];
 
         return view('user/dashboard', $data);

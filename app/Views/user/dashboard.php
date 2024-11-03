@@ -145,8 +145,11 @@
             </div>
         </div>
     </div>
+
+    <a href="<?= '/form/editdosen/' .$dsn['id'] ?>" class="btn btn btn-danger shadow ml-4 mt-2 mb-4">Edit Profie</a>
     <?php } ?>
 </div>
+
 <!-- /.container-fluid -->
 
 <?= $this->endSection() ?>

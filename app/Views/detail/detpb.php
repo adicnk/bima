@@ -466,6 +466,132 @@
     <?php endif; ?>
     <!-- End Table IKU -->
 
+        <?php 
+            $rab = $db->query("SELECT * FROM rab_pb WHERE dosen_id=".$dosen_id." AND pengabdian_id=".$pengabdianID)->getResultArray(); 
+            $rab_detail = $db->query("SELECT * FROM rab_pb r INNER JOIN rab_detail_pb rd ON r.id=rd.rab_id WHERE r.dosen_id=".$dosen_id." AND r.pengabdian_id=".$pengabdianID)->getResultArray(); 
+            if ($rab) :
+        ?>
+        <div class="card bg-info text-white shadow">
+            <div class="card-body">
+                Rencana Anggaran Biaya
+            </div>
+        </div>
+<?php
+        foreach ($rab as $qry) :
+        $tahun = $qry['tahun'];
+    ?>
+    Tahun ke - <?= $qry['tahun'] ?>     
+    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">#</th>
+                    <th scope="col" width="250px">Kelompok</th>
+                    <th scope="col" width="250px">Komponen</th>
+                    <th scope="col" width="300px">Item</th>
+                    <th scope="col" width="150px">Satuan</th>
+                    <th scope="col" width="80px">Harga</th>
+                    <th scope="col" width="80px">Volume</th>
+                    <th scope="col" width="80px">Total</th>
+                    <th scope="col" width="50px">URL HPS</th>
+                    <th scope="col" width="50px"></th>
+                </tr>
+                    <?php 
+                        $totalTahun=0;
+                        $index = 1;
+                        foreach ($rab_detail as $data) :                            
+                            if ($data['tahun']==$qry['tahun']) :
+                    ?>
+            </thead>
+                 <tbody>
+                    <td style="text-align: center"><?= $index ?></td>
+
+                    <?php                        
+                        $query="SELECT * FROM rab_kelompok_pb WHERE id=". $data['rab_kelompok_id']; 
+                        $rabDetail = $db->query($query)->getResultArray();
+                        foreach ($rabDetail as $rd) :
+                    ?>
+                    <td><?= $rd['name'] ? $rd['name'] : '-' ?></td>
+                    <?php endforeach ?>
+                    
+                    <?php 
+                        $query="SELECT * FROM rab_komponen_pb WHERE id=". $data['rab_komponen_id']; 
+                        $rabDetail = $db->query($query)->getResultArray();
+                        foreach ($rabDetail as $rd) :
+                            ?>
+                    <td><?= $rd['name'] ? $rd['name'] : '-' ?></td>
+                    <?php endforeach ?>
+                    
+                    <td><?= $data['item'] ? $data['item'] : '-' ?></td>
+                    
+                    <?php 
+                        $query="SELECT * FROM rab_satuan WHERE id=". $data['rab_satuan_id']; 
+                        $rabDetail = $db->query($query)->getResultArray();
+                        foreach ($rabDetail as $rd) :
+                            ?>
+                    <td><?= $rd['name'] ? $rd['name'] : '-' ?></td>
+                    <?php endforeach ?>
+                    
+                    <td><?= $data['harga'] ? number_format($data['harga']) : '-' ?></td>
+                    <td><?= $data['volume'] ? number_format($data['volume']) : '-' ?></td>
+                    <td><?= $data['total'] ? number_format($data['total']) : '-' ?></td>
+                    <td><?= $data['url_'] ? '<a href="'.$data['url_'].'" target="_blank">Lihat</a>' : '-' ?></td>
+            <?php $totalTahun=$totalTahun+$data['total']; $index++; endif; 
+        endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <div class="mb-3"><b>Total Biaya Tahun ke- <?= $tahun ?> : <?= number_format($totalTahun) ?></b></div>
+
+    <?php           
+        endforeach;
+    ?>
+    <hr/>
+    <?php endif; ?>
+
+    <?php 
+            $pendukung = $db->query('SELECT * FROM pendukung WHERE dosen_id='.$dosen_id.' AND pengabdian_id='.$pengabdianID)->getResultArray(); 
+            if ($pendukung) :
+        ?>
+        <div class="card bg-info text-white shadow">
+            <div class="card-body">
+                File Pendukung
+            </div>
+        </div>
+
+        <div class="d-sm-flex align-items-center justify-content-between mb-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center">#</th>
+                    <th scope="col" width="500px">Jenis</th>
+                    <th scope="col" width="500px">File</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                    <?php
+                    $index = 1;
+                    foreach ($pendukung as $data) :                        
+                    ?>
+                    <td style="text-align: center"><?= $index ?></td>
+                    <td><?= $data['jenis'] ? $data['jenis'] : '-' ?></td>
+                    <td>
+                        <?= $data['file_'] ? '<a href="'. base_url().'/FileController/download/'.$data['file_'].'">
+                        <button class="btn btn-sm btn-danger"><i class="fa fa-file-pdf"></i>
+                        Download</button></a>' : '-' ?><br/><br/>
+                    </td>                                        
+                </tr>
+            <?php
+                $index++;
+                endforeach;
+            ?>
+            </tbody>
+        </table>
+    </div>
+    <?php endif; ?>
+    <!-- End Table Pendukung -->    
+        
     <form method="post" action="<?= base_url() ?>/user/listPengabdian">
         <?= csrf_field() ?>
         <button class="btn btn-lg btn-primary btn-block mt-3 mb-4" type="submit">Kembali ke List Pengabdian</button>

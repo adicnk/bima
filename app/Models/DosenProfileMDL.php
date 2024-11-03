@@ -23,6 +23,18 @@ class DosenProfileMDL extends Model
         }        
     }
 
+    public function profileID($id){
+        $this->where(['dosen_id' => $id]);
+        $query = $this->findAll();
+        foreach ($query as $qry) {
+            if ($qry) {
+                return $qry['id'];
+            } else {
+                return false;
+            }
+        }
+    }
+
     public function statusDosen($id)
     {
         $this->where(['id' => $id]);

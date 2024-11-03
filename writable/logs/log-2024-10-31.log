@@ -1,0 +1,12 @@
+CRITICAL - 2024-10-31 09:38:49 --> Undefined array key "filePendukung"
+#0 C:\xampp\htdocs\bima\app\Views\detail\inpb.php(142): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 142)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpb', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\User.php(188): view('detail/inpb', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->inpb('1', '1')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}

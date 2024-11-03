@@ -45,6 +45,8 @@ $routes->get('/submitDosen', 'Submit::dosen');
 $routes->get('/addDosen', 'Form::addDosen');
 $routes->get('/addPenelitian', 'Form::addPenelitian');
 $routes->get('/addPengabdian', 'Form::addPengabdian');
+$routes->get('/editPenelitian/$1', 'Form::editPenelitian($1)');
+$routes->get('/editPengabdian/$1', 'Form::editPengabdian($1)');
 
 //File
 $routes->get('/download', 'User::detpl');
