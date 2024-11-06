@@ -14,3 +14,13 @@ Main connection [MySQLi]: No connection could be made because the target machine
 #10 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #11 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
 #12 {main}
+CRITICAL - 2024-11-03 09:48:44 --> syntax error, unexpected identifier "dd", expecting "function" or "const"
+#0 C:\xampp\htdocs\bima\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\bima\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Dose...')
+#2 C:\xampp\htdocs\bima\app\Controllers\User.php(28): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Dose...')
+#3 C:\xampp\htdocs\bima\system\CodeIgniter.php(809): App\Controllers\User->__construct()
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}

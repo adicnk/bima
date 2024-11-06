@@ -1,0 +1,48 @@
+ERROR - 2024-11-07 01:21:09 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 3
+CRITICAL - 2024-11-07 01:21:09 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 3
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('\r\n            U...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            U...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            U...')
+#3 C:\xampp\htdocs\bima\app\Controllers\User.php(111): CodeIgniter\Database\BaseConnection->query('\r\n            U...')
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->setuju('1', '1')
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#9 {main}
+ERROR - 2024-11-07 01:22:47 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 2
+CRITICAL - 2024-11-07 01:22:47 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 2
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('\r\n            U...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            U...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            U...')
+#3 C:\xampp\htdocs\bima\app\Controllers\User.php(111): CodeIgniter\Database\BaseConnection->query('\r\n            U...')
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->setuju('1', '1')
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#9 {main}
+CRITICAL - 2024-11-07 01:43:31 --> Undefined variable $penelitianID
+#0 C:\xampp\htdocs\bima\app\Views\detail\statuspb.php(605): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 605)
+#1 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/statuspb', Array, true)
+#4 C:\xampp\htdocs\bima\app\Controllers\User.php(104): view('detail/statuspb', Array)
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->statuspb('1', '1')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+ERROR - 2024-11-07 01:52:58 --> Unknown column 'penelitian_id' in 'where clause'
+CRITICAL - 2024-11-07 01:52:58 --> Unknown column 'penelitian_id' in 'where clause'
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('\r\n            U...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            U...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            U...')
+#3 C:\xampp\htdocs\bima\app\Controllers\User.php(155): CodeIgniter\Database\BaseConnection->query('\r\n            U...')
+#4 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->pbsetuju('1', '1')
+#5 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#9 {main}

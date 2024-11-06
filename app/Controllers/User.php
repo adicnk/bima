@@ -41,23 +41,164 @@ class User extends BaseController
 
     public function index()
     {
-        $dosenID = user()->dosen_id;
-        if ($dosenID == null) {
+        if (in_groups('peneliti')) :
+            $dosenID = user()->dosen_id;
+            if ($dosenID == null) {
+                $data = [
+                    'title' => "Silahkan Isi Profile Data Anda Dulu"
+                ];
+                return view('user/baru', $data);            
+            }
+            
             $data = [
-                'title' => "Silahkan Isi Profile Data Anda Dulu"
+                'title' => "Dashboard",
+                'dosen' => $this->dosenModel->searchDosen(user_id()),
+                'plCount' => $this->dosenModel->countPenelitian(user_id()),
+                'pbCount' => $this->dosenModel->countPengabdian(user_id()),
             ];
-            return view('user/baru', $data);            
-        }
-        
+            return view('user/dashboard', $data);
+        endif;
+
+        $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;
         $data = [
-            'title' => "Dashboard",
-            'dosen' => $this->dosenModel->searchDosen(user_id()),
+            'title' => "Administrator",
+            'dosen' => $this->dosenModel->searchDosen(),
+            'data_penelitian'=> $this->penelitianModel->searchPenelitian(user_id()),
+            'penelitian'  => $this->penelitianModel->paginate(5, 'user'),
+            'pager' => $this->penelitianModel->pager,
+            'currentPage' => $currentPage,
             'plCount' => $this->dosenModel->countPenelitian(user_id()),
             'pbCount' => $this->dosenModel->countPengabdian(user_id()),
         ];
-        return view('user/dashboard', $data);
+        return view('admin/dashboard', $data);
+
     }
 
+    public function plpb($id){        
+        $data = [
+            'title' => "Penelitian & Pengabdian dari ",
+            'dosen' => $this->dosenModel->searchDosen($id),
+            'data_penelitian'=> $this->penelitianModel->searchPenelitian($id),
+            'data_pengabdian'=> $this->pengabdianModel->searchPengabdian($id),
+        ];
+        return view('admin/plpb', $data);
+    }
+
+    public function statuspl($id, $dosen_id){    
+        $data = [
+            'title' => "Detail Data Penelitian",
+            'penelitianID' => $id,
+            'dosen_id' => $dosen_id,
+            'data_penelitian'=> $this->penelitianModel->searchJudulPenelitian($id)
+        ];
+        return view('detail/statuspl', $data);        
+    }
+
+    public function statuspb($id, $dosen_id){        
+        $data = [
+            'title' => "Detail Data Pengabdian",
+            'pengabdianID' => $id,
+            'dosen_id' => $dosen_id,
+            'data_pengabdian'=> $this->pengabdianModel->searchJudulPengabdian($id)
+        ];
+        return view('detail/statuspb', $data);        
+    }
+
+    public function plsetuju($penelitianID,$dosen_id){     
+        $db = \Config\Database::connect();
+        $db->query('
+            UPDATE usulan_penelitian SET status=1 
+            WHERE id='.$penelitianID.' AND dosen_id='.$dosen_id            
+        );
+        $db->query('
+            UPDATE anggota_dosen SET status=1 
+            WHERE penelitian_id='.$penelitianID.' AND dosen_id='.$dosen_id            
+        );
+
+        $data = [
+            'title' => "Penelitian & Pengabdian dari ",
+            'dosen' => $this->dosenModel->searchDosen($dosen_id),
+            'data_penelitian'=> $this->penelitianModel->searchPenelitian($dosen_id),
+            'data_pengabdian'=> $this->pengabdianModel->searchPengabdian($dosen_id),
+        ];
+        return view('admin/plpb', $data);
+    }
+
+    public function plditolak($penelitianID,$dosen_id){     
+        $db = \Config\Database::connect();
+        $db->query('
+            UPDATE usulan_penelitian SET status=0 
+            WHERE id='.$penelitianID.' AND dosen_id='.$dosen_id            
+        );
+        $db->query('
+            UPDATE anggota_dosen SET status=0 
+            WHERE penelitian_id='.$penelitianID.' AND dosen_id='.$dosen_id            
+        );
+
+        $data = [
+            'title' => "Penelitian & Pengabdian dari ",
+            'dosen' => $this->dosenModel->searchDosen($dosen_id),
+            'data_penelitian'=> $this->penelitianModel->searchPenelitian($dosen_id),
+            'data_pengabdian'=> $this->pengabdianModel->searchPengabdian($dosen_id),
+        ];
+        return view('admin/plpb', $data);
+    }
+
+    public function pbsetuju($pengabdianID,$dosen_id){     
+        $db = \Config\Database::connect();
+        $db->query('
+            UPDATE usulan_pengabdian SET status=1 
+            WHERE id='.$pengabdianID.' AND dosen_id='.$dosen_id            
+        );
+        $db->query('
+            UPDATE anggota_dosen_pb SET status=1 
+            WHERE pengabdian_id='.$pengabdianID.' AND dosen_id='.$dosen_id            
+        );
+        $db->query('
+            UPDATE anggota_vokasi SET status=1 
+            WHERE pengabdian_id='.$pengabdianID.' AND dosen_id='.$dosen_id            
+        );
+        $db->query('
+            UPDATE anggota_mahasiswa SET status=1 
+            WHERE pengabdian_id='.$pengabdianID.' AND dosen_id='.$dosen_id            
+        );
+
+        $data = [
+            'title' => "Penelitian & Pengabdian dari ",
+            'dosen' => $this->dosenModel->searchDosen($dosen_id),
+            'data_penelitian'=> $this->penelitianModel->searchPenelitian($dosen_id),
+            'data_pengabdian'=> $this->pengabdianModel->searchPengabdian($dosen_id),
+        ];
+        return view('admin/plpb', $data);
+    }
+
+    public function pbditolak($pengabdianID,$dosen_id){     
+        $db = \Config\Database::connect();
+        $db->query('
+            UPDATE usulan_pengabdian SET status=0 
+            WHERE id='.$pengabdianID.' AND dosen_id='.$dosen_id            
+        );
+        $db->query('
+            UPDATE anggota_dosen_pb SET status=0 
+            WHERE pengabdian_id='.$pengabdianID.' AND dosen_id='.$dosen_id            
+        );
+        $db->query('
+            UPDATE anggota_vokasi SET status=0 
+            WHERE pengabdian_id='.$pengabdianID.' AND dosen_id='.$dosen_id            
+        );
+        $db->query('
+            UPDATE anggota_mahasiswa SET status=0 
+            WHERE pengabdian_id='.$pengabdianID.' AND dosen_id='.$dosen_id            
+        );
+
+        $data = [
+            'title' => "Penelitian & Pengabdian dari ",
+            'dosen' => $this->dosenModel->searchDosen($dosen_id),
+            'data_penelitian'=> $this->penelitianModel->searchPenelitian($dosen_id),
+            'data_pengabdian'=> $this->pengabdianModel->searchPengabdian($dosen_id),
+        ];
+        return view('admin/plpb', $data);
+    }
 
     public function registrasi(){       
         $data = [

@@ -10,7 +10,15 @@ function myFile() {
     } else {
         gambar.disabled = false;
     }
+}
 
+function usulan(){
+    var checkbox = document.getElementById("usulan");
+    var yesno = document.getElementById("yesno");
+        if (checkbox.checked == true) {
+            yesno.removeAttribute("hidden");
+            checkbox.disabled = true;
+        }
 }
 
 function showForm(name) {
