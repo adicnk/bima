@@ -92,5 +92,4 @@ class DosenMDL extends Model
         //dd($this->findall());
         return $this->countAllResults();
     }
-
 }

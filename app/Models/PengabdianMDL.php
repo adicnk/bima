@@ -56,4 +56,17 @@ class PengabdianMDL extends Model
         $this->delete(['id' => $id]);
     }
 
+    public function countPB(){
+        return $this->countAllResults();
+    }
+
+    public function setujuPB(){
+        $this->where(['status' => 1]);
+        return $this->countAllResults();
+    }
+
+    public function tolakPB(){
+        $this->where(['status' => 0]);
+        return $this->countAllResults();
+    }
 }

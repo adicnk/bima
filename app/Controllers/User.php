@@ -67,8 +67,12 @@ class User extends BaseController
             'penelitian'  => $this->penelitianModel->paginate(5, 'user'),
             'pager' => $this->penelitianModel->pager,
             'currentPage' => $currentPage,
-            'plCount' => $this->dosenModel->countPenelitian(user_id()),
-            'pbCount' => $this->dosenModel->countPengabdian(user_id()),
+            'countPL' => $this->penelitianModel->countPL(),
+            'countPB' => $this->pengabdianModel->countPB(),
+            'setujuPL' => $this->penelitianModel->setujuPL(),
+            'setujuPB' => $this->pengabdianModel->setujuPB(),
+            'tolakPL' => $this->penelitianModel->tolakPL(),
+            'tolakPB' => $this->pengabdianModel->tolakPB(),
         ];
         return view('admin/dashboard', $data);
 

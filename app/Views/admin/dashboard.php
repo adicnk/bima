@@ -19,21 +19,16 @@
         <hr>
     </div>
 
-    <!-- Content Row -->
     <div class="row">
-
         <!-- Penelitian -->
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-2 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
+                        <div>
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Penelitian</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $plCount==""?0:$plCount ?></b></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-flask fa-2x text-gray-300"></i>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $countPL==""?0:$countPL ?></b></div>
                         </div>
                     </div>
                 </div>
@@ -41,35 +36,28 @@
         </div>
 
         <!-- Pengabdian -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-danger shadow h-100 py-2">
+        <div class="col-2 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                        <div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Pengabdian</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $pbCount==""?0:$pbCount ?></b></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-graduation-cap fa-2x text-gray-300"></i>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $countPB==""?0:$countPB ?></b></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- Jumlah Staff -->
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-2 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
+                        <div>
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Penelitian yang Disetujui</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= '0' ?></b></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-bookmark fa-2x text-gray-300"></i>
+                                Penelitian Disetujui</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $setujuPL==""?0:$setujuPL ?></b></div>
                         </div>
                     </div>
                 </div>
@@ -77,17 +65,44 @@
         </div>
 
         <!-- Jumlah Soal -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
+        <div class="col-2 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Pengabdian yang Disetujui</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= '0' ?></b></div>
+                        <div>
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Penelitian Ditolak</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $setujuPB==""?0:$setujuPB ?></b></div>
                         </div>
-                        <div class="col-auto">
-                            <i class="fas fa-book fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jumlah Staff -->
+        <div class="col-2 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div>
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                Penelitian Disetujui</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $tolakPL==""?0:$tolakPL ?></b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jumlah Soal -->
+        <div class="col-2 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div>
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                Penelitian Ditolak</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $tolakPB==""?0:$tolakPB ?></b></div>
                         </div>
                     </div>
                 </div>
@@ -95,13 +110,17 @@
         </div>
     </div>
 
-    <div class="card bg-info text-white shadow">
-        <div class="card-body">
-            Daftar Dosen Peneliti
-        </div>
-    </div>
+    
+    <!-- Content Row -->
+    <div class="row">
 
-    <div class="d-sm-flex align-items-center justify-content-between mb-2">
+        <div class="card bg-info text-white shadow">
+            <div class="card-body">
+                Daftar Dosen Peneliti
+            </div>
+        </div>
+
+        <div class="d-sm-flex align-items-center justify-content-between mb-2">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -140,6 +159,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
 
 </div>
 

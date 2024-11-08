@@ -57,4 +57,18 @@ class PenelitianMDL extends Model
         $this->delete(['id' => $id]);
     }
 
+    public function countPL(){
+        return $this->countAllResults();
+    }
+
+    public function setujuPL(){
+        $this->where(['status' => 1]);
+        return $this->countAllResults();
+    }
+
+    public function tolakPL(){
+        $this->where(['status' => 0]);
+        return $this->countAllResults();
+    }
+
 }
