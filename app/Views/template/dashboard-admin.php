@@ -51,6 +51,28 @@
             
             <!-- Heading -->
             <div class="sidebar-heading">
+                Tools
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIndex" aria-expanded="true" aria-controls="collapseIndex">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Users</span>
+                </a>
+                <div id="collapseIndex" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?=base_url().'/user/listUser'?>" >List</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url()?>/user/arsip">
+                    <i class="fas fa-fw fa-archive"></i>
+                    <span>Arsip</span></a>
+            </li>
+
+            <div class="sidebar-heading">
                 Menu
             </div>
 

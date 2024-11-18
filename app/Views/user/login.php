@@ -71,6 +71,9 @@
                                         </button>
                                     </form>
                                     <hr>
+                                    <div class="small text-center mb-3">
+                                    Lupa password? <a href="<?= url_to('reset-password') ?>">Reset Password</a>
+                                    </div>                                    
                                     <div class="small text-center">
                                         Input Data dan Upload File
                                     </div>

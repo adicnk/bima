@@ -23,6 +23,12 @@ class PengabdianMDL extends Model
         }        
     }
 
+    public function searchPengabdianReject()
+    {
+        $this->where(['status' => 0]);
+        return $this->findall();            
+    }
+
     public function searchJudulPengabdian($pengabdianID){
         $this->where(['id' => $pengabdianID]);
         return $this->findall();            

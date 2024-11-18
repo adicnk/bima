@@ -79,7 +79,8 @@ class Auth extends BaseConfig
         //'register'        => 'Myth\Auth\Views\register',
         'register'           => '\App\Views\user\register',
         'forgot'          => 'Myth\Auth\Views\forgot',
-        'reset'           => 'Myth\Auth\Views\reset',
+        //'reset'           => 'Myth\Auth\Views\reset',
+        'reset'           => '\App\Views\user\reset',
         'emailForgot'     => 'Myth\Auth\Views\emails\forgot',
         'emailActivation' => 'Myth\Auth\Views\emails\activation',
     ];
@@ -201,8 +202,8 @@ class Auth extends BaseConfig
      *
      * @var string|null Name of the ResetterInterface class
      */
-    //public $activeResetter = 'Myth\Auth\Authentication\Resetters\EmailResetter';
-    public $activeResetter = null;
+    public $activeResetter = 'Myth\Auth\Authentication\Resetters\EmailResetter';
+    //public $activeResetter = null;
 
     /**
      * --------------------------------------------------------------------
@@ -383,4 +384,5 @@ class Auth extends BaseConfig
      * @var int
      */
     public $resetTime = 3600;
+    
 }

@@ -71,6 +71,8 @@
                                             <select class="form-control" name="ruangLingkup" id="ruangLingkup" onfocusin="yellowin(this);" onfocusout="whiteout(this)">
                                                 <option value="Penelitian Dosen Pemula">Penelitian Dosen Pemula</option>
                                                 <option value="Penelitian Terapan - Penelitian Produk Vokasi">Penelitian Terapan - Penelitian Produk Vokasi</option>
+                                                <option value="Penelitian Kerjasama Antar Perguruan Tinggi">Penelitian Kerjasama Antar Perguruan Tinggi</option>
+                                                <option value="Penelitian Dasar">Penelitian Dasar</option>
                                             </select>
                                         </div>
                                     </div>
@@ -100,7 +102,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-row align-items-right mt-3">
+                                <!--<div class="form-row align-items-right mt-3">
                                     <div class="col-12">
                                         <div class="input-group-prepend">            
                                             <div class="input-group-text"><strong>Tema<br>Penelitian</strong></div>
@@ -115,7 +117,7 @@
                                             <textarea class="form-control" name="topikPenelitian" id="topikPenelitian" rows="4"></textarea>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="form-row align-items-right mt-3">
                                     <div class="col-6">
                                         <div class="input-group-prepend">

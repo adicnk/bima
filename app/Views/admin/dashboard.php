@@ -64,14 +64,27 @@
             </div>
         </div>
 
-        <!-- Jumlah Soal -->
+        <div class="col-2 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div>
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                Penelitian Ditolak</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="<?=base_url().'/user/listPenelitianReject'?>"><b><?= $tolakPL==""?0:$tolakPL ?></b></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="col-2 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div>
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Penelitian Ditolak</div>
+                                Pengabdian Disetujui</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $setujuPB==""?0:$setujuPB ?></b></div>
                         </div>
                     </div>
@@ -86,28 +99,14 @@
                     <div class="row no-gutters align-items-center">
                         <div>
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                Penelitian Disetujui</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $tolakPL==""?0:$tolakPL ?></b></div>
+                                Pengabdian Ditolak</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="<?=base_url().'/user/listPengabdianReject'?>"><b><?= $tolakPB==""?0:$tolakPB ?></b></a></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Jumlah Soal -->
-        <div class="col-2 mb-4">
-            <div class="card border-left-danger shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div>
-                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                Penelitian Ditolak</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><b><?= $tolakPB==""?0:$tolakPB ?></b></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     
@@ -146,8 +145,18 @@
                         <td><?= $data['nidn_nidk'] ? $data['nidn_nidk'] : '-' ?></td>
                         <td><?= $data['pendidikan'] ? $data['pendidikan'] : '-' ?></td>
                         <td><?= $data['program_studi'] ? $data['program_studi'] : '-' ?></td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>
+                            <?php
+                                $sql = "SELECT * FROM usulan_penelitian WHERE dosen_id=".$data['dosen_id'];  
+                                echo $db->query($sql)->getNumRows();        
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                                $sql = "SELECT * FROM usulan_pengabdian WHERE dosen_id=".$data['dosen_id'];  
+                                echo $db->query($sql)->getNumRows();        
+                            ?>
+                        </td>
                         <td>
                         <a href="<?= '/user/plpb/' .$data['id'] ?>" title="View Detail"><img src="<?= base_url() ?>/icon/view.png" /></a>
                     </td>

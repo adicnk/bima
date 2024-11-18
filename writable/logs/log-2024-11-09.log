@@ -1,0 +1,16 @@
+ERROR - 2024-11-09 07:31:34 --> Unknown column 'logout' in 'where clause'
+CRITICAL - 2024-11-09 07:31:34 --> Unknown column 'logout' in 'where clause'
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT * FROM a...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM a...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM a...')
+#3 C:\xampp\htdocs\bima\app\Views\detail\inpb.php(227): CodeIgniter\Database\BaseConnection->query('SELECT * FROM a...')
+#4 C:\xampp\htdocs\bima\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\bima\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#6 C:\xampp\htdocs\bima\system\Common.php(1089): CodeIgniter\View\View->render('detail/inpb', Array, true)
+#7 C:\xampp\htdocs\bima\app\Controllers\User.php(333): view('detail/inpb', Array)
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): App\Controllers\User->inpb('1', 'logout')
+#9 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#10 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#13 {main}

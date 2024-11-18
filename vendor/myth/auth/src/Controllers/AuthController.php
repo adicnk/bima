@@ -295,7 +295,7 @@ class AuthController extends Controller
         );
 
         $rules = [
-            'token'        => 'required',
+            //'token'        => 'required',
             'email'        => 'required|valid_email',
             'password'     => 'required|strong_password',
             'pass_confirm' => 'required|matches[password]',

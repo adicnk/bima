@@ -9,13 +9,14 @@ use App\Models\RabMDL;
 use App\Models\RabDetailMDL;
 use App\Models\MitraMDL;
 use App\Models\PenelitianMDL;
+use App\Models\UserMDL;
 
 
 class Delete extends BaseController
 {
 
     protected $dosenModel, $anggotaModel, $nonDosenModel, $substansiModel, $penelitianModel,
-                $rabModel, $rabDetailModel, $mitraModel;
+                $rabModel, $rabDetailModel, $mitraModel, $userModel;
 
     public function __construct()
     {
@@ -27,6 +28,20 @@ class Delete extends BaseController
         $this->rabDetailModel = new RabDetailMDL();
         $this->mitraModel = new MitraMDL();
         $this->penelitianModel = new PenelitianMDL();
+        $this->userModel = new UserMDL();
+    }
+
+    public function users($id){
+        $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;
+        $this->userModel->delItem($id);
+        $data = [
+            'title' => "List User yg Mendaftar",
+            'users' => $this->userModel->search(),
+            'paginates' => $this->userModel->paginate(5,'user'),
+            'pager' => $this->userModel->pager,
+            'currentPage' => $currentPage
+        ];
+        return view('list/users', $data);   
     }
 
     public function anggotaDosen($penelitianID,$dosen_id,$anggotaID)

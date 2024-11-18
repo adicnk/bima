@@ -98,7 +98,7 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="logout">
+                <a class="nav-link" href="<?= base_url() ?>/logout">
                     <i class="fas fa-fw fa-stop-circle"></i>
                     <span>Logout</span></a>
             </li>

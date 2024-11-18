@@ -47,7 +47,7 @@ class UserModel extends Model
             'email'      => $email,
             'ip_address' => $ipAddress,
             'user_agent' => $userAgent,
-            'token'      => $token,
+            //'token'      => $token,
             'created_at' => date('Y-m-d H:i:s'),
         ]);
     }

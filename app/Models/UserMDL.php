@@ -12,6 +12,14 @@ class UserMDL extends Model
     // Field yang boleh diisi waktu saving data ** harus didefinisikan dulu **
     protected $allowedFields = ['dosen_id'];
 
+    public function search(){
+        return $this->findAll();
+    }
+
+    public function delItem($id){        
+        $this->delete(['id'=>$id]);
+    }    
+
     public function dosenID($id)
     {
         $this->where(['id' => $id]);

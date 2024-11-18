@@ -24,6 +24,12 @@ class PenelitianMDL extends Model
         }        
     }
 
+    public function searchPenelitianReject()
+    {
+        $this->where(['status' => 0]);
+        return $this->findall();            
+    }    
+
     public function searchJudulPenelitian($penelitianID){
         $this->where(['id' => $penelitianID]);
         return $this->findall();            

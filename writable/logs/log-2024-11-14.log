@@ -1,0 +1,98 @@
+ERROR - 2024-11-14 13:43:59 --> Column 'user_agent' cannot be null
+CRITICAL - 2024-11-14 13:43:59 --> Column 'user_agent' cannot be null
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `au...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `au...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `au...')
+#3 C:\xampp\htdocs\bima\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `au...', Array, false)
+#4 C:\xampp\htdocs\bima\vendor\myth\auth\src\Models\UserModel.php(51): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(294): Myth\Auth\Models\UserModel->logResetAttempt('astri.mutiar@st...', '::1', 'Mozilla/5.0 (Wi...')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->attemptReset()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-11-14 13:48:01 --> Column 'ip_address' cannot be null
+CRITICAL - 2024-11-14 13:48:01 --> Column 'ip_address' cannot be null
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `au...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `au...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `au...')
+#3 C:\xampp\htdocs\bima\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `au...', Array, false)
+#4 C:\xampp\htdocs\bima\vendor\myth\auth\src\Models\UserModel.php(51): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(293): Myth\Auth\Models\UserModel->logResetAttempt('astri.mutiar@st...', '::1')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->attemptReset()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-11-14 13:49:10 --> Column 'ip_address' cannot be null
+CRITICAL - 2024-11-14 13:49:10 --> Column 'ip_address' cannot be null
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `au...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `au...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `au...')
+#3 C:\xampp\htdocs\bima\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `au...', Array, false)
+#4 C:\xampp\htdocs\bima\vendor\myth\auth\src\Models\UserModel.php(51): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(291): Myth\Auth\Models\UserModel->logResetAttempt('astri.mutiar@st...')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->attemptReset()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-11-14 13:49:46 --> Column 'ip_address' cannot be null
+CRITICAL - 2024-11-14 13:49:46 --> Column 'ip_address' cannot be null
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `au...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `au...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `au...')
+#3 C:\xampp\htdocs\bima\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `au...', Array, false)
+#4 C:\xampp\htdocs\bima\vendor\myth\auth\src\Models\UserModel.php(51): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(291): Myth\Auth\Models\UserModel->logResetAttempt('astri.mutiar@st...')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->attemptReset()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-11-14 13:54:13 --> Column 'user_agent' cannot be null
+CRITICAL - 2024-11-14 13:54:13 --> Column 'user_agent' cannot be null
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `au...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `au...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `au...')
+#3 C:\xampp\htdocs\bima\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `au...', Array, false)
+#4 C:\xampp\htdocs\bima\vendor\myth\auth\src\Models\UserModel.php(51): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(294): Myth\Auth\Models\UserModel->logResetAttempt('astri.mutiar@st...', '::1', 'Mozilla/5.0 (Wi...')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->attemptReset()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-11-14 13:59:28 --> Column 'user_agent' cannot be null
+CRITICAL - 2024-11-14 13:59:28 --> Column 'user_agent' cannot be null
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `au...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `au...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `au...')
+#3 C:\xampp\htdocs\bima\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `au...', Array, false)
+#4 C:\xampp\htdocs\bima\vendor\myth\auth\src\Models\UserModel.php(51): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(294): Myth\Auth\Models\UserModel->logResetAttempt('astri.mutiar@st...', '::1', 'Mozilla/5.0 (Wi...')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->attemptReset()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-11-14 14:02:22 --> Column 'user_agent' cannot be null
+CRITICAL - 2024-11-14 14:02:22 --> Column 'user_agent' cannot be null
+#0 C:\xampp\htdocs\bima\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `au...', 0)
+#1 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `au...')
+#2 C:\xampp\htdocs\bima\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `au...')
+#3 C:\xampp\htdocs\bima\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `au...', Array, false)
+#4 C:\xampp\htdocs\bima\vendor\myth\auth\src\Models\UserModel.php(51): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\bima\vendor\myth\auth\src\Controllers\AuthController.php(294): Myth\Auth\Models\UserModel->logResetAttempt('astri.mutiar@st...', '::1', 'Mozilla/5.0 (Wi...')
+#6 C:\xampp\htdocs\bima\system\CodeIgniter.php(832): Myth\Auth\Controllers\AuthController->attemptReset()
+#7 C:\xampp\htdocs\bima\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 C:\xampp\htdocs\bima\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\bima\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\bima\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}

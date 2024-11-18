@@ -77,15 +77,14 @@ class DosenMDL extends Model
         return $this->countAllResults();
     }
 
-    public function countPenelitian($dosen_id)
+    public function countDosenPL($dosen_id)
     {
         $this->join('usulan_penelitian', 'usulan_penelitian.dosen_id=dosen.id');
         $this->where(['usulan_penelitian.dosen_id'=>$dosen_id]);
-        //dd($this->findall());
         return $this->countAllResults();
     }
 
-    public function countPengabdian($dosen_id)
+    public function countDosenPB($dosen_id)
     {
         $this->join('usulan_pengabdian', 'usulan_pengabdian.dosen_id=dosen.id');
         $this->where(['usulan_pengabdian.dosen_id'=>$dosen_id]);
